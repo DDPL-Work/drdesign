@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div>
-      Hlo
+      Hlo, Welcome to Dr Design
     </div>
   )
 }
