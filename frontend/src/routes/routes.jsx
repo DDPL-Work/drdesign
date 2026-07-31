@@ -1,10 +1,54 @@
-import { createBrowserRouter, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { createBrowserRouter, useNavigate, Outlet, useLocation } from "react-router-dom";
 import Home from "../pages/Home/Home";
+import Navbar from "../layout/Navbar";
+import Footer from "../layout/Footer";
+import CaseStudyDetails from "../pages/Case-Study/Details";
+
+const ScrollManager = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const scrollToId = location.state?.scrollTo || location.hash?.replace('#', '');
+
+    if (scrollToId) {
+      setTimeout(() => {
+        const element = document.getElementById(scrollToId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash, location.state]);
+
+  return null;
+};
+
+const MainLayout = () => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <ScrollManager />
+      <Navbar />
+      <main className="grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export const appRouter = createBrowserRouter([
-  { path: "/", element: <Home /> },
-
-  { path: "*", element: <PlaceholderPage /> },
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      { path: "/", index: true, element: <Home /> },
+      { path: "/project/:slug", index: true, element: <CaseStudyDetails /> },
+      { path: "*", element: <PlaceholderPage /> },
+    ]
+  }
 ]);
 
 /* ── Temporary placeholder for unbuilt pages ────────────────────────────── */

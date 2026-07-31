@@ -1,10 +1,11 @@
 import "./App.css";
 import AppRoutes from "./routes";
 import { Toaster } from "sonner";
+import SmoothScrollProvider from "./providers/SmoothScrollProvider";
 
 function App() {
   return (
-    <>
+    <SmoothScrollProvider>
       <AppRoutes />
 
       {/* ✅ Sonner Toaster with custom CSS */}
@@ -21,7 +22,7 @@ function App() {
           }
         }}
       />
-    </>
+    </SmoothScrollProvider>
   );
 }
 
