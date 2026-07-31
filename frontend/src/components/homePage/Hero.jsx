@@ -397,7 +397,7 @@ const Hero = () => {
           ></div>
 
           <iframe
-            src="/src/assets/globe.html"
+            src="/globe.html"
             title="Interactive Globe"
             className="absolute inset-0 w-full h-full border-0"
             style={{ backgroundColor: "transparent", zIndex: 2 }}
