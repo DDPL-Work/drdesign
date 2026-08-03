@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import heroGradient from "../../assets/detailsHero.avif";
 import heroImg from "../../assets/heroImg.webp";
 import imgProject from "../../assets/imgProject.avif";
@@ -230,6 +232,8 @@ const CoreStacks = () => {
             display: flex;
             width: max-content;
             animation: marquee 65s linear infinite;
+            will-change: transform;
+            transform: translateZ(0);
           }
         `}
       </style>
@@ -287,6 +291,8 @@ const ProjectGalley = () => {
           display: flex;
           width: max-content;
           animation: gallery-marquee 65s linear infinite;
+          will-change: transform;
+          transform: translateZ(0);
         }
       `}</style>
       
@@ -306,6 +312,8 @@ const ProjectGalley = () => {
               <img
                 src={src}
                 alt={`Project screen ${index + 1}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500"
               />
             </div>
@@ -318,6 +326,26 @@ const ProjectGalley = () => {
 
 const CaseStudyDetails = () => {
   const { slug } = useParams();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   // Format slug to readable title (e.g., "enterprise-resource-planning-system" -> "Enterprise Resource Planning System")
   const formatTitle = (slugStr) => {
