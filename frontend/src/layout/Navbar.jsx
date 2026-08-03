@@ -21,7 +21,12 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  const navLinks = ["About", "Services", "Portfolio", "Career"];
+  const navLinks = [
+    { label: "About", path: "/about-us" },
+    { label: "Services", path: "/services" },
+    { label: "Portfolio", path: "/portfolio" },
+    { label: "Career", path: "/career" },
+  ];
 
   return (
     <nav ref={navRef} className="sticky top-0 z-999 w-full bg-transparent backdrop-blur-md md:bg-white md:backdrop-blur-none flex items-center justify-between px-6 md:px-8 py-4  md:border-gray-100">
@@ -47,11 +52,11 @@ const Navbar = () => {
       <div className="hidden md:flex items-center gap-8 lg:gap-12">
         {navLinks.map((item) => (
           <Link
-            key={item}
-            to={`/${item.toLowerCase()}`}
+            key={item.label}
+            to={item.path}
             className="text-[#5e6673] hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
           >
-            {item}
+            {item.label}
           </Link>
         ))}
       </div>
@@ -89,12 +94,12 @@ const Navbar = () => {
             <div className="flex flex-col gap-4">
               {navLinks.map((item) => (
                 <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
+                  key={item.label}
+                  to={item.path}
                   onClick={toggleMenu}
                   className="text-[#0a181c] hover:text-[#6a71d8] font-medium text-lg tracking-wide transition-colors font-jetbrains pb-2"
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>
