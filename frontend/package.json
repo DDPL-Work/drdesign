@@ -9,6 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "overrides": {
+    "three": "$three"
+  },
   "dependencies": {
     "@gltf-transform/core": "^4.4.2",
     "@google/model-viewer": "^4.3.1",
