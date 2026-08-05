@@ -152,7 +152,7 @@ function App() {
             exit={{ y: "-100vh" }}
             transition={{ duration: 1.4, ease: [0.65, 0, 0.05, 1] }}
             ref={containerRef}
-            className="fixed inset-0 w-full h-full bg-[#18181A] overflow-hidden z-[9999]"
+            className="fixed inset-0 w-full h-full bg-[#18181A] overflow-hidden z-9999"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ cursor: "default" }}
@@ -166,7 +166,7 @@ function App() {
                 playsInline
                 onEnded={handleVideoEnd}
                 ref={(el) => { if (el) el.playbackRate = 2.0; }}
-                className="w-[400px] md:w-[800px] object-contain"
+                className="w-100 md:w-200 object-contain"
                 style={{ clipPath: "inset(0 0 12% 0)" }}
               />
             </div>

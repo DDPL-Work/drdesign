@@ -3,11 +3,10 @@ import React from "react";
 // ── Client logo imports ──────────────────────────────────────────────
 import amtron        from "../../assets/clients/AMTRON.png";
 import quoteMate     from "../../assets/clients/QuoteMate.avif";
-import uid           from "../../assets/clients/UID.png";
 import ukgov         from "../../assets/clients/UKGOV.png";
 import geps          from "../../assets/clients/geps.png";
 import holidays      from "../../assets/clients/holidays.png";
-import ideaForge     from "../../assets/clients/idea_forge_logoo-removebg-preview.png";
+import ideaForge     from "../../assets/clients/idea_forge.png";
 import kws           from "../../assets/clients/kws.png";
 import mavenJobs     from "../../assets/clients/mavenJobs.avif";
 import mawahib       from "../../assets/clients/mawahib.png";
@@ -19,6 +18,15 @@ import traveamer     from "../../assets/clients/traveamer.avif";
 import provenCode     from "../../assets/clients/provenCode.avif";
 import tapori        from "../../assets/clients/tapori.png";
 import irrigation    from "../../assets/clients/irrigation.jpeg";
+import slideit       from "../../assets/clients/slideitblacktext.svg";
+import zadium        from "../../assets/clients/zadium.png";
+import hpk           from "../../assets/clients/hpk.svg";
+import adopt         from "../../assets/clients/adopt.png";
+import rafec         from "../../assets/clients/rafec.webp";
+import soult         from "../../assets/clients/soult.webp";
+import chakra        from "../../assets/clients/chakra.png";
+import gendhaphool   from "../../assets/clients/gendhaphool.png";
+import polatGlobal   from "../../assets/clients/polat global.png";
 
 // ── Logo list (name shown on hover for a11y) ─────────────────────────
 const logos = [
@@ -40,6 +48,15 @@ const logos = [
   { src: soilogo,   alt: "SOI" },
   { src: traveamer, alt: "Traveamer", scale: 1.7 },
   { src: provenCode, alt: "The Proven Code"},
+  { src: slideit, alt: "SlideIt" },
+  { src: zadium, alt: "Zadium" },
+  { src: hpk, alt: "HPK", scale: 0.8 },
+  { src: adopt, alt: "Adopt" },
+  { src: rafec, alt: "Rafec",  },
+  { src: soult, alt: "D'Soult", scale: 1.2 },
+  { src: chakra, alt: "Chakra" },
+  { src: gendhaphool, alt: "Gendhaphool" },
+  { src: polatGlobal, alt: "Polat Global" },
 ];
 
 // ── Inline keyframe: scrolls one full track width to the left ────────

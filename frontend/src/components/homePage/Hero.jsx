@@ -5,6 +5,7 @@ import React, {
   useRef,
   useMemo,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
@@ -141,6 +142,7 @@ const GridCell = React.memo(({ brightness, isHovered, iconIndex, cellSize }) => 
 });
 
 const Hero = () => {
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: -1, y: -1 });
   const [globeHovered, setGlobeHovered] = useState(false);
@@ -336,7 +338,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
-          className="font-sans text-gray-100 text-sm md:text-base max-w-2xl leading-relaxed min-h-[60px]"
+          className="font-sans text-gray-100 text-sm md:text-base max-w-2xl leading-relaxed min-h-15"
         >
           Dr. DESIGN TECHNOLOGY is a full-service design and engineering{" "}
           <br className="hidden md:block" />
@@ -352,16 +354,16 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
         >
-          <button className="group relative z-10 px-6 py-2.5 rounded-full bg-[#e3eeff] text-[#0C0D0D] font-jetbrains font-semibold text-sm flex items-center transition-colors cursor-pointer overflow-hidden">
-            <span className="transition-transform duration-300 ease-out group-hover:translate-x-[12px]">Get Started</span>
-            <span className="text-xl ml-2 -mt-2 md:-mt-0 transition-all duration-300 ease-out group-hover:translate-x-[30px] group-hover:opacity-0">&rarr;</span>
+          <button onClick={() => navigate("/contact-us", { state: { scrollTo: "cards-section" } })} className="group relative z-10 px-6 py-2.5 rounded-full bg-[#e3eeff] text-[#0C0D0D] font-jetbrains font-semibold text-sm flex items-center transition-colors cursor-pointer overflow-hidden">
+            <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">Get Started</span>
+            <span className="text-xl ml-2 -mt-2 md:mt-0 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">&rarr;</span>
           </button>
         </motion.div>
       </div>
 
       {/* Globe Section — z-40, above grid */}
       <motion.div
-        className="relative w-full flex justify-center items-end h-[70px] md:h-[115px]"
+        className="relative w-full flex justify-center items-end h-17.5 md:h-28.75"
         style={{ marginTop: "30px", zIndex: 40 }}
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
@@ -371,7 +373,7 @@ const Hero = () => {
       >
         {/* Globe Container — glow inside, overflows visibly around sphere */}
         <div
-          className="relative pointer-events-auto transition-transform duration-700 ease-out w-[500px] md:w-[700px] h-[500px] md:h-[700px]"
+          className="relative pointer-events-auto transition-transform duration-700 ease-out w-125 md:w-175 h-125 md:h-175"
           style={{
             marginBottom: "-250px",
             zIndex: -99,
@@ -381,7 +383,7 @@ const Hero = () => {
         >
           {/* Outer ring glow — centered on globe */}
           <div
-            className="absolute pointer-events-none transition-all duration-700 ease-out w-[520px] h-[520px] md:w-[760px] md:h-[760px] "
+            className="absolute pointer-events-none transition-all duration-700 ease-out w-130 h-130 md:w-190 md:h-190 "
             style={{
               top: "50%",
               left: "50%",

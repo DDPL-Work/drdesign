@@ -64,7 +64,7 @@ const Navbar = () => {
       {/* Desktop Contact Us Button */}
       <div className="hidden md:flex items-center">
         <Link
-          to="/contact"
+          to="/contact-us"
           className="px-5 py-2 border border-[#9c7a65] hover:border-[#0a181c] text-[#9c7a65] hover:bg-[#0a181c] hover:text-white transition-all duration-300 rounded-md font-semibold text-sm tracking-wide font-jetbrains"
         >
           Contact Us
@@ -105,7 +105,7 @@ const Navbar = () => {
             </div>
 
             <Link
-              to="/contact"
+              to="/contact-us"
               onClick={toggleMenu}
               className="mt-2 w-full text-center px-5 py-3 border border-[#0a181c] bg-[#0a181c] text-white rounded-md font-semibold text-[15px] tracking-wide font-jetbrains shadow-sm"
             >

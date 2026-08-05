@@ -90,8 +90,8 @@ const TiltCard = ({ children, className }) => {
 
 const Achievement = () => {
   return (
-    <section className="w-full bg-white pb-32 pt-10 overflow-hidden">
-      <div className="max-w-full mx-15">
+    <section className="w-full bg-white pb-15 md:pb-24 overflow-hidden">
+      <div className="max-w-full mx-4 md:mx-15">
         
         {/* Header */}
         <motion.div 
@@ -99,7 +99,7 @@ const Achievement = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-10"
+          className="mb-6 md:mb-10"
         >
           <h2 className="text-[12px] font-medium tracking-[0.2em] text-[#8b949e] uppercase flex items-center gap-6 font-inter">
             <span>03 /</span>
@@ -114,10 +114,10 @@ const Achievement = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-16 max-w-4xl"
+          className="mb-10 md:mb-16 max-w-4xl"
         >
-          <h3 className="text-[48px] font-medium text-[#0a181c] font-jetbrains leading-[1.2]">
-            Credibility, earned project by<br  />project
+          <h3 className="text-[25px] md:text-[48px] font-medium text-[#0a181c] font-jetbrains leading-[1.2]">
+            Credibility, earned project by<br className="hidden md:block" />project
           </h3>
         </motion.div>
       </div>
@@ -135,25 +135,25 @@ const Achievement = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 1 }}
-          className="px-15"
+          className="px-4 md:px-15"
         >
-          <div className="flex w-max gap-[44px] pb-12 pt-4 pr-[44px] animate-marquee hover:[animation-play-state:paused]">
+          <div className="flex w-max gap-6 md:gap-[44px] pb-8 md:pb-12 pt-4 pr-6 md:pr-[44px] animate-marquee hover:[animation-play-state:paused]">
             {[...achievements, ...achievements].map((item, index) => (
               <TiltCard 
                 key={`${item.id}-${index}`}
-                className="w-[413px] h-[187px] flex-shrink-0 bg-white rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgb(0,0,0,0.06)] p-8 transition-shadow duration-500 ease-out group cursor-default"
+                className="w-[280px] md:w-[413px] h-[160px] md:h-[187px] flex-shrink-0 bg-white rounded-xl md:rounded-2xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgb(0,0,0,0.06)] p-6 md:p-8 transition-shadow duration-500 ease-out group cursor-default"
               >
-                <div className="mb-8 relative w-8 h-8">
-                  <item.icon className="w-6 h-6 text-[#0a181c] absolute top-0 left-0 z-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:text-cyan-600" strokeWidth={1.5} />
+                <div className="mb-4 md:mb-8 relative w-6 h-6 md:w-8 md:h-8">
+                  <item.icon className="w-5 h-5 md:w-6 md:h-6 text-[#0a181c] absolute top-0 left-0 z-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:text-cyan-600" strokeWidth={1.5} />
                   {/* Subtle ambient glow behind icon on hover */}
-                  <div className="absolute top-1 left-1 w-6 h-6 bg-cyan-100/50 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+                  <div className="absolute top-1 left-1 w-5 h-5 md:w-6 md:h-6 bg-cyan-100/50 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
                 </div>
                 
-                <div className="flex flex-col gap-4">
-                  <h4 className="text-[18px] font-bold text-[#0a181c] font-jetbrains leading-snug">
+                <div className="flex flex-col gap-2 md:gap-4">
+                  <h4 className="text-[15px] md:text-[18px] font-bold text-[#0a181c] font-jetbrains leading-snug">
                     {item.title}
                   </h4>
-                  <p className="text-[#5e6673] font-inter text-[14px] leading-relaxed">
+                  <p className="text-[#5e6673] font-inter text-[12px] md:text-[14px] leading-relaxed line-clamp-2 md:line-clamp-none">
                     {item.description}
                   </p>
                 </div>

@@ -23,6 +23,14 @@
     scrollbar-width: none;  /* Firefox */
   }
 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
   h1, h2, h3, h4, h5, h6, button, input[type="submit"], input[type="button"] {
     font-family: var(--font-jetbrains);
   }
