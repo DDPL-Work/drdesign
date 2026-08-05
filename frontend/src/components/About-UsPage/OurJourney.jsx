@@ -119,10 +119,7 @@ const OurJourney = () => {
 
   return (
     <section className="relative w-full bg-white overflow-hidden">
-      {/* Background split (desktop only) */}
       <div className="hidden md:block absolute left-0 top-0 bottom-0 w-1/2 bg-[#fdf6f9] -z-20" />
-
-      {/* Floating Parallax Blobs */}
       <motion.div 
         style={{ y: blob1Y }}
         className="absolute top-10 left-[10%] w-72 h-72 bg-cyan-300/20 rounded-full blur-[80px] pointer-events-none -z-10"
@@ -132,12 +129,12 @@ const OurJourney = () => {
         className="absolute bottom-20 right-[10%] w-96 h-96 bg-pink-300/20 rounded-full blur-[80px] pointer-events-none -z-10"
       />
 
-      <div className="max-w-full mx-15 relative pt-20 pb-32">
+      <div className="max-w-full mx-4 md:mx-15 relative pt-10 md:pt-20 pb-16 md:pb-32">
         {/* Header */}
-        <div className="mb-24">
+        <div className="mb-12 md:mb-24">
           <h2 className="text-sm font-semibold tracking-[0.15em] text-[#5e6673] uppercase flex items-center gap-6 font-jetbrains">
             <span>01 /</span>
-            <span className="w-10 h-[2px] bg-gray-200 rounded-full"></span>
+            <span className="w-10 h-0.5 bg-gray-200 rounded-full"></span>
             <span>OUR JOURNEY</span>
           </h2>
         </div>
@@ -145,19 +142,19 @@ const OurJourney = () => {
         {/* Timeline Container */}
         <div ref={containerRef} className="relative">
           {/* Vertical Line Background (Gray) */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 transform md:-translate-x-1/2" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 transform md:-translate-x-1/2" />
           
           {/* Vertical Line Foreground (Animated Color with Glowing Tip) */}
           <motion.div 
             style={{ height: lineHeight }}
-            className="absolute left-8 md:left-1/2 top-0 w-[2px] bg-[#081023] transform md:-translate-x-1/2 origin-top flex flex-col justify-end items-center z-20" 
+            className="absolute left-6 md:left-1/2 top-0 w-[2px] bg-[#081023] transform md:-translate-x-1/2 origin-top flex flex-col justify-end items-center z-20" 
           >
              {/* Glowing Laser Tip */}
              <div className="w-[4px] h-[30px] bg-cyan-400 rounded-full blur-[2px] shadow-[0_0_12px_4px_rgba(74,222,128,0.6)]" />
              <div className="w-[2px] h-[15px] bg-white absolute bottom-0 rounded-full shadow-[0_0_10px_3px_rgba(255,255,255,0.9)]" />
           </motion.div>
 
-          <div className="flex flex-col gap-24 md:gap-32">
+          <div className="flex flex-col gap-16 md:gap-32">
             {timelineData.map((item) => {
               const isLeft = item.alignment === 'left';
               
@@ -169,7 +166,7 @@ const OurJourney = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50% 0px -30% 0px" }}
-                    className="absolute left-8 md:left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30 top-0 md:top-8"
+                    className="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex flex-col items-center z-30 top-0 md:top-8"
                   >
                     <motion.div 
                       variants={{
@@ -200,7 +197,7 @@ const OurJourney = () => {
                           hidden: { borderColor: "#e5e7eb", boxShadow: "0 0 0 rgba(0,0,0,0)" },
                           visible: { borderColor: "#081023", boxShadow: "0 10px 15px -3px rgba(8,16,35,0.2)", transition: { duration: 0.3 } }
                         }}
-                        className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-full border-2 flex items-center justify-center relative z-10"
+                        className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full border-2 flex items-center justify-center relative z-10"
                       >
                         <motion.div
                           variants={{
@@ -208,14 +205,14 @@ const OurJourney = () => {
                             visible: { color: "#081023", scale: 1, transition: { type: "spring", stiffness: 300, damping: 20 } }
                           }}
                         >
-                          <item.icon className="w-5 h-5 md:w-6 md:h-6" />
+                          <item.icon className="w-4 h-4 md:w-6 md:h-6" />
                         </motion.div>
                       </motion.div>
                     </div>
                   </motion.div>
 
                   {/* Card Container with Staggered Reveal */}
-                  <div className={`w-full md:w-[calc(50%-3rem)] pl-24 md:pl-0 ${isLeft ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
+                  <div className={`w-full md:w-[calc(50%-3rem)] pl-16 md:pl-0 pt-2 md:pt-0 ${isLeft ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
                     <motion.div 
                       initial="hidden"
                       whileInView="visible"
@@ -235,31 +232,31 @@ const OurJourney = () => {
                       }}
                       className="w-full"
                     >
-                      <TiltCard className="bg-white/90 backdrop-blur-sm rounded-[2rem] border border-gray-100 px-6 pb-6 pt-3 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
-                        <motion.div variants={itemVariants} className={`flex justify-start ${isLeft ? 'md:justify-end' : 'md:justify-start'} mb-6`}>
-                          <span className="bg-[#0a181c] text-white text-[10px] font-bold px-4 py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
+                      <TiltCard className="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-[2rem] border border-gray-100 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
+                        <motion.div variants={itemVariants} className={`flex justify-start ${isLeft ? 'md:justify-end' : 'md:justify-start'} mb-4 md:mb-6`}>
+                          <span className="bg-[#0a181c] text-white text-[9px] md:text-[10px] font-bold px-3 py-1.5 md:px-4 md:py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
                             {item.pill}
                           </span>
                         </motion.div>
                         
-                        <motion.h3 variants={itemVariants} className={`text-2xl md:text-3xl font-semibold text-[#0a181c] mb-4 text-left ${isLeft ? 'md:text-right' : 'md:text-left'} font-jetbrains`}>
+                        <motion.h3 variants={itemVariants} className={`text-xl md:text-3xl font-semibold text-[#0a181c] mb-3 md:mb-4 text-left ${isLeft ? 'md:text-right' : 'md:text-left'} font-jetbrains`}>
                           {item.title}
                         </motion.h3>
                         
-                        <motion.p variants={itemVariants} className={`text-[#5e6673] text-sm md:text-base leading-relaxed mb-8 text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
+                        <motion.p variants={itemVariants} className={`text-[#5e6673] text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
                           {item.description}
                         </motion.p>
 
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-2 md:gap-3">
                           {item.bullets.map((bullet, idx) => (
                             <motion.div 
                               key={idx}
                               variants={itemVariants}
                               whileHover={{ scale: 1.02, x: isLeft ? -5 : 5, transition: { duration: 0.2 } }}
-                              className={`p-4 rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-center gap-4 flex-row ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} text-left ${isLeft ? 'md:text-right' : 'md:text-left'} transition-all`}
+                              className={`p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} text-left ${isLeft ? 'md:text-right' : 'md:text-left'} transition-all`}
                             >
-                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)]" />
-                              <span className="text-xs md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
+                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)] mt-1.5 md:mt-0" />
+                              <span className="text-[11px] md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
                             </motion.div>
                           ))}
                         </div>

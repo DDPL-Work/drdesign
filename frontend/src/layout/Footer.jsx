@@ -35,7 +35,7 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-              <Link to="/about" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
+              <Link to="/about-us" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
               <Link to="/services" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
               <Link to="/projects" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
               <Link to="/faqs" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>

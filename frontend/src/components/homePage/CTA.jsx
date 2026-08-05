@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiPhone } from "react-icons/fi";
 import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
@@ -41,6 +42,7 @@ const SplitText = ({ text, className = "", charClass = "cta-char" }) => {
 
 const CTA = () => {
   const ctaRef = useRef(null);
+  const navigate = useNavigate();
   const isInView = useInView(ctaRef, { once: true, margin: "0px" });
 
   useEffect(() => {
@@ -69,7 +71,7 @@ const CTA = () => {
       ref={ctaRef}
       className="w-full bg-white py-15 md:py-24 px-6 flex flex-col items-center text-center"
     >
-      <h2 className="font-jetbrains text-[27px] md:text-[60px] font-medium leading-[1.1] text-[#8687DD] mb-6 max-w-[1100px]">
+      <h2 className="font-jetbrains text-[27px] md:text-[60px] font-medium leading-[1.1] text-[#8687DD] mb-6 max-w-275">
         <SplitText text="Ready to Start Your Next" />
         <br className="hidden md:block" />
         <SplitText text=" Project?" />
@@ -88,16 +90,17 @@ const CTA = () => {
       <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 w-full">
         {/* Primary CTA Button */}
         <motion.button
+          onClick={() => navigate("/contact-us", { state: { scrollTo: "cards-section" } })}
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
-          className="group bg-[#0a181c] text-white font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0"
+          className="group bg-[#0a181c] text-white font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer"
         >
-          <span className="transition-transform duration-300 ease-out group-hover:translate-x-[12px]">
+          <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">
             Start a Project
           </span>
-          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2  md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-[30px] group-hover:opacity-0">
+          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2  md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
             &rarr;
           </span>
         </motion.button>
