@@ -157,20 +157,20 @@ const TrustedClients = () => {
             are on their third or fourth project with us.
           </motion.p>
         </div>
-
-        {/* Clients Marquee */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full bg-[#f8f9fa] rounded-2xl border border-gray-100 flex flex-col gap-4 py-6"
-        >
-          {renderMarqueeRow(row1, "right")}
-          {renderMarqueeRow(row2, "left")}
-          {renderMarqueeRow(row3, "right")}
-        </motion.div>
       </div>
+
+      {/* Clients Marquee */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full bg-[#f8f9fa] border-y border-gray-100 flex flex-col gap-4 py-8"
+      >
+        {renderMarqueeRow(row1, "right")}
+        {renderMarqueeRow(row2, "left")}
+        {renderMarqueeRow(row3, "right")}
+      </motion.div>
 
       {/* Global style for marquee animations */}
       <style

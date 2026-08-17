@@ -408,7 +408,9 @@ const CoreCapability = () => {
   const droneRightRef = useRef(null);
   const headingRef = useRef(null);
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -542,13 +544,13 @@ const CoreCapability = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-white pt-20 pb-0 relative z-20"
+      className="w-full bg-white pt-[144px] pb-0 relative z-20"
     >
       <style>{bandStyles}</style>
 
       <div
         ref={bannerContainerRef}
-        className="absolute left-1/2 top-12.5 md:top-15 w-0 h-0 z-999 pointer-events-none"
+        className="absolute left-1/2 top-[114px] md:top-[124px] w-0 h-0 z-999 pointer-events-none"
         style={{ transform: "scaleY(0.4)" }}
       >
         {/* Left Drone */}
@@ -564,21 +566,23 @@ const CoreCapability = () => {
               style={{ transform: "scaleY(2.5)" }}
               className="relative flex justify-center overflow-visible"
             >
-              <model-viewer
-                src="/scene.gltf"
-                autoplay
-                camera-controls={false}
-                scale="0.6 0.6 0.6"
-                disable-zoom
-                loading="eager"
-                camera-orbit="0deg 55deg 130%"
-                tabindex="-1"
-                interaction-prompt="none"
-                className="w-40 h-40 md:w-80 md:h-80 z-9999999 outline-none mt-15 md:mt-45"
-                style={{ pointerEvents: "auto" }}
-              >
-                <div slot="progress-bar" className="hidden"></div>
-              </model-viewer>
+              <div className="transform scale-[0.9] md:scale-100 origin-center transition-transform duration-300">
+                <model-viewer
+                  src="/scene.gltf"
+                  autoplay
+                  camera-controls={false}
+                  scale="0.5 0.5 0.5"
+                  disable-zoom
+                  loading="eager"
+                  camera-orbit="0deg  130%"
+                  tabindex="-1"
+                  interaction-prompt="none"
+                  className="w-40 h-40 md:w-80 md:h-80 z-9999999 outline-none"
+                  style={{ pointerEvents: "auto" }}
+                >
+                  <div slot="progress-bar" className="hidden"></div>
+                </model-viewer>
+              </div>
             </div>
           </div>
         </div>
@@ -596,21 +600,23 @@ const CoreCapability = () => {
               style={{ transform: "scaleY(2.5)" }}
               className="relative flex justify-center overflow-visible"
             >
-              <model-viewer
-                src="/scene.gltf"
-                autoplay
-                camera-controls={false}
-                scale="0.6 0.6 0.6"
-                disable-zoom
-                loading="lazy"
-                camera-orbit="0deg 55deg 130%"
-                tabindex="-1"
-                interaction-prompt="none"
-                className="w-40 h-40 md:w-80 md:h-80 z-9999 outline-none mt-15 md:mt-45"
-                style={{ pointerEvents: "auto" }}
-              >
-                <div slot="progress-bar" className="hidden"></div>
-              </model-viewer>
+              <div className="transform scale-[0.9] md:scale-100 origin-center transition-transform duration-300">
+                <model-viewer
+                  src="/scene.gltf"
+                  autoplay
+                  camera-controls={false}
+                  scale="0.5 0.5 0.5"
+                  disable-zoom
+                  loading="lazy"
+                  camera-orbit="0deg  130%"
+                  tabindex="-1"
+                  interaction-prompt="none"
+                  className="w-40 h-40 md:w-80 md:h-80 z-9999 outline-none "
+                  style={{ pointerEvents: "auto" }}
+                >
+                  <div slot="progress-bar" className="hidden"></div>
+                </model-viewer>
+              </div>
             </div>
           </div>
         </div>

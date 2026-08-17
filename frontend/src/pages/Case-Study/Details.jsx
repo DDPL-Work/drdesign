@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { solutionsData } from "../../components/homePage/Solutions";
 import { Link, useParams } from "react-router-dom";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
@@ -86,7 +87,7 @@ const Hero = () => {
   );
 };
 
-const Details = ({ title }) => {
+const Details = ({ title, description, image }) => {
   return (
     <motion.section 
       initial={{ opacity: 0, y: 40 }}
@@ -103,9 +104,7 @@ const Details = ({ title }) => {
               {title || "Enterprise Resource Planning System"}
             </h2>
             <p className="font-inter text-[15px] md:text-[16px] text-[#60738a] leading-[1.7] mb-10">
-              A unified ERP replacing five disconnected legacy tools — bringing
-              finance, inventory, procurement, and production planning into a
-              single real-time platform used across four plants.
+              {description || "A unified ERP replacing five disconnected legacy tools — bringing finance, inventory, procurement, and production planning into a single real-time platform used across four plants."}
             </p>
 
             <h3 className="font-jetbrains text-[22px] md:text-[26px] font-medium text-[#0A1118] mb-4">
@@ -122,7 +121,7 @@ const Details = ({ title }) => {
           {/* Right Column - Image */}
           <div className="lg:col-span-7">
             <img
-              src={imgProject}
+              src={image || imgProject}
               alt="Project Overview"
               className="w-full h-auto rounded-[24px] md:rounded-[32px] object-cover"
             />
@@ -356,7 +355,15 @@ const CaseStudyDetails = () => {
       .join(" ");
   };
 
-  const title = formatTitle(slug);
+  const formattedTitle = formatTitle(slug);
+
+  const project = solutionsData.find(
+    (item) => item.title.toLowerCase().replace(/\s+/g, '-') === slug
+  );
+
+  const title = project ? project.title : formattedTitle;
+  const description = project ? project.description : null;
+  const image = project ? project.image : null;
 
   return (
     <main>
@@ -382,7 +389,7 @@ const CaseStudyDetails = () => {
         </div>
       </div>
       <Hero />
-      <Details title={title} />
+      <Details title={title} description={description} image={image} />
       <ProjectInfo />
       <CoreStacks />
       <ProjectGalley />

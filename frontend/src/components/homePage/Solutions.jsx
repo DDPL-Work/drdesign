@@ -1,51 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { FiTrendingUp, FiPieChart, FiShield, FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import { FiTrendingUp, FiPieChart, FiShield, FiArrowLeft, FiArrowRight, FiMonitor, FiSmartphone, FiMap, FiSearch, FiTarget } from 'react-icons/fi';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const solutionsData = [
+export const solutionsData = [
   {
     id: "01",
-    title: "Tax Planning",
-    description: "We provide strategic tax planning to optimize your savings and ensure compliance with ever-changing regulations.",
-    Icon: FiPieChart,
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
+    title: "GIS & Spatial Data",
+    description: "Advanced mapping, imagery, and spatial data services used by planning authorities and enterprises to make decisions grounded in place.",
+    Icon: FiMap,
+    image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "02",
-    title: "Investment Advisory",
-    description: "We provide tailored investment advisory services to maximize returns and align with your financial objectives.",
-    Icon: FiTrendingUp,
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+    title: "Web Platform Development",
+    description: "Product-grade web platforms, ERPs and internal tools built with modern tech stacks to fit the way your business actually operates.",
+    Icon: FiMonitor,
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "03",
-    title: "Risk Management",
-    description: "Comprehensive risk management solutions to protect your assets and ensure business continuity in volatile markets.",
-    Icon: FiShield,
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+    title: "Mobile App Development",
+    description: "Offline-first, cross-platform applications that stay fast and reliable in the field as well as on the shop floor.",
+    Icon: FiSmartphone,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "04",
-    title: "Tax Planning",
-    description: "We provide strategic tax planning to optimize your savings and ensure compliance with ever-changing regulations.",
-    Icon: FiPieChart,
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
+    title: "Search Engine Optimization",
+    description: "Data-driven SEO strategies that improve your organic visibility, drive targeted traffic, and maximize your online footprint.",
+    Icon: FiSearch,
+    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "05",
-    title: "Investment Advisory",
-    description: "We provide tailored investment advisory services to maximize returns and align with your financial objectives.",
-    Icon: FiTrendingUp,
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+    title: "Meta Ads & Campaigns",
+    description: "Highly targeted social media advertising campaigns designed to generate high-quality leads and maximize return on ad spend.",
+    Icon: FiTarget,
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "06",
-    title: "Risk Management",
-    description: "Comprehensive risk management solutions to protect your assets and ensure business continuity in volatile markets.",
+    title: "Cloud Infrastructure",
+    description: "Scalable, secure cloud environments and DevOps pipelines tailored to support and protect your growing digital ecosystem.",
     Icon: FiShield,
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
   }
 ];
 
@@ -89,7 +89,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
       initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 + (index * 0.2) }}
+      transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + (index * 0.2) }}
       style={{ perspective: "1200px" }}
       className={`relative ${isMobile ? "w-full h-full" : "z-10 hover:z-50"}`}
     >
@@ -198,7 +198,7 @@ const MobileSolutionCarousel = () => {
       scale: 1,
       zIndex: 1,
       transformOrigin: "50% 50%",
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.25, ease: "easeOut" }
     },
     exit: (dir) => ({
       rotateY: dir > 0 ? -90 : 90,
@@ -206,12 +206,12 @@ const MobileSolutionCarousel = () => {
       scale: 0.9,
       zIndex: 0,
       transformOrigin: dir > 0 ? "0% 50%" : "100% 50%",
-      transition: { duration: 0.6, ease: "easeIn" }
+      transition: { duration: 0.25, ease: "easeIn" }
     })
   };
 
   return (
-    <div className="md:hidden flex flex-col items-center w-full max-w-[340px] mx-auto mt-4 bg-transparent" style={{ perspective: 1200 }}>
+    <div className="md:hidden flex flex-col items-center w-full mx-auto mt-4 bg-transparent" style={{ perspective: 1200 }}>
       <div 
         className="w-full relative bg-transparent flex justify-center min-h-[480px]"
         onTouchStart={onTouchStart}
@@ -226,7 +226,7 @@ const MobileSolutionCarousel = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            className="absolute top-0 left-0 w-full h-full px-1"
+            className="absolute top-0 left-0 w-full h-full"
           >
             <SolutionCard item={solutionsData[currentIndex]} index={0} isMobile={true} />
           </motion.div>
@@ -311,7 +311,7 @@ const Solutions = () => {
   };
 
   return (
-    <section id="solutions" className="w-full bg-white py-24 px-6 flex flex-col items-center overflow-hidden">
+    <section id="solutions" className="w-full bg-white py-24 px-4 md:px-6 flex flex-col items-center overflow-hidden">
       <div className="max-w-325 w-full flex flex-col mb-8">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
