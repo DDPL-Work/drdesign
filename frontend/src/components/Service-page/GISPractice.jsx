@@ -263,7 +263,7 @@ const GISPractice = () => {
   );
 
   return (
-    <section className="bg-white overflow-hidden">
+    <section id="gis-practice" className="bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-[57px]">
         {/* ── Header Section */}
         <div className="mb-16 lg:mb-24">

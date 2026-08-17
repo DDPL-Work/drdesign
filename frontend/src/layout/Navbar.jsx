@@ -1,11 +1,36 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { FiMenu, FiX, FiChevronRight } from "react-icons/fi";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
+
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const hideTimeoutRef = useRef(null);
+
+  const handleMouseEnter = (label) => {
+    if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    setActiveDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 50) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,8 +53,66 @@ const Navbar = () => {
     { label: "Career", path: "/career" },
   ];
 
+  const megaMenuData = {
+    "About": {
+      columns: [
+        {
+          title: "Overview",
+          links: [
+            { label: "Our Journey", path: "/about-us#our-journey" },
+            { label: "Vision & Mission", path: "/about-us#vision-mission" },
+          ]
+        },
+        {
+          title: "Highlights",
+          links: [
+            { label: "Achievements", path: "/about-us#achievements" },
+            { label: "Trusted Clients", path: "/about-us#trusted-clients" },
+          ]
+        }
+      ],
+      featured: {
+        tag: "Support",
+        title: "Frequently Asked Questions",
+        image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80",
+        path: "/find-answers"
+      }
+    },
+    "Services": {
+      columns: [
+        {
+          title: "Expertise",
+          links: [
+            { label: "IT Practice", path: "/services#it-practice" },
+            { label: "GIS Practice", path: "/services#gis-practice" },
+          ]
+        },
+        {
+          title: "Approach",
+          links: [
+            { label: "How We Work", path: "/services#how-we-work" },
+          ]
+        }
+      ],
+      featured: {
+        tag: "Portfolio",
+        title: "Explore our latest case studies",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+        path: "/portfolio"
+      }
+    }
+  };
+
   return (
-    <nav ref={navRef} className="sticky top-0 z-999 w-full bg-transparent backdrop-blur-md md:bg-white md:backdrop-blur-none flex items-center justify-between px-6 md:px-8 py-4  md:border-gray-100">
+    <div className="sticky top-0 z-[999] w-full flex justify-center transition-all duration-500 pointer-events-none">
+      <nav 
+        ref={navRef} 
+        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isScrolled 
+            ? "mt-4 w-[95%] md:w-[85%] max-w-5xl rounded-full bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-gray-200/60 px-5 md:px-8 py-2.5"
+            : "mt-0 w-full rounded-none bg-transparent backdrop-blur-md md:bg-white md:backdrop-blur-none border-b border-transparent md:border-gray-100 px-6 md:px-8 py-4"
+        }`}
+      >
       {/* Logo Section */}
       <div className="flex items-center gap-4">
         <Link
@@ -49,15 +132,84 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Navigation Links */}
-      <div className="hidden md:flex items-center gap-8 lg:gap-12">
+      <div className="hidden md:flex items-center gap-8 lg:gap-12 relative" onMouseLeave={handleMouseLeave}>
         {navLinks.map((item) => (
-          <Link
+          <div 
             key={item.label}
-            to={item.path}
-            className="text-[#5e6673] hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+            className="relative py-4"
+            onMouseEnter={() => handleMouseEnter(item.label)}
           >
-            {item.label}
-          </Link>
+            <Link
+              to={item.path}
+              className="text-[#5e6673] hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+            >
+              {item.label}
+            </Link>
+
+            {/* Mega Menu Dropdown */}
+            <AnimatePresence>
+              {activeDropdown === item.label && megaMenuData[item.label] && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[650px] bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden flex"
+                  style={{ cursor: "default" }}
+                >
+                  {/* Left Side: Columns */}
+                  <div className="w-[55%] p-8 grid grid-cols-2 gap-8 bg-white">
+                    {megaMenuData[item.label].columns.map((col, idx) => (
+                      <div key={idx}>
+                        <h4 className="font-inter font-semibold text-[#0a181c] text-[15px] mb-4">
+                          {col.title}
+                        </h4>
+                        <ul className="flex flex-col gap-3">
+                          {col.links.map((link, lidx) => (
+                            <li key={lidx}>
+                              <Link 
+                                to={link.path}
+                                className="font-inter text-[14px] text-[#6b7280] hover:text-[#0a181c] transition-colors"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Right Side: Featured Card */}
+                  <div className="w-[45%] relative group">
+                    <Link to={megaMenuData[item.label].featured.path} onClick={() => setActiveDropdown(null)} className="block w-full h-full">
+                      <img 
+                        src={megaMenuData[item.label].featured.image} 
+                        alt="Featured" 
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none transition-transform duration-700 group-hover:scale-105" />
+                      
+                      <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-10">
+                        <div>
+                          <p className="font-jetbrains text-white/80 text-[12px] font-semibold tracking-wider mb-2">
+                            {megaMenuData[item.label].featured.tag}
+                          </p>
+                          <h4 className="font-inter text-white text-[20px] font-semibold leading-tight">
+                            {megaMenuData[item.label].featured.title}
+                          </h4>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#0a181c] shrink-0 transform transition-transform group-hover:translate-x-1 shadow-sm">
+                          <FiChevronRight className="text-lg" />
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         ))}
       </div>
 
@@ -114,7 +266,8 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

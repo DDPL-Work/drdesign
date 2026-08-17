@@ -196,7 +196,7 @@ const ITPractice = () => {
   );
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="it-practice" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-[57px]">
 
         {/* ── Header Section ──────────────────────────────────────────────── */}

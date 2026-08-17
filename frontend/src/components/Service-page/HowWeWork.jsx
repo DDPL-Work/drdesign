@@ -481,7 +481,7 @@ const HowWeWork = () => {
   }, []);
 
   return (
-    <section className="bg-white">
+    <section id="how-we-work" className="bg-white">
       <SectionHeader />
       {isMobile ? <MobileTimeline /> : <CircleSection />}
     </section>

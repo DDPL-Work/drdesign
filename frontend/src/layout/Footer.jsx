@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
+import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiInstagram, FiFacebook, FiTwitter } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -26,6 +26,19 @@ const Footer = () => {
               Uttarakhand, 248001.
             </p>
           </div>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://www.linkedin.com/company/drdesignpvtltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+              <FiLinkedin className="text-lg" />
+            </a>
+            <a href="https://www.instagram.com/drdesigntechnology" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+              <FiInstagram className="text-lg" />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61578675068487" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+              <FiFacebook className="text-lg" />
+            </a>
+          </div>
         </div>
 
         {/* Middle Column - Quick Links */}
@@ -38,7 +51,7 @@ const Footer = () => {
               <Link to="/about-us" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
               <Link to="/services" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
               <Link to="/projects" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
-              <Link to="/faqs" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
+              <Link to="/find-answers" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
               <Link to="/careers" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>
             </div>
           </div>

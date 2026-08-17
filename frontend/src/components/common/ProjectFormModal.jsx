@@ -13,6 +13,7 @@ import {
   FiChevronDown,
   FiX,
 } from "react-icons/fi";
+import { toast } from "sonner";
 import PhoneInputPkg from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -43,7 +44,6 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
   const [company, setCompany] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   
   const dropdownRef = useRef(null);
 
@@ -55,12 +55,11 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
     
     // Basic validation
     if (!fullName || !email) {
-      setSubmitStatus({ type: "error", message: "Please fill in at least your name and email." });
+      toast.error("Please fill in at least your name and email.");
       return;
     }
 
     setIsSubmitting(true);
-    setSubmitStatus({ type: "", message: "" });
 
     const formData = {
       fullName,
@@ -68,7 +67,8 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
       phone,
       company,
       selectedService,
-      projectDetails
+      projectDetails,
+      formType: "Lead"
     };
 
     try {
@@ -82,7 +82,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
       });
 
       // With no-cors, we can't reliably read the response body, but if it doesn't throw, it likely succeeded.
-      setSubmitStatus({ type: "success", message: "Message sent successfully! We will get back to you soon." });
+      toast.success("Message sent successfully! We will get back to you soon.");
       
       // Clear form
       setFullName("");
@@ -95,12 +95,11 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
       // Optionally close modal after a few seconds
       setTimeout(() => {
         onClose();
-        setSubmitStatus({ type: "", message: "" });
       }, 3000);
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      setSubmitStatus({ type: "error", message: "Failed to send message. Please try again later." });
+      toast.error("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -236,11 +235,6 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                   className="flex flex-col gap-6"
                   onSubmit={handleSubmit}
                 >
-                  {submitStatus.message && (
-                    <div className={`p-4 rounded-xl text-sm font-medium ${submitStatus.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
-                      {submitStatus.message}
-                    </div>
-                  )}
                   {/* Row 1: Name & Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}

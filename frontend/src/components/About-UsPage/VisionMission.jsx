@@ -86,7 +86,7 @@ const VisionMission = () => {
   const blob2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   return (
-    <section ref={containerRef} className="relative w-full bg-white pb-15 md:pb-24 overflow-hidden">
+    <section id="vision-mission" ref={containerRef} className="relative w-full bg-white pb-15 md:pb-24 overflow-hidden">
       
       {/* Ambient Parallax Background Blobs */}
       <motion.div 
