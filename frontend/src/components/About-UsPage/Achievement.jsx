@@ -90,7 +90,7 @@ const TiltCard = ({ children, className }) => {
 
 const Achievement = () => {
   return (
-    <section className="w-full bg-white pb-15 md:pb-24 overflow-hidden">
+    <section id="achievements" className="w-full bg-white pb-15 md:pb-24 overflow-hidden">
       <div className="max-w-full mx-4 md:mx-15">
         
         {/* Header */}

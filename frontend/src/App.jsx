@@ -4,6 +4,8 @@ import AppRoutes from "./routes";
 import { Toaster } from "sonner";
 import SmoothScrollProvider from "./providers/SmoothScrollProvider";
 import { motion, AnimatePresence } from "framer-motion";
+import { MdOutlineCancel } from "react-icons/md";
+import { FiCheckCircle } from "react-icons/fi";
 
 const GLOW_RADIUS = 3.5; // cells
 
@@ -207,21 +209,28 @@ function App() {
       >
         <SmoothScrollProvider>
           <AppRoutes />
-          <Toaster
-            position="bottom-right"
-            expand
-            closeButton
-            toastOptions={{
-              style: {
-                background: "#111827",
-                color: "#ffffff",
-                border: "1px solid rgba(212, 175, 55, 0.3)",
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.3)"
-              }
-            }}
-          />
         </SmoothScrollProvider>
       </motion.div>
+      
+      <Toaster
+        position="bottom-right"
+        closeButton
+        style={{ zIndex: 999999, width: "auto" }}
+        icons={{
+          success: <FiCheckCircle />,
+          error: <MdOutlineCancel />
+        }}
+        toastOptions={{
+          classNames: {
+            toast: "!bg-[#1E1E1E] !border-none !w-[90vw] sm:!w-max !min-w-[300px] sm:!min-w-[400px] !pl-4 sm:!pl-5 !pr-10 sm:!pr-14 !py-3 sm:!py-3.5 !rounded-xl !shadow-2xl !flex !items-center !relative",
+            title: "!text-white !text-[13px] sm:!text-[15px] !font-medium !whitespace-normal sm:!whitespace-nowrap !ml-2 sm:!ml-3 !m-0",
+            icon: "!m-0 !w-7 sm:!w-8 !h-7 sm:!h-8 !flex !items-center !justify-center !rounded-full !shrink-0",
+            success: "[&_[data-icon]]:!bg-[#00c853]/20 [&_[data-icon]]:!text-[#00c853] [&_[data-icon]_svg]:!w-4 sm:[&_[data-icon]_svg]:!w-5 [&_[data-icon]_svg]:!h-4 sm:[&_[data-icon]_svg]:!h-5",
+            error: "[&_[data-icon]]:!bg-[#ef4444]/20 [&_[data-icon]]:!text-[#ef4444] [&_[data-icon]_svg]:!w-4 sm:[&_[data-icon]_svg]:!w-5 [&_[data-icon]_svg]:!h-4 sm:[&_[data-icon]_svg]:!h-5",
+            closeButton: "!opacity-100 !visible !absolute !left-auto !right-1 sm:!right-4 !top-1/2 sm:!top-2/3 !-translate-y-1/2 !bg-transparent !border-none !text-[#9CA3AF] hover:!text-white !transition-colors !p-1 !cursor-pointer"
+          }
+        }}
+      />
     </>
   );
 }

@@ -118,7 +118,7 @@ const OurJourney = () => {
   const blob2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
 
   return (
-    <section className="relative w-full bg-white overflow-hidden">
+    <section id="our-journey" className="relative w-full bg-white overflow-hidden">
       <div className="hidden md:block absolute left-0 top-0 bottom-0 w-1/2 bg-[#fdf6f9] -z-20" />
       <motion.div 
         style={{ y: blob1Y }}
