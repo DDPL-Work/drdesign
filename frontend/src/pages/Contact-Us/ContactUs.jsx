@@ -209,10 +209,10 @@ const ConversationCards = ({ onOpenModal }) => {
                   @media (max-width: 767px) {
                     @keyframes mailOut {
                       0%, 45%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-                      50%, 95% { transform: scale(0.5) rotate(-12deg); opacity: 0; }
+                      50%, 95% { transform: scale(1) rotate(-12deg); opacity: 0; }
                     }
                     @keyframes mailIn {
-                      0%, 45%, 100% { transform: scale(0.5) rotate(12deg); opacity: 0; }
+                      0%, 45%, 100% { transform: scale(1) rotate(12deg); opacity: 0; }
                       50%, 95% { transform: scale(1) rotate(0deg); opacity: 1; }
                     }
                     .mobile-mail-out { animation: mailOut 3s ease-in-out infinite; }
@@ -220,8 +220,8 @@ const ConversationCards = ({ onOpenModal }) => {
                   }
                 `}</style>
                 <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 relative overflow-hidden">
-                  <FiMail className="text-xl absolute transition-all duration-300 mobile-mail-out group-hover:-rotate-12 group-hover:scale-50 group-hover:opacity-0" />
-                  <HiOutlineMailOpen className="text-xl absolute transition-all duration-300 rotate-12 scale-50 opacity-0 mobile-mail-in group-hover:rotate-0 group-hover:scale-100 group-hover:opacity-100" />
+                  <FiMail className="text-xl absolute transition-all duration-300 mobile-mail-out md:group-hover:-rotate-12 md:group-hover:scale-50 md:group-hover:opacity-0" />
+                  <HiOutlineMailOpen className="text-xl absolute transition-all duration-300 md:rotate-12 md:scale-50 opacity-0 mobile-mail-in md:group-hover:rotate-0 md:group-hover:scale-100 md:group-hover:opacity-100" />
                 </div>
                 <FiArrowUpRight className="text-2xl text-white md:text-gray-400 md:group-hover:text-white transition-colors" />
               </div>
