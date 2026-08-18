@@ -223,7 +223,7 @@ const GISPractice = () => {
   }, []);
 
   const cardCls =
-    "w-full h-auto lg:h-[476px] flex flex-col border border-[#E2E8F0] rounded-[24px] p-6 lg:p-10 bg-gray-400/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group";
+    "w-full h-auto lg:h-[476px] flex flex-col border border-[#E2E8F0] dark:border-white/10 rounded-[24px] p-6 lg:p-10 bg-gray-400/20 dark:bg-white/5 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-300 dark:hover:border-white/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group";
 
   const renderInner = (card) => (
     <>
@@ -233,28 +233,28 @@ const GISPractice = () => {
         </div>
         <span className="text-[10px] font-normal font-inter text-gray-400 tracking-[0.2em] uppercase mt-1">{card.category}</span>
       </div>
-      <h3 className="text-[22px] lg:text-[24px] font-jetbrains font-bold text-gray-900 mb-3 lg:mb-4 leading-[1.3]">{card.title}</h3>
+      <h3 className="text-[22px] lg:text-[24px] font-jetbrains font-bold text-gray-900 dark:text-white mb-3 lg:mb-4 leading-[1.3]">{card.title}</h3>
       <p className="text-[#64748B] mb-5 lg:mb-8 font-inter font-normal leading-[1.6] text-[14px] pr-2">{card.description}</p>
       <div className="grid grid-cols-2 gap-y-4 lg:gap-y-6 gap-x-4 mb-5 lg:mb-8">
         {card.features.map((feature, idx) => (
           <div key={idx} className="flex items-center gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] flex-shrink-0"></div>
-            <span className="text-[13px] lg:text-[14px] text-[#334155] font-geist font-normal">{feature}</span>
+            <span className="text-[13px] lg:text-[14px] text-[#334155] dark:text-gray-300 font-geist font-normal">{feature}</span>
           </div>
         ))}
       </div>
-      <hr className="border-[#E2E8F0] mb-4 lg:mb-6 mt-auto" />
+      <hr className="border-[#E2E8F0] dark:border-white/10 mb-4 lg:mb-6 mt-auto" />
       <div>
         <h4 className="text-[10px] font-normal font-inter text-gray-400 tracking-[0.2em] uppercase mb-3 lg:mb-4">TECH WE USE</h4>
         <div className="flex flex-wrap gap-2.5">
           {card.tech.map((tech, idx) => (
-            <div key={idx} className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 bg-white">
+            <div key={idx} className="flex items-center gap-2 border border-gray-200 dark:border-white/10 rounded-full px-3 py-1.5 bg-white dark:bg-[#1E293B]">
               {getTechLogoUrl(tech) ? (
                 <img src={getTechLogoUrl(tech)} alt={`${tech} logo`} className="w-3.5 h-3.5 object-contain" />
               ) : (
                 <div className="w-2 h-2 rounded-full bg-gray-400"></div>
               )}
-              <span className="text-[12px] font-normal text-[#475569] font-inter leading-none">{tech}</span>
+              <span className="text-[12px] font-normal text-[#475569] dark:text-gray-300 font-inter leading-none">{tech}</span>
             </div>
           ))}
         </div>
@@ -263,7 +263,7 @@ const GISPractice = () => {
   );
 
   return (
-    <section id="gis-practice" className="bg-white overflow-hidden">
+    <section id="gis-practice" className="bg-white dark:bg-[#0B1120] overflow-hidden">
       <div className="container mx-auto px-6 md:px-[57px]">
         {/* ── Header Section */}
         <div className="mb-16 lg:mb-24">
@@ -275,7 +275,7 @@ const GISPractice = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <span>02 /</span>
-            <span className="w-16 h-[1px] bg-[#CBD5E1]"></span>
+            <span className="w-16 h-[1px] bg-[#CBD5E1] dark:bg-[#334155]"></span>
             <span>GIS PRACTICE</span>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-start">
@@ -285,7 +285,7 @@ const GISPractice = () => {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
             >
-              <h2 className="text-4xl md:text-[40px] font-jetbrains font-bold text-[#0B101E] leading-[1.1] m-0">
+              <h2 className="text-4xl md:text-[40px] font-jetbrains font-bold text-[#0B101E] dark:text-white leading-[1.1] m-0">
                 Geospatial &amp; Location<br />Intelligence
               </h2>
             </motion.div>

@@ -7,7 +7,7 @@ import FAQFormModal from '../../components/common/LeadFormModal';
 
 const FAQHero = ({ searchQuery, setSearchQuery }) => {
   return (
-    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-[#f8f9fa] overflow-hidden">
+    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-[#f8f9fa] dark:bg-[#0B1120] overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <motion.div 
@@ -27,7 +27,7 @@ const FAQHero = ({ searchQuery, setSearchQuery }) => {
       <div className="container mx-auto px-6 md:px-[57px] relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h1 
-            className="text-[35px] md:text-[56px] font-bold text-gray-900 leading-[1.1] mb-6 font-jetbrains tracking-tight flex justify-center flex-wrap gap-x-3"
+            className="text-[35px] md:text-[56px] font-bold text-gray-900 dark:text-white leading-[1.1] mb-6 font-jetbrains tracking-tight flex justify-center flex-wrap gap-x-3"
             variants={{
               hidden: { opacity: 1 },
               visible: {
@@ -57,7 +57,7 @@ const FAQHero = ({ searchQuery, setSearchQuery }) => {
             ))}
           </motion.h1>
           <motion.p 
-            className="text-[14px] md:text-[18px] text-gray-600 mb-10 font-inter leading-[1.6]"
+            className="text-[14px] md:text-[18px] text-gray-600 dark:text-gray-400 mb-10 font-inter leading-[1.6]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
@@ -81,7 +81,7 @@ const FAQHero = ({ searchQuery, setSearchQuery }) => {
                 placeholder="Search for answers..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-13 pr-6 py-4 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4B6BFB]/20 focus:border-[#4B6BFB] transition-all text-[15px] font-inter bg-white"
+                className="w-full pl-13 pr-6 py-4 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4B6BFB]/20 focus:border-[#4B6BFB] transition-all text-[15px] font-inter bg-white dark:bg-[#1E293B] dark:text-white dark:placeholder-gray-400"
               />
               {searchQuery && (
                 <button 
@@ -104,7 +104,7 @@ const FAQHero = ({ searchQuery, setSearchQuery }) => {
 const FAQAccordion = ({ question, answer, isOpen, onClick, onPointerEnter, onPointerLeave }) => {
   return (
     <div 
-      className="border-b border-gray-200 py-5"
+      className="border-b border-gray-200 dark:border-white/10 py-5"
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
     >
@@ -114,7 +114,7 @@ const FAQAccordion = ({ question, answer, isOpen, onClick, onPointerEnter, onPoi
         type="button"
         aria-expanded={isOpen}
       >
-        <div className="flex-start text-[17px] md:text-[19px] pr-4 text-left font-medium text-gray-900 group-hover:text-[#4B6BFB] transition-colors duration-200 font-geist">
+        <div className="flex-start text-[17px] md:text-[19px] pr-4 text-left font-medium text-gray-900 dark:text-gray-100 group-hover:text-[#4B6BFB] transition-colors duration-200 font-geist">
           {question}
         </div>
         <span className="mr-4 w-3 text-center font-semibold text-gray-400 group-hover:text-[#4B6BFB] transition-colors duration-200">
@@ -130,7 +130,7 @@ const FAQAccordion = ({ question, answer, isOpen, onClick, onPointerEnter, onPoi
             transition={{ duration: 0.35, ease: "easeOut" }}
             className="overflow-hidden"
           >
-            <div className="mt-4 prose prose-harmony text-[15px] md:text-[16px] text-gray-600 leading-[1.6] font-inter">
+            <div className="mt-4 prose prose-harmony text-[15px] md:text-[16px] text-gray-600 dark:text-gray-400 leading-[1.6] font-inter">
               {answer}
             </div>
           </motion.div>
@@ -207,7 +207,7 @@ const CTA = ({ setIsFAQModalOpen }) => {
   return (
     <section
       ref={ctaRef}
-      className="w-full bg-white py-15 md:py-24 px-6 flex flex-col items-center text-center"
+      className="w-full bg-white dark:bg-[#0B1120] py-15 md:py-24 px-6 flex flex-col items-center text-center"
     >
       <h2 className="font-jetbrains text-[27px] md:text-[60px] font-medium leading-[1.1] text-[#8687DD] mb-6 max-w-275">
         <SplitText text="Still have" />
@@ -219,7 +219,7 @@ const CTA = ({ setIsFAQModalOpen }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px" }}
         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        className="font-inter font-normal text-[#666666] text-[18px] mb-6 md:mb-12 max-w-2xl mx-auto"
+        className="font-inter font-normal text-[#666666] dark:text-gray-400 text-[18px] mb-6 md:mb-12 max-w-2xl mx-auto"
       >
         If you couldn't find the answer you were looking for, our team is ready to help you with your specific needs.
       </motion.p>
@@ -232,12 +232,12 @@ const CTA = ({ setIsFAQModalOpen }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
-          className="group bg-[#0a181c] text-white font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer"
+          className="group bg-[#0a181c] dark:bg-white text-white dark:text-black font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer hover:bg-gray-800 dark:hover:bg-gray-200"
         >
           <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">
             Get Your Answer
           </span>
-          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2  md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
+          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2 md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
             &rarr;
           </span>
         </motion.button>
@@ -249,7 +249,7 @@ const CTA = ({ setIsFAQModalOpen }) => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.9 }}
-          className="group flex items-center gap-2 md:gap-3 font-jetbrains font-semibold text-[#666666] hover:text-[#0A0F1C] transition-colors text-[15px] md:text-[14px] whitespace-nowrap shrink-0"
+          className="group flex items-center gap-2 md:gap-3 font-jetbrains font-semibold text-[#666666] dark:text-gray-400 hover:text-[#0A0F1C] dark:hover:text-white transition-colors text-[15px] md:text-[14px] whitespace-nowrap shrink-0"
         >
           <FiPhone className="text-[16px] md:text-[18px] transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:rotate-12" />
           <span>Call: +91 7060100443</span>
@@ -299,14 +299,14 @@ const FAQ = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-white dark:bg-[#0B1120]"
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <FAQHero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-      <section className="py-10  bg-white relative">
+      <section className="py-10  bg-white dark:bg-[#0B1120] relative">
         <div className="container mx-auto px-6 md:px-[57px]">
           <div className="max-w-6xl mx-auto">
             
@@ -322,11 +322,11 @@ const FAQ = () => {
                     transition={{ duration: 0.5, delay: catIndex * 0.1, ease: "easeOut" }}
                   >
                     <div className="lg:w-[38%] flex-shrink-0">
-                      <h2 className="text-[20px] md:text-[28px] font-semibold text-[#8687DD] md:text-gray-900 font-jetbrains sticky top-32">
+                      <h2 className="text-[20px] md:text-[28px] font-semibold text-[#8687DD] md:text-gray-900 md:dark:text-gray-100 font-jetbrains sticky top-32">
                         {category.category}
                       </h2>
                     </div>
-                    <div className="lg:w-[62%] border-t border-gray-200">
+                    <div className="lg:w-[62%] border-t border-gray-200 dark:border-white/10">
                       {category.questions.map((item, qIndex) => {
                         const isOpen = openItems[category.id] === qIndex;
                         return (

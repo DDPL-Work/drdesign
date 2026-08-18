@@ -3,7 +3,7 @@ import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiInstagram, FiFacebook, FiTwitt
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#081023] pt-16 pb-8 px-8 border-t border-white/10">
+    <footer className="w-full bg-[#081023] dark:bg-white pt-16 pb-8 px-8 border-t border-white/10 dark:border-gray-200">
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
         
@@ -19,7 +19,7 @@ const Footer = () => {
               Dr. Design Technology
             </span>
           </Link>
-          <div className="flex items-start gap-3 text-gray-300">
+          <div className="flex items-start gap-3 text-gray-300 dark:text-gray-600">
             <FiMapPin className="text-[#8892a0] mt-1 text-lg shrink-0" />
             <p className="text-sm leading-relaxed">
               Near Survey Chowk, 11 East Canal Road, Dehradun, <br className="hidden sm:block" />
@@ -29,13 +29,13 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex items-center gap-4 mt-2">
-            <a href="https://www.linkedin.com/company/drdesignpvtltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a href="https://www.linkedin.com/company/drdesignpvtltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 dark:bg-black/5 border border-white/10 dark:border-black/10 flex items-center justify-center text-gray-400 dark:text-gray-500 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
               <FiLinkedin className="text-lg" />
             </a>
-            <a href="https://www.instagram.com/drdesigntechnology" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a href="https://www.instagram.com/drdesigntechnology" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 dark:bg-black/5 border border-white/10 dark:border-black/10 flex items-center justify-center text-gray-400 dark:text-gray-500 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
               <FiInstagram className="text-lg" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61578675068487" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a href="https://www.facebook.com/profile.php?id=61578675068487" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 dark:bg-black/5 border border-white/10 dark:border-black/10 flex items-center justify-center text-gray-400 dark:text-gray-500 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
               <FiFacebook className="text-lg" />
             </a>
           </div>
@@ -48,11 +48,11 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-              <Link to="/about-us" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
-              <Link to="/services" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
-              <Link to="/projects" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
-              <Link to="/find-answers" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
-              <Link to="/careers" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>
+              <Link to="/about-us" className="text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black text-sm transition-colors">About Us</Link>
+              <Link to="/services" className="text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black text-sm transition-colors">Services</Link>
+              <Link to="/projects" className="text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black text-sm transition-colors">Projects</Link>
+              <Link to="/find-answers" className="text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black text-sm transition-colors">FAQs</Link>
+              <Link to="/careers" className="text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black text-sm transition-colors">Careers</Link>
             </div>
           </div>
         </div>
@@ -64,11 +64,11 @@ const Footer = () => {
               Direct Contact
             </h3>
             <div className="flex flex-col gap-4">
-              <a href="mailto:business@drdesigntech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="mailto:business@drdesigntech.com" className="flex items-center gap-3 text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors text-sm">
                 <FiMail className="text-[#8892a0] text-lg shrink-0" />
                 business@drdesigntech.com
               </a>
-              <a href="tel:+917217052556" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="tel:+917217052556" className="flex items-center gap-3 text-gray-300 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors text-sm">
                 <FiPhone className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052556
               </a>
@@ -78,7 +78,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer - Copyright */}
-      <div className="mt-16 pt-8 border-t border-white/10 flex justify-center text-center">
+      <div className="mt-16 pt-8 border-t border-white/10 dark:border-gray-200 flex justify-center text-center">
         <p className="text-[#8892a0] text-xs">
           &copy; 2026 Dr. Design PVT. LTD. All rights reserved.
         </p>

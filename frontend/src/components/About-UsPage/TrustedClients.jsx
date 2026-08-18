@@ -117,7 +117,7 @@ const renderMarqueeRow = (items, direction) => {
 
 const TrustedClients = () => {
   return (
-    <section id="trusted-clients" className="w-full bg-white pb-15 md:pb-24 overflow-hidden">
+    <section id="trusted-clients" className="w-full bg-white dark:bg-[#0B1120] pb-15 md:pb-24 overflow-hidden">
       <div className="max-w-full mx-4 md:mx-15">
         {/* Header */}
         <motion.div
@@ -129,7 +129,7 @@ const TrustedClients = () => {
         >
           <h2 className="text-[12px] font-medium tracking-[0.2em] text-[#8b949e] uppercase flex items-center gap-6 font-jetbrains">
             <span>04 /</span>
-            <span className="w-16 h-px bg-gray-200 rounded-full"></span>
+            <span className="w-16 h-px bg-gray-200 dark:bg-white/10 rounded-full"></span>
             <span>TRUSTED CLIENTS</span>
           </h2>
         </motion.div>
@@ -141,7 +141,7 @@ const TrustedClients = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[25px] md:text-5xl lg:text-[48px] font-medium text-[#0a181c] font-jetbrains leading-[1.2] mb-4 md:mb-6"
+            className="text-[25px] md:text-5xl lg:text-[48px] font-medium text-[#0a181c] dark:text-white font-jetbrains leading-[1.2] mb-4 md:mb-6"
           >
             Teams that keep coming back
           </motion.h3>
@@ -150,7 +150,7 @@ const TrustedClients = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[#5e6673] font-inter text-[14px] md:text-[18px] leading-relaxed max-w-3xl"
+            className="text-[#5e6673] dark:text-gray-400 font-inter text-[14px] md:text-[18px] leading-relaxed max-w-3xl"
           >
             From government departments and hospital networks to manufacturing
             groups and D2C brands — our clients span sectors, and most of them
@@ -165,7 +165,7 @@ const TrustedClients = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full bg-[#f8f9fa] border-y border-gray-100 flex flex-col gap-4 py-8"
+        className="w-full bg-[#f6f4f0] border-y border-gray-100 flex flex-col gap-4 py-8"
       >
         {renderMarqueeRow(row1, "right")}
         {renderMarqueeRow(row2, "left")}

@@ -97,7 +97,7 @@ const ClientStories = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full bg-white px-4 md:px-8 flex justify-center overflow-hidden"
+      className="w-full bg-white dark:bg-[#0B1120] px-4 md:px-8 flex justify-center overflow-hidden"
     >
       <div className="w-full max-w-[1400px] bg-[#0A1118] xl:bg-transparent rounded-[40px] xl:rounded-none pt-8 px-8 pb-8 md:p-14 xl:p-0 flex flex-col xl:flex-row xl:items-stretch relative">
         {/* Left Column */}
@@ -144,7 +144,7 @@ const ClientStories = () => {
                 exit="exit"
                 className="absolute top-0 left-0 xl:left-8 w-full xl:w-[calc(100%-32px)] h-full xl:h-[calc(100%-32px)] cursor-grab"
               >
-                <div className="w-full h-full bg-white xl:bg-[#0A1118] rounded-[24px] md:rounded-[32px] xl:rounded-[40px] p-6 md:p-12 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] xl:shadow-none flex flex-col justify-between">
+                <div className="w-full h-full bg-white dark:bg-[#0A1118] xl:bg-[#0A1118] rounded-[24px] md:rounded-[32px] xl:rounded-[40px] p-6 md:p-12 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] xl:shadow-none flex flex-col justify-between">
                   {/* Top Content */}
                   <div className="flex flex-col md:flex-row gap-4 md:gap-10 h-full">
                     <div className="flex items-center md:items-start gap-4 md:gap-0">
@@ -165,24 +165,24 @@ const ClientStories = () => {
                             ),
                           )}
                         </div>
-                        <span className="text-[#1a202c] font-bold text-[16px] leading-tight">
+                        <span className="text-[#1a202c] dark:text-white font-bold text-[16px] leading-tight">
                           {testimonials[currentIndex].author}
                         </span>
-                        <span className="text-gray-500 text-[13px] mt-1 leading-tight">
+                        <span className="text-gray-500 dark:text-gray-400 text-[13px] mt-1 leading-tight">
                           {testimonials[currentIndex].role}
                         </span>
                       </div>
                     </div>
 
                     <div className="flex-1 flex items-start md:items-center mt-2 md:mt-0">
-                      <p className="text-[#1a202c] xl:text-white text-[14px] md:text-[22px] leading-[1.6] font-inter italic">
+                      <p className="text-[#1a202c] dark:text-white xl:text-white text-[14px] md:text-[22px] leading-[1.6] font-inter italic">
                         "{testimonials[currentIndex].text}"
                       </p>
                     </div>
                   </div>
 
                   {/* Divider */}
-                  <div className="w-full h-[1px] bg-gray-200 xl:bg-[#16212D] my-4 md:my-8"></div>
+                  <div className="w-full h-[1px] bg-gray-200 dark:bg-[#16212D] xl:bg-[#16212D] my-4 md:my-8"></div>
 
                   {/* Bottom Author Info */}
                   <div className="flex flex-row items-center justify-center md:justify-between gap-4">
@@ -193,10 +193,10 @@ const ClientStories = () => {
 
                       {/* Desktop Author Info (next to quote icon) */}
                       <div className="hidden md:flex flex-col">
-                        <span className="text-[#1a202c] xl:text-white font-bold text-[18px]">
+                        <span className="text-[#1a202c] dark:text-white xl:text-white font-bold text-[18px]">
                           {testimonials[currentIndex].author}
                         </span>
-                        <span className="text-gray-500 xl:text-[#8b95a5] text-[15px]">
+                        <span className="text-gray-500 dark:text-gray-400 xl:text-[#8b95a5] text-[15px]">
                           {testimonials[currentIndex].role}
                         </span>
                       </div>

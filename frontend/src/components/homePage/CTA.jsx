@@ -69,7 +69,7 @@ const CTA = () => {
   return (
     <section
       ref={ctaRef}
-      className="w-full bg-white py-15 md:py-24 px-6 flex flex-col items-center text-center"
+      className="w-full bg-white dark:bg-[#0B1120] py-15 md:py-24 px-6 flex flex-col items-center text-center"
     >
       <h2 className="font-jetbrains text-[27px] md:text-[60px] font-medium leading-[1.1] text-[#8687DD] mb-6 max-w-275">
         <SplitText text="Ready to Start Your Next" />
@@ -82,7 +82,7 @@ const CTA = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px" }}
         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        className="font-inter font-normal text-[#666666] text-[18px] mb-6 md:mb-12"
+        className="font-inter font-normal text-[#666666] dark:text-gray-400 text-[18px] mb-6 md:mb-12"
       >
         Let's build something exceptional together.
       </motion.p>
@@ -95,12 +95,12 @@ const CTA = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
-          className="group bg-[#0a181c] text-white font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer"
+          className="group bg-[#0a181c] dark:bg-white text-white dark:text-black font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer hover:bg-gray-800 dark:hover:bg-gray-200"
         >
           <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">
             Start a Project
           </span>
-          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2  md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
+          <span className="text-xl font-bold md:text-2xl -mt-2 ml-2 md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
             &rarr;
           </span>
         </motion.button>
@@ -112,7 +112,7 @@ const CTA = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "0px" }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.9 }}
-          className="group flex items-center gap-2 md:gap-3 font-jetbrains font-semibold text-[#666666] hover:text-[#0A0F1C] transition-colors text-[15px] md:text-[14px] whitespace-nowrap shrink-0"
+          className="group flex items-center gap-2 md:gap-3 font-jetbrains font-semibold text-[#666666] dark:text-gray-400 hover:text-[#0A0F1C] dark:hover:text-white transition-colors text-[15px] md:text-[14px] whitespace-nowrap shrink-0"
         >
           <FiPhone className="text-[16px] md:text-[18px] transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:rotate-12" />
           <span>Call: +91 7060100443</span>

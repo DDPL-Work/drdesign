@@ -544,7 +544,7 @@ const CoreCapability = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-white pt-[144px] pb-0 relative z-20"
+      className="w-full bg-white dark:bg-[#0B1120] pt-[144px] pb-0 relative z-20"
     >
       <style>{bandStyles}</style>
 

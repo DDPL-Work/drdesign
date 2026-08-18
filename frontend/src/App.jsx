@@ -3,6 +3,8 @@ import "./App.css";
 import AppRoutes from "./routes";
 import { Toaster } from "sonner";
 import SmoothScrollProvider from "./providers/SmoothScrollProvider";
+import ThemeToggle from "./components/common/ThemeToggle";
+import { useTheme } from "./providers/ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdOutlineCancel } from "react-icons/md";
 import { FiCheckCircle } from "react-icons/fi";
@@ -47,6 +49,7 @@ const GridCell = React.memo(({ brightness, isHovered, cellSize }) => {
 });
 
 function App() {
+  const { theme } = useTheme();
   const [isVideoPlaying, setIsVideoPlaying] = useState(() => {
     // Only show loading video on first visit per session
     return !sessionStorage.getItem("hasSeenLoading");
@@ -212,9 +215,13 @@ function App() {
         </SmoothScrollProvider>
       </motion.div>
       
+      <ThemeToggle />
+
       <Toaster
         position="bottom-right"
         closeButton
+        theme={theme}
+        offset={{ bottom: "96px" }}
         style={{ zIndex: 999999, width: "auto" }}
         icons={{
           success: <FiCheckCircle />,

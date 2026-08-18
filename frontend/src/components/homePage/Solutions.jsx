@@ -97,7 +97,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY }}
-        className="group relative flex flex-col justify-between p-8 min-h-110 border-0 md:border-2 md:hover:border-0 shadow-none border-transparent md:border-gray-200 rounded-3xl overflow-hidden bg-transparent transition-shadow duration-500 h-full transform-gpu"
+        className="group relative flex flex-col justify-between p-8 min-h-110 border-0 md:border-2 md:hover:border-0 shadow-none border-transparent md:border-gray-200 md:dark:border-white/10 rounded-3xl overflow-hidden bg-transparent transition-shadow duration-500 h-full transform-gpu"
       >
         {/* Hover Background Image & Overlay */}
         <div className="absolute inset-0 z-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none">
@@ -110,12 +110,12 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
           {/* Top Row: Icon and Small Image */}
           <div className="flex justify-between items-start mb-12">
             {/* Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-white/10 md:bg-gray-50 flex items-center justify-center md:group-hover:bg-white/10 backdrop-blur-md md:backdrop-blur-none md:group-hover:backdrop-blur-md border border-white/20 md:border-gray-100 md:group-hover:border-white/20 transition-all duration-500">
-              <item.Icon className="text-3xl text-white md:text-[#0a181c] md:group-hover:text-white transition-colors duration-500" />
+            <div className="w-16 h-16 rounded-2xl bg-white/10 md:bg-gray-50 md:dark:bg-white/5 flex items-center justify-center md:group-hover:bg-white/10 backdrop-blur-md md:backdrop-blur-none md:group-hover:backdrop-blur-md border border-white/20 md:border-gray-100 md:dark:border-white/10 md:group-hover:border-white/20 transition-all duration-500">
+              <item.Icon className="text-3xl text-white md:text-[#0a181c] md:dark:text-gray-100 md:group-hover:text-white transition-colors duration-500" />
             </div>
             
             {/* Small Image (Visible before hover) */}
-            <div className="hidden md:block w-28 h-28 rounded-2xl overflow-hidden transition-all duration-500 opacity-100 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:-translate-y-4 shadow-sm border border-gray-100 md:group-hover:border-transparent">
+            <div className="hidden md:block w-28 h-28 rounded-2xl overflow-hidden transition-all duration-500 opacity-100 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:-translate-y-4 shadow-sm border border-gray-100 dark:border-white/10 md:group-hover:border-transparent">
               <img 
                 src={item.image} 
                 alt="thumbnail" 
@@ -126,10 +126,10 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
 
           {/* Text Content */}
           <div className="mt-auto relative transition-transform duration-500 ease-out -translate-y-2 md:translate-y-0 md:group-hover:-translate-y-2">
-            <h3 className="font-jetbrains text-[26px] font-semibold text-white md:text-[#0a181c] md:group-hover:text-white mb-4 transition-colors duration-500 leading-tight">
+            <h3 className="font-jetbrains text-[26px] font-semibold text-white md:text-[#0a181c] md:dark:text-gray-100 md:group-hover:text-white mb-4 transition-colors duration-500 leading-tight">
               {item.title}
             </h3>
-            <p className="font-inter text-gray-300 md:text-[#6b7280] md:group-hover:text-gray-300 text-[15px] leading-relaxed transition-colors duration-500 mb-16 md:mb-0 md:group-hover:mb-16">
+            <p className="font-inter text-gray-300 md:text-[#6b7280] md:dark:text-gray-400 md:group-hover:text-gray-300 text-[15px] leading-relaxed transition-colors duration-500 mb-16 md:mb-0 md:group-hover:mb-16">
               {item.description}
             </p>
 
@@ -240,7 +240,7 @@ const MobileSolutionCarousel = () => {
             <div
               key={idx}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                currentIndex === idx ? "w-8 bg-[#0a181c]" : "w-2.5 bg-gray-300"
+                currentIndex === idx ? "w-8 bg-[#0a181c] dark:bg-white" : "w-2.5 bg-gray-300 dark:bg-gray-600"
               }`}
             />
           ))}
@@ -249,13 +249,13 @@ const MobileSolutionCarousel = () => {
         <div className="flex gap-2">
           <button 
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0a181c] hover:bg-gray-50 transition-colors"
+            className="w-10 h-10 rounded-full border border-gray-200 dark:border-white/15 flex items-center justify-center text-[#0a181c] dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
           >
             <FiArrowLeft className="text-lg" />
           </button>
           <button 
             onClick={handleNext}
-            className="w-10 h-10 rounded-full bg-[#0a181c] text-white flex items-center justify-center hover:bg-[#152429] transition-colors"
+            className="w-10 h-10 rounded-full bg-[#0a181c] dark:bg-white text-white dark:text-[#0a181c] flex items-center justify-center hover:bg-[#152429] dark:hover:bg-gray-200 transition-colors"
           >
             <FiArrowRight className="text-lg" />
           </button>
@@ -311,14 +311,14 @@ const Solutions = () => {
   };
 
   return (
-    <section id="solutions" className="w-full bg-white py-24 px-4 md:px-6 flex flex-col items-center overflow-hidden">
+    <section id="solutions" className="w-full bg-white dark:bg-[#0B1120] py-24 px-4 md:px-6 flex flex-col items-center overflow-hidden">
       <div className="max-w-325 w-full flex flex-col mb-8">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-jetbrains text-[27px] md:text-[48px] font-medium text-[#0a181c] text-center mb-4"
+          className="font-jetbrains text-[27px] md:text-[48px] font-medium text-[#0a181c] dark:text-white text-center mb-4"
         >
           Impactful Solutions We've Built
         </motion.h2>
@@ -360,7 +360,7 @@ const Solutions = () => {
                   setDesktopIndex(currentBlock * baseLength + idx);
                 }}
                 className={`h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
-                  activeDot === idx ? "w-8 bg-[#0a181c]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                  activeDot === idx ? "w-8 bg-[#0a181c] dark:bg-white" : "w-2.5 bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500"
                 }`}
               />
             );
@@ -370,13 +370,13 @@ const Solutions = () => {
         <div className="flex gap-3">
           <button 
             onClick={handleDesktopPrev}
-            className="w-12 h-12 rounded-full border border-gray-200 text-[#0a181c] hover:bg-gray-50 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-12 h-12 rounded-full border border-gray-200 dark:border-white/15 text-[#0a181c] dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-white/5 flex items-center justify-center transition-colors cursor-pointer"
           >
             <FaChevronLeft className="text-xl -ml-0.5" />
           </button>
           <button 
             onClick={handleDesktopNext}
-            className="w-12 h-12 rounded-full bg-[#0a181c] text-white hover:bg-[#152429] flex items-center justify-center transition-colors cursor-pointer"
+            className="w-12 h-12 rounded-full bg-[#0a181c] dark:bg-white text-white dark:text-[#0a181c] hover:bg-[#152429] dark:hover:bg-gray-200 flex items-center justify-center transition-colors cursor-pointer"
           >
             <FaChevronRight className="text-xl -mr-0.5" />
           </button>

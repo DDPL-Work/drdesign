@@ -86,7 +86,7 @@ const VisionMission = () => {
   const blob2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   return (
-    <section id="vision-mission" ref={containerRef} className="relative w-full bg-white pb-15 md:pb-24 overflow-hidden">
+    <section id="vision-mission" ref={containerRef} className="relative w-full bg-white dark:bg-[#0B1120] pb-15 md:pb-24 overflow-hidden">
       
       {/* Ambient Parallax Background Blobs */}
       <motion.div 
@@ -102,9 +102,9 @@ const VisionMission = () => {
         
         {/* Header */}
         <div className="mb-10 md:mb-16">
-          <h2 className="text-sm font-semibold tracking-[0.15em] text-[#5e6673] uppercase flex items-center gap-6 font-jetbrains">
+          <h2 className="text-sm font-semibold tracking-[0.15em] text-[#5e6673] dark:text-gray-400 uppercase flex items-center gap-6 font-jetbrains">
             <span>02 /</span>
-            <span className="w-10 h-0.5 bg-gray-200 rounded-full"></span>
+            <span className="w-10 h-0.5 bg-gray-200 dark:bg-white/10 rounded-full"></span>
             <span>VISION & MISSION</span>
           </h2>
         </div>
@@ -120,7 +120,7 @@ const VisionMission = () => {
             viewport={{ once: true, margin: "-50px" }}
             className="w-full h-full"
           >
-            <TiltCard className="flex flex-col h-full bg-white/80 backdrop-blur-sm rounded-4xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out overflow-hidden group">
+            <TiltCard className="flex flex-col h-full bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-4xl border border-gray-100 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out overflow-hidden group">
               {/* Image */}
               <div className="w-full h-56 sm:h-88 relative overflow-hidden rounded-t-4xl">
                 <motion.div variants={itemVariants} className="w-full h-full">
@@ -134,7 +134,7 @@ const VisionMission = () => {
               </div>
               
               {/* Content */}
-              <div className="p-6 md:p-12 flex flex-col grow bg-white/90">
+              <div className="p-6 md:p-12 flex flex-col grow bg-white/90 dark:bg-white/5">
                 <motion.div variants={itemVariants} className="relative w-10 h-10 md:w-12 md:h-12 mb-6 md:mb-8">
                   <div className="w-full h-full rounded-full bg-[#e6f4f1] flex items-center justify-center relative z-10">
                     <FiEye className="w-4 h-4 md:w-5 md:h-5 text-[#0a181c]" />
@@ -143,11 +143,11 @@ const VisionMission = () => {
                   <div className="absolute inset-0 rounded-full bg-[#e6f4f1] opacity-0 group-hover:animate-ping transition-opacity duration-300" />
                 </motion.div>
                 
-                <motion.h3 variants={itemVariants} className="text-2xl md:text-3xl font-semibold text-[#0a181c] mb-4 md:mb-6 font-jetbrains">
+                <motion.h3 variants={itemVariants} className="text-2xl md:text-3xl font-semibold text-[#0a181c] dark:text-white mb-4 md:mb-6 font-jetbrains">
                   Our Vision
                 </motion.h3>
                 
-                <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed grow">
+                <motion.p variants={itemVariants} className="text-[#5e6673] dark:text-gray-400 text-[13px] md:text-base leading-relaxed grow">
                   To be the technology partner of choice for organizations that manage complex physical and digital operations — making advanced software and spatial intelligence accessible to teams of every size.
                 </motion.p>
               </div>
@@ -162,7 +162,7 @@ const VisionMission = () => {
             viewport={{ once: true, margin: "-50px" }}
             className="w-full h-full"
           >
-            <TiltCard className="flex flex-col h-full bg-white/80 backdrop-blur-sm rounded-4xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out overflow-hidden group">
+            <TiltCard className="flex flex-col h-full bg-white/80 dark:bg-white/5 backdrop-blur-sm rounded-4xl border border-gray-100 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 ease-out overflow-hidden group">
               {/* Image */}
               <div className="w-full h-56 sm:h-88 relative overflow-hidden rounded-t-4xl">
                 <motion.div variants={itemVariants} className="w-full h-full">
@@ -176,7 +176,7 @@ const VisionMission = () => {
               </div>
               
               {/* Content */}
-              <div className="p-6 md:p-12 flex flex-col grow bg-white/90">
+              <div className="p-6 md:p-12 flex flex-col grow bg-white/90 dark:bg-white/5">
                 <motion.div variants={itemVariants} className="relative w-10 h-10 md:w-12 md:h-12 mb-6 md:mb-8">
                   <div className="w-full h-full rounded-full bg-[#e6f4f1] flex items-center justify-center relative z-10">
                     <FiTarget className="w-4 h-4 md:w-5 md:h-5 text-[#0a181c]" />
@@ -185,11 +185,11 @@ const VisionMission = () => {
                   <div className="absolute inset-0 rounded-full bg-[#e6f4f1] opacity-0 group-hover:animate-ping transition-opacity duration-300" />
                 </motion.div>
                 
-                <motion.h3 variants={itemVariants} className="text-2xl md:text-3xl font-semibold text-[#0a181c] mb-4 md:mb-6 font-jetbrains">
+                <motion.h3 variants={itemVariants} className="text-2xl md:text-3xl font-semibold text-[#0a181c] dark:text-white mb-4 md:mb-6 font-jetbrains">
                   Our Mission
                 </motion.h3>
                 
-                <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed grow">
+                <motion.p variants={itemVariants} className="text-[#5e6673] dark:text-gray-400 text-[13px] md:text-base leading-relaxed grow">
                   To design and engineer software that people actually enjoy using — combining rigorous development practice, research-led design and geospatial expertise to deliver measurable outcomes for every client we serve.
                 </motion.p>
               </div>

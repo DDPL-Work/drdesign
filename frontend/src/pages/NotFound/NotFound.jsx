@@ -130,7 +130,7 @@ function AnimatedText({ text, className, delayOffset = 0 }) {
 
 export default function PlaceholderPage() {
   return (
-    <div className="flex-1 w-full overflow-hidden bg-[radial-gradient(circle_at_center,#ffffff_0%,#EDECF1_100%)] relative flex flex-col items-center justify-center">
+    <div className="flex-1 w-full overflow-hidden bg-[radial-gradient(circle_at_center,#ffffff_0%,#EDECF1_100%)] dark:bg-[radial-gradient(circle_at_center,#0B1120_0%,#081023_100%)] relative flex flex-col items-center justify-center">
       
       {/* 404 Main Container */}
       <div className="relative flex items-center justify-center w-full px-4 mb-4 md:mb-8 flex-1 max-h-[60vh]">
@@ -139,7 +139,7 @@ export default function PlaceholderPage() {
           initial={{ opacity: 0, x: -100, rotate: -20 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ duration: 1, ease: "backOut", delay: 0.2 }}
-          className="text-[35vw] md:text-[300px] font-black leading-none text-[#081023] drop-shadow-2xl z-10 select-none"
+          className="text-[35vw] md:text-[300px] font-black leading-none text-[#081023] dark:text-[#f1f5f9] drop-shadow-2xl z-10 select-none"
         >
           4
         </motion.div>
@@ -168,23 +168,21 @@ export default function PlaceholderPage() {
           initial={{ opacity: 0, x: 100, rotate: 20 }}
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ duration: 1, ease: "backOut", delay: 0.3 }}
-          className="text-[35vw] md:text-[300px] font-black leading-none text-[#081023] drop-shadow-2xl z-10 select-none"
+          className="text-[35vw] md:text-[300px] font-black leading-none text-[#081023] dark:text-[#f1f5f9] drop-shadow-2xl z-10 select-none"
         >
           4
         </motion.div>
       </div>
-
-      {/* Text Content below */}
       <div className="relative z-30 flex flex-col items-center text-center px-6 pb-12">
         <AnimatedText 
           text="Oops, this place feels lost" 
-          className="text-2xl md:text-5xl font-bold text-[#0C0D0D] tracking-tight mb-2 md:mb-4"
+          className="text-2xl md:text-5xl font-bold text-[#0C0D0D] dark:text-white tracking-tight mb-2 md:mb-4"
           delayOffset={0.6}
         />
 
         <AnimatedText 
           text="Let's get you somewhere safe" 
-          className="text-xs md:text-lg text-[#0C0D0D]/50 mb-6 md:mb-8 font-medium"
+          className="text-xs md:text-lg text-[#0C0D0D]/50 dark:text-white/50 mb-6 md:mb-8 font-medium"
           delayOffset={1.2}
         />
       </div>

@@ -94,23 +94,23 @@ const Details = ({ title, description, image }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full py-10 bg-white"
+      className="w-full py-10 bg-white dark:bg-[#0B1120]"
     >
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text */}
           <div className="lg:col-span-5 flex flex-col xl:pr-8">
-            <h2 className="font-jetbrains text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15] font-medium text-[#0A1118] mb-6">
+            <h2 className="font-jetbrains text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15] font-medium text-[#0A1118] dark:text-white mb-6">
               {title || "Enterprise Resource Planning System"}
             </h2>
-            <p className="font-inter text-[15px] md:text-[16px] text-[#60738a] leading-[1.7] mb-10">
+            <p className="font-inter text-[15px] md:text-[16px] text-[#60738a] dark:text-gray-400 leading-[1.7] mb-10">
               {description || "A unified ERP replacing five disconnected legacy tools — bringing finance, inventory, procurement, and production planning into a single real-time platform used across four plants."}
             </p>
 
-            <h3 className="font-jetbrains text-[22px] md:text-[26px] font-medium text-[#0A1118] mb-4">
+            <h3 className="font-jetbrains text-[22px] md:text-[26px] font-medium text-[#0A1118] dark:text-white mb-4">
               Project Overview
             </h3>
-            <p className="font-inter text-[14px] md:text-[15px] text-[#60738a] leading-[1.7]">
+            <p className="font-inter text-[14px] md:text-[15px] text-[#60738a] dark:text-gray-400 leading-[1.7]">
               Platea In dictumst hac habitasse aute velit Duis in esse irure
               nulla dolor voluptate pariatur fugiat reprehenderit eu cillum in
               dolore Sed magna aliqua dolore eiusmod labore tempor et do ut
@@ -161,10 +161,10 @@ const ProjectInfo = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full pb-20 bg-white"
+      className="w-full pb-20 bg-white dark:bg-[#0B1120]"
     >
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24 flex flex-col">
-        <h2 className="font-jetbrains font-medium text-[#0A1118] text-[28px] md:text-[32px] mb-8">
+        <h2 className="font-jetbrains font-medium text-[#0A1118] dark:text-white text-[28px] md:text-[32px] mb-8">
           Project Info
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -173,15 +173,15 @@ const ProjectInfo = () => {
             return (
               <div
                 key={index}
-                className="bg-[#e2e9e8] rounded-[16px] flex flex-col items-center justify-start py-8 md:py-10 px-4 text-center transition-transform hover:-translate-y-1 duration-300 h-full"
+                className="bg-[#e2e9e8] dark:bg-[#111B2E] rounded-[16px] flex flex-col items-center justify-start py-8 md:py-10 px-4 text-center transition-transform hover:-translate-y-1 duration-300 h-full"
               >
                 <div className="w-[52px] h-[52px] bg-[#00a8e8] rounded-full flex items-center justify-center text-white text-[22px] mb-4 md:mb-6 shadow-sm shrink-0">
                   <Icon />
                 </div>
-                <h4 className="font-jetbrains text-[#60738a] text-[13px] md:text-[14px] mb-2">
+                <h4 className="font-jetbrains text-[#60738a] dark:text-gray-400 text-[13px] md:text-[14px] mb-2">
                   {item.title}
                 </h4>
-                <p className="font-inter text-[#0a181c] font-medium text-[14px] md:text-[15px] leading-tight">
+                <p className="font-inter text-[#0a181c] dark:text-gray-100 font-medium text-[14px] md:text-[15px] leading-tight">
                   {item.des}
                 </p>
               </div>
@@ -219,7 +219,7 @@ const CoreStacks = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full pb-20 bg-white overflow-hidden relative"
+      className="w-full pb-20 bg-white dark:bg-[#0B1120] overflow-hidden relative"
     >
       <style>
         {`
@@ -237,7 +237,7 @@ const CoreStacks = () => {
         `}
       </style>
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24 flex flex-col mb-8">
-        <h2 className="font-jetbrains font-medium text-[#0A1118] text-[28px] md:text-[32px]">
+        <h2 className="font-jetbrains font-medium text-[#0A1118] dark:text-white text-[28px] md:text-[32px]">
           Core Stacks
         </h2>
       </div>
@@ -245,8 +245,8 @@ const CoreStacks = () => {
       {/* Marquee Container */}
       <div className="w-full relative overflow-hidden flex items-center">
         {/* Fading Edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-r from-white dark:from-[#0B1120] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-l from-white dark:from-[#0B1120] to-transparent z-10 pointer-events-none" />
 
         <div className="animate-marquee hover:[animation-play-state:paused]">
           {repeatedIcons.map((item, index) => {
@@ -279,7 +279,7 @@ const ProjectGalley = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full pb-24 bg-white overflow-hidden relative"
+      className="w-full pb-24 bg-white dark:bg-[#0B1120] overflow-hidden relative"
     >
       <style>{`
         @keyframes gallery-marquee {
@@ -296,8 +296,8 @@ const ProjectGalley = () => {
       `}</style>
       
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24 flex flex-col mb-8">
-        <h2 className="font-jetbrains font-medium text-[#0A1118] text-[28px] md:text-[32px]">
-          Project Galley
+        <h2 className="font-jetbrains font-medium text-[#0A1118] dark:text-white text-[28px] md:text-[32px]">
+          Project Gallery
         </h2>
       </div>
 
@@ -368,11 +368,11 @@ const CaseStudyDetails = () => {
   return (
     <main>
       {/* Breadcrumb */}
-      <div className="w-full py-3.5 border-b border-gray-100">
+      <div className="w-full py-3.5 border-b border-gray-100 dark:border-white/10">
         <div className="max-w-[1300px] ml-7  flex items-center gap-2 font-inter text-[13px] text-[#b7babf]">
           <Link
             to="/"
-            className="hover:text-[#0a181c] transition-colors duration-200"
+            className="hover:text-[#0a181c] dark:hover:text-white transition-colors duration-200"
           >
             Home
           </Link>
@@ -380,12 +380,12 @@ const CaseStudyDetails = () => {
           <Link
             to="/"
             state={{ scrollTo: "solutions" }}
-            className="hover:text-[#0a181c] transition-colors duration-200"
+            className="hover:text-[#0a181c] dark:hover:text-white transition-colors duration-200"
           >
             Project
           </Link>
           <span className="text-[#6b7280]/40 select-none">/</span>
-          <span className="text-[#2f3130] font-medium">{title}</span>
+          <span className="text-[#2f3130] dark:text-gray-100 font-medium">{title}</span>
         </div>
       </div>
       <Hero />

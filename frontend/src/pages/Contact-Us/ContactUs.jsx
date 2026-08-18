@@ -175,17 +175,17 @@ const ConversationCards = ({ onOpenModal }) => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-10 md:mb-12"
         >
-          <h2 className="text-3xl md:text-[48px] font-bold font-jetbrains text-[#101218] mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-[48px] font-bold font-jetbrains text-[#101218] dark:text-white mb-4 tracking-tight">
             Let's start a conversation.
           </h2>
-          <p className="text-gray-500 text-base md:text-[20px] font-normal font-inter ">
+          <p className="text-gray-500 dark:text-gray-400 text-base md:text-[20px] font-normal font-inter ">
             Whether it's a quick question or a full project brief, we read every
             message and <br className="hidden md:block" /> reply within one business day.
           </p>
         </motion.div>
       </div>
 
-      <div className="w-full bg-sky-50 px-6 lg:px-12 xl:px-16 py-16 overflow-hidden">
+      <div className="w-full bg-sky-50 dark:bg-[#0f172a] px-6 lg:px-12 xl:px-16 py-16 overflow-hidden">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -243,17 +243,17 @@ const ConversationCards = ({ onOpenModal }) => {
             {/* Start a Project Card */}
             <motion.div
               variants={cardVariants}
-              className="flex-1 bg-white rounded-4xl p-6 md:p-8 lg:p-10 flex flex-col justify-start shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 transition-all duration-500 cursor-pointer relative group"
+              className="flex-1 bg-white dark:bg-[#111B2E] rounded-4xl p-6 md:p-8 lg:p-10 flex flex-col justify-start shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 dark:border-white/10 transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-0.7s" />
               <div className="flex-col flex justify-center gap-3 -mt-1.5">
                 <p className="text-xs font-semibold text-gray-400 uppercase relative z-10">
                 New Project?
               </p>
-              <h3 className="text-2xl font-bold text-gray-900 relative z-10">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 relative z-10">
                 Start a Project
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed max-w-sm  relative z-10">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm  relative z-10">
                 Share your brief and we'll get back with a tailored plan and
                 estimate.
               </p>
@@ -281,7 +281,7 @@ const ConversationCards = ({ onOpenModal }) => {
             {/* Phone Card */}
             <motion.div
               variants={cardVariants}
-              className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden transition-all duration-500 cursor-pointer relative group"
+              className="bg-white dark:bg-[#111B2E] rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 dark:border-white/10 overflow-hidden transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-1.4s" />
               <style>{`
@@ -299,7 +299,7 @@ const ConversationCards = ({ onOpenModal }) => {
                   animation: ring 1.5s ease-in-out infinite;
                 }
               `}</style>
-              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-[#1E293B] flex items-center justify-center mb-4 text-gray-600 dark:text-gray-300 relative z-10">
                 <FiPhone className="text-xl hover-ring mobile-ring" />
               </div>
               <div className="relative z-10">
@@ -307,16 +307,16 @@ const ConversationCards = ({ onOpenModal }) => {
                   Phone
                 </p>
                 <div className="flex flex-col gap-1 mb-4">
-                  <p className="text-lg md:text-xl font-medium text-gray-900">
+                  <p className="text-lg md:text-xl font-medium text-gray-900 dark:text-gray-100">
                     +91 70601 00443
                   </p>
-                  <p className="text-lg md:text-xl font-medium text-gray-900">
+                  <p className="text-lg md:text-xl font-medium text-gray-900 dark:text-gray-100">
                     +91 72170 52556
                   </p>
                 </div>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 transition-colors"
                 >
                   Call now <FiArrowUpRight className="text-lg" />
                 </a>
@@ -326,22 +326,22 @@ const ConversationCards = ({ onOpenModal }) => {
             {/* Office Card */}
             <motion.div
               variants={cardVariants}
-              className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden md:col-span-1 lg:col-span-2 transition-all duration-500 cursor-pointer relative group"
+              className="bg-white dark:bg-[#111B2E] rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 dark:border-white/10 overflow-hidden md:col-span-1 lg:col-span-2 transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-1.4s" />
-              <div className="w-12 h-12 rounded-2xl bg-pink-200/50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-pink-200/50 dark:bg-pink-800/30 flex items-center justify-center mb-4 text-gray-600 dark:text-gray-300 relative z-10">
                 <FiMapPin className="text-xl animate-bounce md:animate-none md:group-hover:animate-bounce" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-semibold tracking-widest text-gray-400 mb-3 uppercase">
                   Office
                 </p>
-                <p className="text-[15px] md:text-base font-medium text-gray-900 mb-4 leading-relaxed pr-2">
+                <p className="text-[15px] md:text-base font-medium text-gray-900 dark:text-gray-100 mb-4 leading-relaxed pr-2">
                   Near Survey Chowk, 11 East Canal Road, Dehradun, Uttarakhand,
                   248001
                 </p>
-                <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500"></span>
                   Dehradun • India
                 </div>
               </div>
@@ -350,22 +350,22 @@ const ConversationCards = ({ onOpenModal }) => {
             {/* Working Hours Card */}
             <motion.div
               variants={cardVariants}
-              className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden transition-all duration-500 cursor-pointer relative group"
+              className="bg-white dark:bg-[#111B2E] rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 dark:border-white/10 overflow-hidden transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-2.1s" />
-              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-[#1E293B] flex items-center justify-center mb-4 text-gray-600 dark:text-gray-300 relative z-10">
                 <FiClock className="text-xl animate-[spin_2s_linear_infinite] md:animate-none md:group-hover:animate-[spin_2s_linear_infinite]" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-semibold tracking-widest text-gray-400 mb-3 uppercase">
                   Working Hours
                 </p>
-                <p className="text-[15px] md:text-base font-medium text-gray-900 mb-4 leading-relaxed">
+                <p className="text-[15px] md:text-base font-medium text-gray-900 dark:text-gray-100 mb-4 leading-relaxed">
                   Monday – Saturday
                   <br />
                   10:00 AM – 7:00 PM IST
                 </p>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50/50 border border-emerald-100 text-xs font-medium text-gray-700">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50/50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800/50 text-xs font-medium text-gray-700 dark:text-gray-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                   Available now
                 </div>

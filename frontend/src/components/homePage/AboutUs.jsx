@@ -342,19 +342,19 @@ const AboutUs = () => {
   return (
     <div
       ref={sectionRef}
-      className="w-full bg-white py-15 px-6 flex flex-col items-center overflow-hidden"
+      className="w-full bg-white dark:bg-[#0B1120] py-15 px-6 flex flex-col items-center overflow-hidden"
     >
       <div className="max-w-[1073px] w-full flex flex-col items-center text-center">
         <h2
           ref={headingRef}
-          className="font-jetbrains text-[27px] md:text-[42px] md:text-[56px] font-normal tracking-wider text-black mb-6 uppercase"
+          className="font-jetbrains text-[27px] md:text-[42px] md:text-[56px] font-normal tracking-wider text-black dark:text-white mb-6 uppercase"
         >
           About DR.DESIGN
         </h2>
 
         <p
           ref={textRef}
-          className="font-inter text-[#333333] text-[13px] md:text-[20px] leading-[1.8] max-w-[814px] mb-8 font-normal"
+          className="font-inter text-[#333333] dark:text-gray-300 text-[13px] md:text-[20px] leading-[1.8] max-w-[814px] mb-8 font-normal"
         >
           DR.DESIGN PVT. LTD. is a forward-thinking technology and consulting
           company <br className="sm:block hidden" /> specializing in Geospatial Solutions, IT Services, and

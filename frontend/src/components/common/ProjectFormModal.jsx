@@ -157,7 +157,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-300 max-h-full flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8 my-auto bg-[#EAF3FF] p-4 lg:p-6 rounded-[36px] shadow-2xl"
+            className="relative w-full max-w-300 max-h-full flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8 my-auto bg-[#EAF3FF] dark:bg-[#0B1120] p-4 lg:p-6 rounded-[36px] shadow-2xl"
           >
             {/* Left Panel - Dark */}
             <div className="hidden lg:flex w-full lg:w-[45%] min-h-0 bg-[#091123] p-8 md:p-12 flex-col justify-between text-white relative overflow-y-auto rounded-[27px] shadow-2xl overscroll-contain no-scrollbar">
@@ -221,11 +221,11 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Right Panel - Form */}
-            <div className="w-full lg:w-[55%] min-h-0 bg-[#F1F7FF] rounded-[27px] shadow-2xl relative flex flex-col">
+            <div className="w-full lg:w-[55%] min-h-0 bg-[#F1F7FF] dark:bg-[#0f172a] rounded-[27px] shadow-2xl relative flex flex-col">
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute -top-3 -right-3 z-50 w-10 h-10 bg-white hover:bg-gray-50 rounded-full flex items-center justify-center text-gray-800 hover:text-black transition-colors shadow-md border border-gray-200"
+                className="absolute -top-3 -right-3 z-50 w-10 h-10 bg-white dark:bg-[#1E293B] hover:bg-gray-50 dark:hover:bg-[#334155] rounded-full flex items-center justify-center text-gray-800 dark:text-gray-100 hover:text-black dark:hover:text-white transition-colors shadow-md border border-gray-200 dark:border-white/10"
               >
                 <FiX className="text-xl" />
               </button>
@@ -239,29 +239,29 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="flex flex-col gap-2.5">
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                        <FiUser className="text-gray-500" /> Full name
+                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                        <FiUser className="text-gray-500 dark:text-gray-400" /> Full name
                       </label>
                       <input
                         type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
+                        className="w-full px-4 py-3.5 bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
                       />
                     </div>
 
                     {/* Email Address */}
                     <div className="flex flex-col gap-2.5">
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                        <FiMail className="text-gray-500" /> Email address
+                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                        <FiMail className="text-gray-500 dark:text-gray-400" /> Email address
                       </label>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@company.com"
-                        className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
+                        className="w-full px-4 py-3.5 bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
                       />
                     </div>
                   </div>
@@ -270,10 +270,10 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Phone Number */}
                     <div className="flex flex-col gap-2.5">
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                        <FiPhone className="text-gray-500" /> Phone number
+                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                        <FiPhone className="text-gray-500 dark:text-gray-400" /> Phone number
                       </label>
-                      <div className="phone-input-container w-full bg-white border border-gray-300 rounded-xl shadow-sm transition-all focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+                      <div className="phone-input-container w-full bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl shadow-sm transition-all focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent text-gray-800 dark:text-white">
                         <PhoneInput
                           country={"in"}
                           value={phone}
@@ -285,7 +285,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                             background: "transparent",
                             fontSize: "15px",
                             fontFamily: "Inter",
-                            color: "#1f2937",
+                            color: "inherit",
                             paddingLeft: "48px",
                           }}
                           buttonStyle={{
@@ -303,8 +303,8 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
 
                     {/* Company */}
                     <div className="flex flex-col gap-2.5">
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                        <FiBriefcase className="text-gray-500" /> Company /
+                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                        <FiBriefcase className="text-gray-500 dark:text-gray-400" /> Company /
                         Organization
                       </label>
                       <input
@@ -312,24 +312,24 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="Acme Inc."
-                        className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
+                        className="w-full px-4 py-3.5 bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px]"
                       />
                     </div>
                   </div>
 
                   {/* Row 3: Service Dropdown */}
                   <div className="flex flex-col gap-2.5 relative" ref={dropdownRef}>
-                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                      <FiGrid className="text-gray-500" /> Service you're
+                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                      <FiGrid className="text-gray-500 dark:text-gray-400" /> Service you're
                       interested in
                     </label>
                     <div
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none transition-all shadow-sm font-inter text-[15px] flex justify-between items-center cursor-pointer"
+                      className="w-full px-4 py-3.5 bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none transition-all shadow-sm font-inter text-[15px] flex justify-between items-center cursor-pointer"
                     >
                       <span
                         className={
-                          selectedService ? "text-gray-800" : "text-gray-400"
+                          selectedService ? "text-gray-800 dark:text-white" : "text-gray-400 dark:text-gray-400"
                         }
                       >
                         {selectedService || "Select a service"}
@@ -349,7 +349,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-21.25 left-0 w-full max-h-55 bg-white border border-gray-200 rounded-xl shadow-lg z-30 overflow-y-auto overscroll-contain no-scrollbar"
+                          className="absolute top-21.25 left-0 w-full max-h-55 bg-white dark:bg-[#1E293B] border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-30 overflow-y-auto overscroll-contain no-scrollbar"
                         >
                           {services.map((service, index) => (
                             <div
@@ -358,7 +358,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                                 setSelectedService(service);
                                 setIsDropdownOpen(false);
                               }}
-                              className="px-4 py-3 hover:bg-sky-50 text-[15px] text-gray-700 cursor-pointer font-inter transition-colors border-b last:border-b-0 border-gray-100"
+                              className="px-4 py-3 hover:bg-sky-50 dark:hover:bg-sky-900/30 text-[15px] text-gray-700 dark:text-gray-200 cursor-pointer font-inter transition-colors border-b last:border-b-0 border-gray-100 dark:border-white/10"
                             >
                               {service}
                             </div>
@@ -370,15 +370,15 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
 
                   {/* Row 4: Project Details */}
                   <div className="flex flex-col gap-2.5">
-                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 font-inter">
-                      <FiFileText className="text-gray-500" /> Project details
+                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 font-inter">
+                      <FiFileText className="text-gray-500 dark:text-gray-400" /> Project details
                     </label>
                     <textarea
                       value={projectDetails}
                       onChange={(e) => setProjectDetails(e.target.value)}
                       placeholder="Tell us about your goals, timeline, and any specific requirements..."
                       rows={4}
-                      className="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px] resize-none"
+                      className="w-full px-4 py-3.5 bg-white dark:bg-[#1E293B] border border-gray-300 dark:border-gray-700 rounded-xl text-gray-800 dark:text-white placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm font-inter text-[15px] resize-none"
                     ></textarea>
                   </div>
 
@@ -386,7 +386,7 @@ const ProjectFormModal = ({ isOpen, onClose }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full mt-2 py-4 bg-[#091123] hover:bg-[#152343] text-white rounded-xl text-[16px] font-semibold font-inter flex justify-center items-center gap-2 transition-colors shadow-md group ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
+                    className={`w-full mt-2 py-4 bg-[#091123] dark:bg-white hover:bg-[#152343] dark:hover:bg-gray-200 text-white dark:text-black border border-[#091123] dark:border-white rounded-xl text-[16px] font-semibold font-inter flex justify-center items-center gap-2 transition-colors shadow-md group ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
                   >
                     {isSubmitting ? "Sending..." : "Send message"}
                     {!isSubmitting && <FiSend className="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { FiHome, FiHeart, FiMapPin } from 'react-icons/fi';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { useTheme } from '../../providers/ThemeProvider';
 
 const timelineData = [
   {
@@ -104,6 +105,9 @@ const itemVariants = {
 
 const OurJourney = () => {
   const containerRef = useRef(null);
+  const { theme } = useTheme();
+  const accentColor = theme === "dark" ? "#8b949e" : "#081023";
+  const nodeBg = theme === "dark" ? "#1E293B" : "#081023";
   
   // Scroll progress for the timeline container
   const { scrollYProgress } = useScroll({
@@ -118,8 +122,8 @@ const OurJourney = () => {
   const blob2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
 
   return (
-    <section id="our-journey" className="relative w-full bg-white overflow-hidden">
-      <div className="hidden md:block absolute left-0 top-0 bottom-0 w-1/2 bg-[#fdf6f9] -z-20" />
+    <section id="our-journey" className="relative w-full bg-white dark:bg-[#0B1120] overflow-hidden">
+      <div className="hidden md:block absolute left-0 top-0 bottom-0 w-1/2 bg-[#fdf6f9] dark:bg-[#0f172a] -z-20" />
       <motion.div 
         style={{ y: blob1Y }}
         className="absolute top-10 left-[10%] w-72 h-72 bg-cyan-300/20 rounded-full blur-[80px] pointer-events-none -z-10"
@@ -132,9 +136,9 @@ const OurJourney = () => {
       <div className="max-w-full mx-4 md:mx-15 relative pt-10 md:pt-20 pb-16 md:pb-32">
         {/* Header */}
         <div className="mb-12 md:mb-24">
-          <h2 className="text-sm font-semibold tracking-[0.15em] text-[#5e6673] uppercase flex items-center gap-6 font-jetbrains">
+          <h2 className="text-sm font-semibold tracking-[0.15em] text-[#5e6673] dark:text-gray-400 uppercase flex items-center gap-6 font-jetbrains">
             <span>01 /</span>
-            <span className="w-10 h-0.5 bg-gray-200 rounded-full"></span>
+            <span className="w-10 h-0.5 bg-gray-200 dark:bg-white/10 rounded-full"></span>
             <span>OUR JOURNEY</span>
           </h2>
         </div>
@@ -142,12 +146,12 @@ const OurJourney = () => {
         {/* Timeline Container */}
         <div ref={containerRef} className="relative">
           {/* Vertical Line Background (Gray) */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 transform md:-translate-x-1/2" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 dark:bg-white/10 transform md:-translate-x-1/2" />
           
           {/* Vertical Line Foreground (Animated Color with Glowing Tip) */}
           <motion.div 
             style={{ height: lineHeight }}
-            className="absolute left-6 md:left-1/2 top-0 w-[2px] bg-[#081023] transform md:-translate-x-1/2 origin-top flex flex-col justify-end items-center z-20" 
+            className="absolute left-6 md:left-1/2 top-0 w-[2px] bg-[#081023] dark:bg-[#6a71d8] transform md:-translate-x-1/2 origin-top flex flex-col justify-end items-center z-20" 
           >
              {/* Glowing Laser Tip */}
              <div className="w-[4px] h-[30px] bg-cyan-400 rounded-full blur-[2px] shadow-[0_0_12px_4px_rgba(74,222,128,0.6)]" />
@@ -171,7 +175,7 @@ const OurJourney = () => {
                     <motion.div 
                       variants={{
                         hidden: { backgroundColor: "#e5e7eb", color: "#9ca3af" },
-                        visible: { backgroundColor: "#081023", color: "#ffffff", transition: { duration: 0.3 } }
+                        visible: { backgroundColor: nodeBg, color: "#ffffff", transition: { duration: 0.3 } }
                       }}
                       className="text-[10px] font-bold px-3 py-1 rounded-full mb-2 tracking-wider font-jetbrains shadow-sm"
                     >
@@ -189,20 +193,20 @@ const OurJourney = () => {
                             transition: { duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.2 }
                           }
                         }}
-                        className="absolute inset-0 rounded-full border-2 border-[#081023] bg-[#081023]/10"
+                        className="absolute inset-0 rounded-full border-2 border-[#081023] dark:border-[#6a71d8] bg-[#081023]/10"
                       />
 
                       <motion.div 
                         variants={{
                           hidden: { borderColor: "#e5e7eb", boxShadow: "0 0 0 rgba(0,0,0,0)" },
-                          visible: { borderColor: "#081023", boxShadow: "0 10px 15px -3px rgba(8,16,35,0.2)", transition: { duration: 0.3 } }
+                          visible: { borderColor: accentColor, boxShadow: "0 10px 15px -3px rgba(8,16,35,0.2)", transition: { duration: 0.3 } }
                         }}
-                        className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-full border-2 flex items-center justify-center relative z-10"
+                        className="w-10 h-10 md:w-14 md:h-14 bg-white dark:bg-[#1E293B] rounded-full border-2 flex items-center justify-center relative z-10"
                       >
                         <motion.div
                           variants={{
                             hidden: { color: "#d1d5db", scale: 0.8 },
-                            visible: { color: "#081023", scale: 1, transition: { type: "spring", stiffness: 300, damping: 20 } }
+                            visible: { color: accentColor, scale: 1, transition: { type: "spring", stiffness: 300, damping: 20 } }
                           }}
                         >
                           <item.icon className="w-4 h-4 md:w-6 md:h-6" />
@@ -232,18 +236,18 @@ const OurJourney = () => {
                       }}
                       className="w-full"
                     >
-                      <TiltCard className="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-[2rem] border border-gray-100 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
+                      <TiltCard className="bg-white/90 dark:bg-[#111B2E]/90 backdrop-blur-sm rounded-2xl md:rounded-[2rem] border border-gray-100 dark:border-white/10 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
                         <motion.div variants={itemVariants} className={`flex justify-start ${isLeft ? 'md:justify-end' : 'md:justify-start'} mb-4 md:mb-6`}>
                           <span className="bg-[#0a181c] text-white text-[9px] md:text-[10px] font-bold px-3 py-1.5 md:px-4 md:py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
                             {item.pill}
                           </span>
                         </motion.div>
                         
-                        <motion.h3 variants={itemVariants} className={`text-xl md:text-3xl font-semibold text-[#0a181c] mb-3 md:mb-4 text-left ${isLeft ? 'md:text-right' : 'md:text-left'} font-jetbrains`}>
+                        <motion.h3 variants={itemVariants} className={`text-xl md:text-3xl font-semibold text-[#0a181c] dark:text-white mb-3 md:mb-4 text-left ${isLeft ? 'md:text-right' : 'md:text-left'} font-jetbrains`}>
                           {item.title}
                         </motion.h3>
                         
-                        <motion.p variants={itemVariants} className={`text-[#5e6673] text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
+                        <motion.p variants={itemVariants} className={`text-[#5e6673] dark:text-gray-400 text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
                           {item.description}
                         </motion.p>
 
@@ -253,10 +257,10 @@ const OurJourney = () => {
                               key={idx}
                               variants={itemVariants}
                               whileHover={{ scale: 1.02, x: isLeft ? -5 : 5, transition: { duration: 0.2 } }}
-                              className={`p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} text-left ${isLeft ? 'md:text-right' : 'md:text-left'} transition-all`}
+                              className={`p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 dark:border-white/10 bg-white dark:bg-[#0B1120] shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} text-left ${isLeft ? 'md:text-right' : 'md:text-left'} transition-all`}
                             >
                               <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)] mt-1.5 md:mt-0" />
-                              <span className="text-[11px] md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
+                              <span className="text-[11px] md:text-sm text-[#5e6673] dark:text-gray-400 leading-snug">{bullet}</span>
                             </motion.div>
                           ))}
                         </div>

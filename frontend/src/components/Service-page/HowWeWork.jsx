@@ -76,13 +76,13 @@ const SectionHeader = () => (
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
       <span>03 /</span>
-      <span className="w-16 h-[1px] bg-[#CBD5E1] inline-block" />
+      <span className="w-16 h-[1px] bg-[#CBD5E1] dark:bg-[#334155] inline-block" />
       <span>HOW WE WORK</span>
     </motion.div>
 
     {/* Heading */}
     <motion.h2
-      className="font-geist font-bold text-[#0B101E] leading-[1.1] m-0 text-4xl md:text-[48px]"
+      className="font-geist font-bold text-[#0B101E] dark:text-white leading-[1.1] m-0 text-4xl md:text-[48px]"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
@@ -200,7 +200,7 @@ const CircleSection = () => {
     /* minHeight uses a runtime constant → stays inline */
     <div
       ref={containerRef}
-      className="relative w-full bg-white pt-10 pb-50"
+      className="relative w-full bg-white dark:bg-[#0B1120] pt-10 pb-50"
       style={{ minHeight: `${SCROLL_HEIGHT}vh` }}
     >
       {/* Keyframe animations — cannot be expressed as Tailwind classes */}
@@ -314,7 +314,7 @@ const CircleSection = () => {
                   damping:   26,
                   mass:      0.9,
                 }}
-                className="absolute bg-white border border-[rgba(8,16,35,0.10)] rounded-[14px] p-5 z-[3]"
+                className="absolute bg-white dark:bg-[#111B2E] border border-[rgba(8,16,35,0.10)] dark:border-white/10 rounded-[14px] p-5 z-[3]"
                 style={{
                   width:     CARD_WIDTH,
                   left:      cardPositions[index].left,
@@ -332,12 +332,12 @@ const CircleSection = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
+                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023] dark:text-white">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] leading-[1.6]">
+                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] dark:text-gray-400 leading-[1.6]">
                   {step.description}
                 </p>
               </motion.article>
@@ -397,7 +397,7 @@ const MobileTimeline = () => {
     <div className="container mx-auto px-6 py-10 pb-24" ref={containerRef}>
       <div className="relative">
         {/* Base Dashed vertical line */}
-        <div className="absolute left-[13px] top-6 bottom-6 w-[2px] border-l-2 border-dashed border-[#08102314]"></div>
+        <div className="absolute left-[13px] top-6 bottom-6 w-[2px] border-l-2 border-dashed border-[#08102314] dark:border-white/15"></div>
         
         {/* Active solid vertical line that fills on scroll */}
         <motion.div 
@@ -420,7 +420,7 @@ const MobileTimeline = () => {
             >
               {/* Timeline Dot with spring pop animation */}
               <motion.div 
-                className="absolute left-[8px] top-5 w-3 h-3 rounded-full z-10 shadow-[0_0_0_4px_white]"
+                className="absolute left-[8px] top-5 w-3 h-3 rounded-full z-10 shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#0B1120]"
                 style={{ backgroundColor: ACCENT }}
                 variants={{
                   hidden: { scale: 0, opacity: 0 },
@@ -434,7 +434,7 @@ const MobileTimeline = () => {
 
               {/* Card with slide & fade animation + subtle hover */}
               <motion.div 
-                className="bg-white border border-[rgba(8,16,35,0.10)] rounded-[14px] p-6 shadow-[0_4px_24px_rgba(75,107,251,0.08),_0_1px_4px_rgba(0,0,0,0.06)] relative z-10"
+                className="bg-white dark:bg-[#111B2E] border border-[rgba(8,16,35,0.10)] dark:border-white/10 rounded-[14px] p-6 shadow-[0_4px_24px_rgba(75,107,251,0.08),_0_1px_4px_rgba(0,0,0,0.06)] relative z-10"
                 variants={{
                   hidden: { opacity: 0, x: 40, y: 20 },
                   visible: { 
@@ -452,10 +452,10 @@ const MobileTimeline = () => {
                 >
                   {step.label}
                 </div>
-                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
+                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023] dark:text-white">
                   {step.title}
                 </h3>
-                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] leading-[1.6]">
+                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] dark:text-gray-400 leading-[1.6]">
                   {step.description}
                 </p>
               </motion.div>
@@ -481,7 +481,7 @@ const HowWeWork = () => {
   }, []);
 
   return (
-    <section id="how-we-work" className="bg-white">
+    <section id="how-we-work" className="bg-white dark:bg-[#0B1120]">
       <SectionHeader />
       {isMobile ? <MobileTimeline /> : <CircleSection />}
     </section>
