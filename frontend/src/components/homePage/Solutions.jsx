@@ -89,7 +89,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
       initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + (index * 0.2) }}
+      transition={{ duration: 0.4, ease: "easeOut", delay: (index % 3) * 0.15 }}
       style={{ perspective: "1200px" }}
       className={`relative ${isMobile ? "w-full h-full" : "z-10 hover:z-50"}`}
     >
@@ -180,7 +180,7 @@ const MobileSolutionCarousel = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
-    }, 4000);
+    }, 3500);
     return () => clearInterval(timer);
   }, []);
 

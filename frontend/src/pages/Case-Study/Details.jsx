@@ -88,7 +88,7 @@ const Hero = ({ title, image }) => {
   );
 };
 
-const Details = ({ title, description, image, projectOverview }) => {
+const Details = ({ title, description, image, projectOverview, slug, galleryImages }) => {
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -120,11 +120,31 @@ const Details = ({ title, description, image, projectOverview }) => {
 
           {/* Right Column - Image */}
           <div className="lg:col-span-7">
-            <img
-              src={image || imgProject}
-              alt="Project Overview"
-              className="w-full h-auto rounded-[24px] md:rounded-[32px] object-cover"
-            />
+            {slug === "mobile-app-development" && galleryImages?.length >= 3 ? (
+              <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+                <img
+                  src={galleryImages[0]}
+                  alt="App Screen 1"
+                  className="absolute w-[45%] md:w-[40%] rounded-[24px] shadow-2xl -rotate-12 -translate-x-16 md:-translate-x-24 z-10 object-cover"
+                />
+                <img
+                  src={galleryImages[1]}
+                  alt="App Screen 2"
+                  className="absolute w-[50%] md:w-[45%] rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-30 object-cover"
+                />
+                <img
+                  src={galleryImages[2]}
+                  alt="App Screen 3"
+                  className="absolute w-[45%] md:w-[40%] rounded-[24px] shadow-2xl rotate-12 translate-x-16 md:translate-x-24 z-20 object-cover"
+                />
+              </div>
+            ) : (
+              <img
+                src={image || imgProject}
+                alt="Project Overview"
+                className="w-full h-auto rounded-[24px] md:rounded-[32px] object-cover"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -464,6 +484,8 @@ const CaseStudyDetails = () => {
         description={description}
         image={image}
         projectOverview={projectOverview}
+        slug={slug}
+        galleryImages={galleryImages}
       />
       <ProjectInfo infoItems={infoItems} />
       <CoreStacks coreStacks={coreStacks} />
