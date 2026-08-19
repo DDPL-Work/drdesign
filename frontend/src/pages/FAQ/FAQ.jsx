@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FiPhone } from "react-icons/fi";
 import gsap from "gsap";
 import FAQFormModal from '../../components/common/LeadFormModal';
+import { faqData } from '../../constants/faqData';
 
 const FAQHero = ({ searchQuery, setSearchQuery }) => {
   return (
@@ -370,73 +371,3 @@ const FAQ = () => {
 };
 
 export default FAQ;
-
-
-const faqData = [
-  {
-    category: "General & Consulting",
-    id: "general",
-    questions: [
-      { q: "What services do you provide?", a: "We specialize in comprehensive digital solutions including Software & Web Development, Digital Marketing & Branding, ERP/SaaS solutions, and advanced GIS & Drone mapping services." },
-      { q: "Who can benefit from your services?", a: "Our services are tailored for businesses of all sizes—from startups looking to establish their digital footprint to enterprises needing complex spatial data analysis, custom ERPs, or scalable cloud architectures." },
-      { q: "Do you offer IT and strategy consultation?", a: "Yes! Getting started is easy. We offer in-depth tech and business consultations to assess your current infrastructure, understand your goals, and propose a tailored strategy for digital transformation." },
-      { q: "How do you price your services?", a: "Our pricing models are flexible and depend on the scope, complexity, and timeline of the project. We offer fixed-price contracts for clearly defined projects, as well as time-and-materials billing for ongoing development or consulting." },
-      { q: "What is your typical project workflow?", a: "We follow an agile methodology. Our workflow typically includes Discovery & Planning, Design & Prototyping, Development, rigorous Testing, Deployment, and finally, ongoing Support & Maintenance." },
-      { q: "Do you sign Non-Disclosure Agreements (NDAs)?", a: "Absolutely. We respect your intellectual property and are fully willing to sign an NDA before we even begin discussing the specific details of your project." },
-      { q: "Will I have a dedicated project manager?", a: "Yes, every project is assigned a dedicated project manager who serves as your primary point of contact, ensuring seamless communication and that milestones are delivered on time." }
-    ]
-  },
-  {
-    category: "Software & Web Development",
-    id: "software-dev",
-    questions: [
-      { q: "Do you offer custom Web and App development?", a: "Absolutely. We build high-performance, scalable web applications and native/cross-platform mobile apps using modern frameworks to ensure they integrate seamlessly with your existing systems." },
-      { q: "Can you build eCommerce sites on WordPress or Shopify?", a: "Yes, we have deep expertise in building, customizing, and scaling eCommerce platforms using Shopify and WordPress (WooCommerce). We handle everything from theme design to payment gateway integrations." },
-      { q: "Do you develop custom ERP and SaaS products?", a: "Yes. We design and develop custom Enterprise Resource Planning (ERP) systems to streamline your operations, as well as scalable multi-tenant SaaS architectures from the ground up." },
-      { q: "What technologies do you work on for web and app development?", a: "For the frontend, we utilize React, Next.js, Vue, and Angular. For mobile apps, we specialize in React Native and Flutter. On the backend, we work extensively with Node.js, Python (Django/FastAPI), Java, and PHP. We also leverage modern databases like PostgreSQL, MongoDB, and MySQL." },
-      { q: "Do you provide website maintenance and support?", a: "Yes, we offer flexible maintenance packages. Whether it's patching security vulnerabilities, updating plugins for WordPress, adding new features, or optimizing server performance, we've got you covered." },
-      { q: "Can you rescue an existing software project that is failing?", a: "Yes, we often take over legacy codebases or stalled projects. We'll conduct a comprehensive code audit, identify bottlenecks, refactor where necessary, and bring the project across the finish line." },
-      { q: "How do you ensure the security of the applications you build?", a: "Security is built into our development lifecycle. We follow OWASP best practices, implement robust authentication (like JWT or OAuth), ensure data encryption in transit and at rest, and conduct regular vulnerability testing." },
-      { q: "Will my website be mobile-friendly and responsive?", a: "100%. We design and develop with a mobile-first approach, ensuring that your web application or eCommerce store looks beautiful and functions perfectly across all devices and screen sizes." }
-    ]
-  },
-  {
-    category: "GIS & Spatial Solutions",
-    id: "gis-practice",
-    questions: [
-      { q: "What GIS development services do you offer?", a: "We provide end-to-end GIS development, including custom web mapping applications, spatial database design (PostGIS), and bespoke GIS tools tailored to your specific industry needs." },
-      { q: "Do you provide professional Drone Services?", a: "Yes. We offer professional drone surveying and data collection. We process high-resolution drone imagery to create precise topographic maps, 3D models, and agricultural analyses like NDVI." },
-      { q: "Can you help with Map Services and spatial integration?", a: "Definitely. We publish and manage map services, create interactive dashboards, and build custom APIs that connect spatial databases directly with your CRM or enterprise software to enrich your data with geographical insights." },
-      { q: "What GIS tools and technologies do you use?", a: "We are experts in open-source and commercial GIS stacks. This includes QGIS, ESRI ArcGIS, PostGIS for spatial databases, GeoServer, Mapbox, Leaflet, and OpenLayers for web mapping interfaces." },
-      { q: "Can you convert physical maps or CAD drawings into GIS formats?", a: "Yes, we offer comprehensive data digitization, georeferencing, and CAD-to-GIS conversion services to bring your legacy spatial data into a modern, queryable digital format." },
-      { q: "Do you offer spatial data analysis and modeling?", a: "Yes. We perform advanced spatial analytics such as network analysis, site suitability modeling, watershed analysis, and land-use classification using satellite or drone imagery." },
-      { q: "What industries benefit most from your GIS services?", a: "Our GIS solutions are widely used in urban planning, agriculture, logistics and routing, real estate, environmental monitoring, utilities management, and disaster response." },
-      { q: "Are your map services scalable for high-traffic applications?", a: "Yes. We deploy optimized tile servers and leverage vector tiles alongside robust caching mechanisms to ensure maps load instantly, even under heavy user loads." }
-    ]
-  },
-  {
-    category: "Digital Marketing & SEO",
-    id: "digital-marketing",
-    questions: [
-      { q: "What digital marketing services do you offer?", a: "We offer end-to-end digital marketing solutions, including brand identity design, social media management, targeted Meta (Facebook/Instagram) Ads, and Google Ads campaigns to maximize your ROI." },
-      { q: "Can you improve my website's SEO?", a: "Yes. Our SEO experts optimize your technical on-page structure, content strategy, and off-page footprint to help your website rank higher on search engines and drive organic traffic." },
-      { q: "How do you measure the success of a marketing campaign?", a: "We are heavily data-driven. We use tools like Google Analytics, Meta Pixel, and custom dashboard reporting to track KPIs like Conversion Rate, Cost Per Acquisition (CPA), Return on Ad Spend (ROAS), and organic traffic growth." },
-      { q: "Do you offer branding and identity design?", a: "Yes! We help businesses define their visual identity. This includes logo design, typography selection, brand guidelines, and creating cohesive visual assets for both web and print." },
-      { q: "What is your approach to Meta (Facebook/Instagram) Ads?", a: "We start by deeply understanding your target audience. We then run A/B tested campaigns with tailored creative assets and ad copy. We continuously monitor ad performance, reallocating budget to the best-performing demographics and retargeting engaged users." },
-      { q: "How long does it take to see results from SEO?", a: "SEO is a long-term strategy. While technical fixes can yield quick improvements, substantial organic growth typically takes 3 to 6 months as search engines index your optimized content and your domain authority grows." },
-      { q: "Do you handle content creation and copywriting?", a: "Yes. We have a team of skilled copywriters and content creators who can produce SEO-optimized blog posts, engaging social media captions, website copy, and compelling ad scripts." },
-      { q: "Can you integrate marketing automation with our CRM?", a: "Absolutely. We can connect your lead generation campaigns directly to CRMs like HubSpot, Salesforce, or custom backends, triggering automated email sequences and team notifications." }
-    ]
-  },
-  {
-    category: "Cloud & Infrastructure",
-    id: "cloud",
-    questions: [
-      { q: "What cloud platforms do you work with?", a: "We are proficient in all major cloud providers, including Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, as well as specialized providers like DigitalOcean." },
-      { q: "Can you help migrate our legacy systems to the cloud?", a: "Yes, we specialize in cloud migrations. We conduct a thorough assessment of your current architecture and orchestrate a secure, zero-downtime migration to modern cloud infrastructure." },
-      { q: "Do you offer DevOps and CI/CD services?", a: "Yes. We automate the software delivery lifecycle using tools like Docker, Kubernetes, Jenkins, and GitHub Actions, ensuring that your deployments are fast, reliable, and easily reversible." },
-      { q: "How do you handle data backups and disaster recovery?", a: "We implement automated, geo-redundant backup strategies and design disaster recovery protocols to ensure your critical business data is safe and can be restored quickly in case of emergencies." },
-      { q: "Can you optimize our existing cloud hosting costs?", a: "Yes. We offer cloud cost-optimization audits where we identify underutilized resources, implement auto-scaling rules, and restructure your architecture to significantly reduce your monthly server bills." }
-    ]
-  }
-];

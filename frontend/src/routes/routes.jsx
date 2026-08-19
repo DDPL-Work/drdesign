@@ -9,6 +9,8 @@ import PlaceholderPage from "../pages/NotFound/NotFound";
 import ContactUs from "../pages/Contact-Us/ContactUs";
 import Services from "../pages/Services/Services";
 import FAQ from "../pages/FAQ/FAQ";
+import Careers from "../pages/Careers/Careers";
+import RoleDetails from "../components/careers-page/RoleDetails";
 
 const ScrollManager = () => {
   const location = useLocation();
@@ -56,7 +58,9 @@ export const appRouter = createBrowserRouter([
       { path: "/about-us", element: <AboutUs /> },
       { path: "/contact-us", element: <ContactUs /> },
       { path: "/services", element: <Services /> },
+      { path: "/find-teams", element: <Careers /> },
       { path: "/project/:slug", element: <CaseStudyDetails /> },
+      { path: "/role/:slug", element: <RoleDetails /> },
       { path: "/find-answers", element: <FAQ /> },
       { path: "*", element: <PlaceholderPage />, handle: { is404: true } },
     ]

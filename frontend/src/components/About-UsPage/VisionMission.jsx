@@ -148,7 +148,7 @@ const VisionMission = () => {
                 </motion.h3>
                 
                 <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed grow">
-                  To be the technology partner of choice for organizations that manage complex physical and digital operations — making advanced software and spatial intelligence accessible to teams of every size.
+                  To be the premier technology partner and IT company in Dehradun for organizations managing complex physical and digital operations. We are dedicated to making advanced custom software development, scalable IT solutions, and geospatial intelligence (GIS) accessible to teams of every size across India and globally.
                 </motion.p>
               </div>
             </TiltCard>
@@ -190,7 +190,7 @@ const VisionMission = () => {
                 </motion.h3>
                 
                 <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed grow">
-                  To design and engineer software that people actually enjoy using — combining rigorous development practice, research-led design and geospatial expertise to deliver measurable outcomes for every client we serve.
+                  Our mission as a leading software engineering firm is to design and develop robust IT solutions that people genuinely enjoy using. By combining rigorous agile development practices, research-led UI/UX design, and advanced geospatial (GIS) expertise, we deliver measurable, high-impact technological outcomes for every client we serve.
                 </motion.p>
               </div>
             </TiltCard>

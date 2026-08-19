@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { solutionsData } from "../../components/homePage/Solutions";
 import { Link, useParams } from "react-router-dom";
 import Lenis from "lenis";
@@ -19,29 +19,30 @@ import {
 } from "react-icons/fa";
 import { SiPostgresql, SiNextdotjs } from "react-icons/si";
 import CTA from "../../components/homePage/CTA";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { projectDetailsData } from "../../constants/projectDetails";
 
-const Hero = () => {
-  const text = "Project Details";
+const Hero = ({ title, image }) => {
+  const text = title || "Project Details";
   const textVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.04, delayChildren: 0.2 }
-    }
+      transition: { staggerChildren: 0.04, delayChildren: 0.2 },
+    },
   };
   const charVariants = {
     hidden: { opacity: 0, y: 15, filter: "blur(10px)" },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      filter: "blur(0px)", 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
-    }
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -55,7 +56,7 @@ const Hero = () => {
       >
         {/* Background photo */}
         <img
-          src={heroImg}
+          src={image || heroImg}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -70,7 +71,7 @@ const Hero = () => {
       </motion.div>
       {/* Centered title */}
       <div className="relative z-20 flex items-center justify-center h-full">
-        <motion.h1 
+        <motion.h1
           variants={textVariants}
           initial="hidden"
           animate="visible"
@@ -87,9 +88,9 @@ const Hero = () => {
   );
 };
 
-const Details = ({ title, description, image }) => {
+const Details = ({ title, description, image, projectOverview }) => {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -104,17 +105,16 @@ const Details = ({ title, description, image }) => {
               {title || "Enterprise Resource Planning System"}
             </h2>
             <p className="font-inter text-[15px] md:text-[16px] text-[#60738a] leading-[1.7] mb-10">
-              {description || "A unified ERP replacing five disconnected legacy tools — bringing finance, inventory, procurement, and production planning into a single real-time platform used across four plants."}
+              {description ||
+                "A unified ERP replacing five disconnected legacy tools — bringing finance, inventory, procurement, and production planning into a single real-time platform used across four plants."}
             </p>
 
             <h3 className="font-jetbrains text-[22px] md:text-[26px] font-medium text-[#0A1118] mb-4">
               Project Overview
             </h3>
             <p className="font-inter text-[14px] md:text-[15px] text-[#60738a] leading-[1.7]">
-              Platea In dictumst hac habitasse aute velit Duis in esse irure
-              nulla dolor voluptate pariatur fugiat reprehenderit eu cillum in
-              dolore Sed magna aliqua dolore eiusmod labore tempor et do ut
-              incididunt malesuada massa Maecenas erat at congue Praesent leo.
+              {projectOverview ||
+                "Platea In dictumst hac habitasse aute velit Duis in esse irure nulla dolor voluptate pariatur fugiat reprehenderit eu cillum in dolore Sed magna aliqua dolore eiusmod labore tempor et do ut incididunt malesuada massa Maecenas erat at congue Praesent leo."}
             </p>
           </div>
 
@@ -132,8 +132,8 @@ const Details = ({ title, description, image }) => {
   );
 };
 
-const ProjectInfo = () => {
-  const items = [
+const ProjectInfo = ({ infoItems }) => {
+  const defaultItems = [
     {
       icon: FaRegUser,
       title: "Client",
@@ -155,8 +155,10 @@ const ProjectInfo = () => {
       des: "7 months",
     },
   ];
+
+  const items = infoItems || defaultItems;
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -193,13 +195,19 @@ const ProjectInfo = () => {
   );
 };
 
-const CoreStacks = () => {
-  const icons = [
+const CoreStacks = ({ coreStacks }) => {
+  if (coreStacks && coreStacks.length === 0) {
+    return null;
+  }
+
+  const defaultIcons = [
     { Icon: SiPostgresql, color: "#336791" },
     { Icon: FaAws, color: "#f99000" },
     { Icon: SiNextdotjs, color: "#111111" },
     { Icon: FaNodeJs, color: "#339933" },
   ];
+
+  const icons = coreStacks || defaultIcons;
 
   // Repeat icons to ensure a smooth, seamless infinite scroll
   const repeatedIcons = [
@@ -214,7 +222,7 @@ const CoreStacks = () => {
   ];
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
@@ -254,7 +262,7 @@ const CoreStacks = () => {
             return (
               <div
                 key={index}
-                className="shrink-0 mx-8 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                className="shrink-0 mx-8 flex items-center justify-center grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
               >
                 <Icon
                   className="text-[40px] md:text-[48px]"
@@ -268,18 +276,28 @@ const CoreStacks = () => {
     </motion.section>
   );
 };
-const ProjectGalley = () => {
-  const images = [img1, imge2, img3];
+const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const defaultImages = [img1, imge2, img3];
+  const images = galleryImages || defaultImages;
   // Duplicate array multiple times for a seamless infinite scroll loop
-  const repeatedImages = [...images, ...images, ...images, ...images, ...images, ...images];
+  const repeatedImages = [
+    ...images,
+    ...images,
+    ...images,
+    ...images,
+    ...images,
+    ...images,
+  ];
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full pb-24 bg-white overflow-hidden relative"
+      className="w-full pb-10 bg-white overflow-hidden relative"
     >
       <style>{`
         @keyframes gallery-marquee {
@@ -294,31 +312,74 @@ const ProjectGalley = () => {
           transform: translateZ(0);
         }
       `}</style>
-      
+
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24 flex flex-col mb-8">
         <h2 className="font-jetbrains font-medium text-[#0A1118] text-[28px] md:text-[32px]">
           Project Galley
         </h2>
       </div>
 
-      <div className="w-full relative overflow-hidden flex items-center">
+      <div className="w-full relative overflow-hidden flex items-start">
         <div className="animate-gallery-marquee hover:[animation-play-state:paused]">
           {repeatedImages.map((src, index) => (
-            <div 
-              key={index} 
-              className="w-[85vw] md:w-100 xl:w-135.25 shrink-0 mx-4 md:mx-8 aspect-[541/587] rounded-2xl md:rounded-[20px] overflow-hidden bg-transparent flex items-center justify-center"
+            <div
+              key={index}
+              onClick={() => setSelectedImage(src)}
+              className={`shrink-0 mx-4 md:mx-8 rounded-2xl md:rounded-[20px] overflow-hidden bg-transparent flex items-start justify-center cursor-pointer ${
+                isMobileApp
+                  ? "h-[60vh] md:h-[600px] w-auto"
+                  : isGisApp
+                    ? "w-[85vw] md:w-[600px] h-auto"
+                    : "w-[85vw] md:w-[450px] h-auto"
+              }`}
             >
               <img
                 src={src}
                 alt={`Project screen ${index + 1}`}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500"
+                className={`transition-transform duration-500 ${
+                  isMobileApp
+                    ? "h-full w-auto object-contain"
+                    : "w-full h-auto object-contain"
+                }`}
               />
             </div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-10000000 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8 cursor-zoom-out"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 text-4xl font-light z-[110] transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+            >
+              &times;
+            </button>
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              src={selectedImage} 
+              alt="Full screen preview" 
+              className="max-w-full max-h-full rounded-[16px] shadow-2xl object-contain cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 };
@@ -358,12 +419,21 @@ const CaseStudyDetails = () => {
   const formattedTitle = formatTitle(slug);
 
   const project = solutionsData.find(
-    (item) => item.title.toLowerCase().replace(/\s+/g, '-') === slug
+    (item) => item.title.toLowerCase().replace(/[\s/]+/g, "-") === slug,
   );
 
-  const title = project ? project.title : formattedTitle;
-  const description = project ? project.description : null;
-  const image = project ? project.image : null;
+  // Traveamer specific overrides (and others defined in constants)
+  const detailsOverride = projectDetailsData[slug] || {};
+  const title =
+    detailsOverride.title || (project ? project.title : formattedTitle);
+  const description =
+    detailsOverride.description || (project ? project.description : null);
+  const image = detailsOverride.image || (project ? project.image : null);
+
+  const projectOverview = detailsOverride.projectOverview || null;
+  const infoItems = detailsOverride.infoItems || null;
+  const galleryImages = detailsOverride.galleryImages || null;
+  const coreStacks = detailsOverride.coreStacks || null;
 
   return (
     <main>
@@ -388,11 +458,20 @@ const CaseStudyDetails = () => {
           <span className="text-[#2f3130] font-medium">{title}</span>
         </div>
       </div>
-      <Hero />
-      <Details title={title} description={description} image={image} />
-      <ProjectInfo />
-      <CoreStacks />
-      <ProjectGalley />
+      <Hero title={project ? project.title : formattedTitle} image={project ? project.image : null} />
+      <Details
+        title={title}
+        description={description}
+        image={image}
+        projectOverview={projectOverview}
+      />
+      <ProjectInfo infoItems={infoItems} />
+      <CoreStacks coreStacks={coreStacks} />
+      <ProjectGalley
+        galleryImages={galleryImages}
+        isMobileApp={slug === "mobile-app-development"}
+        isGisApp={slug === "gis-&-spatial-data"}
+      />
       <CTA />
     </main>
   );
