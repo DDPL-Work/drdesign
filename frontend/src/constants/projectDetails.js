@@ -153,7 +153,7 @@ export const projectDetailsData = {
       { Icon: SiRedis, color: "#DC382D" },
       { Icon: SiExpress, color: "#000000" },
     ],
-    galleryImages: [TP1, TP2, TP3, TP4, TP5, TP6, TP7, TP8, TP9, TP10, TP11]
+    galleryImages: [TP2, TP3, TP4, TP5, TP6, TP7, TP8, TP9, TP10, TP11]
   },
   "government-it-project": {
     image: SOI1,
