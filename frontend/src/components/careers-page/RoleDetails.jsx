@@ -373,14 +373,21 @@ const RoleDetails = () => {
               <p className="font-sans text-[15px] leading-[1.6] mb-8">
                 <ScrollWordReveal text="If you're excited about this role and share our passion for building the future, we want to hear from you. Submit your application below." />
               </p>
-              <button 
+              <motion.button
                 onClick={() => setIsApplyModalOpen(true)}
-                className="group/btn relative flex items-center justify-center gap-2 w-full bg-[#4B6BFB] text-white font-sans font-medium text-[16px] py-4 px-8 rounded-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(75,107,251,0.25)] cursor-pointer"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px" }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="w-full relative z-10 group bg-[#0a181c] text-white font-jetbrains text-[15px] md:text-[16px] px-5 py-3 md:px-8 md:py-4 rounded-full flex justify-center items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer"
               >
-                <span className="relative z-10">Apply Now</span>
-                <FiArrowUpRight className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-              </button>
+                <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">
+                  Apply Now
+                </span>
+                <span className="text-xl font-bold md:text-2xl -mt-2 ml-2 md:ml-3 transition-all duration-300 ease-out group-hover:translate-x-7.5 group-hover:opacity-0">
+                  &rarr;
+                </span>
+              </motion.button>
             </motion.div>
           </div>
 
