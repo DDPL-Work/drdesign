@@ -86,14 +86,11 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     } else {
-      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     }
     return () => {
-      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [isOpen]);
@@ -126,18 +123,22 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={handleBackdropClick}
-          className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 bg-black/40 backdrop-blur-sm overflow-y-auto overscroll-contain"
+          className="fixed inset-0 z-[99999] bg-black/40 backdrop-blur-sm overflow-y-auto"
+          data-lenis-prevent="true"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-[1400px] max-h-full flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8 my-auto bg-[#EAF3FF] p-4 lg:p-6 rounded-[36px] shadow-2xl"
+          <div 
+            className="flex min-h-full items-center justify-center p-4 sm:p-6"
+            onClick={handleBackdropClick}
           >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative w-full max-w-[1400px] flex flex-col lg:flex-row items-stretch gap-6 lg:gap-8 bg-[#EAF3FF] p-4 lg:p-6 rounded-[36px] shadow-2xl"
+            >
             {/* Left Panel - Dark */}
-            <div className="hidden lg:flex w-full lg:w-[45%] min-h-0 bg-[#091123] p-8 md:p-12 flex-col justify-between text-white relative overflow-y-auto rounded-[27px] shadow-2xl overscroll-contain no-scrollbar">
+            <div className="hidden lg:flex w-full lg:w-[45%] bg-[#091123] p-8 md:p-12 flex-col justify-between text-white relative rounded-[27px] shadow-2xl">
               <div className="flex flex-col gap-6 relative z-10">
                 <div className="flex items-center gap-4 text-xs font-semibold tracking-widest text-[#DBDBDB] uppercase">
                   <span>Join the Team</span>
@@ -196,7 +197,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
             </div>
 
             {/* Right Panel - Form */}
-            <div className="w-full lg:w-[55%] min-h-0 bg-[#F1F7FF] rounded-[27px] shadow-2xl relative flex flex-col">
+            <div className="w-full lg:w-[55%] bg-[#F1F7FF] rounded-[27px] shadow-2xl relative flex flex-col">
               <button
                 onClick={onClose}
                 type="button"
@@ -205,7 +206,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
                 <FiX className="text-xl" />
               </button>
 
-              <div className="flex-1 p-8 md:p-10 flex flex-col justify-start lg:justify-center overflow-y-auto overscroll-contain no-scrollbar">
+              <div className="flex-1 p-8 md:p-10 flex flex-col justify-start lg:justify-center">
                 <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
                   {/* Row 1: Name & Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -249,6 +250,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
                           country={"in"}
                           value={phone}
                           onChange={setPhone}
+                          dropdownClass="no-scrollbar"
                           inputStyle={{
                             width: "100%",
                             height: "46px",
@@ -295,7 +297,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-[80px] left-0 w-full max-h-48 bg-white border border-gray-200 rounded-xl shadow-lg z-30 overflow-y-auto overscroll-contain no-scrollbar"
+                                className="absolute top-full mt-2 left-0 w-full max-h-48 bg-white border border-gray-200 rounded-xl shadow-lg z-[9999] overflow-y-auto overscroll-contain no-scrollbar"
                               >
                                 {roleOptions.map((option, index) => (
                                   <div
@@ -375,7 +377,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full mt-4 py-3.5 bg-[#4B6BFB] hover:bg-[#3A55C4] text-white rounded-xl text-[16px] font-semibold font-sans flex justify-center items-center gap-2 transition-all shadow-md group ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
+                    className={`w-full mt-4 py-3.5 bg-[#091123] hover:bg-[#152343] text-white rounded-xl text-[16px] font-semibold font-sans flex justify-center items-center gap-2 transition-all shadow-md group ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
                   >
                     {isSubmitting ? "Submitting..." : "Submit Application"}
                     {!isSubmitting && <FiSend className="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
@@ -384,6 +386,7 @@ const ApplyFormModal = ({ isOpen, onClose, roleName, roleOptions = [] }) => {
               </div>
             </div>
           </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
