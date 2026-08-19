@@ -152,9 +152,10 @@ const TrustedClients = () => {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-[#5e6673] font-inter text-[14px] md:text-[18px] leading-relaxed max-w-3xl"
           >
-            From government departments and hospital networks to manufacturing
-            groups and D2C brands — our clients span sectors, and most of them
-            are on their third or fourth project with us.
+            From national government departments to manufacturing
+            groups and D2C brands — our custom IT and GIS solutions span diverse
+            sectors across India and globally, with most clients trusting us for
+            their third or fourth software project.
           </motion.p>
         </div>
       </div>

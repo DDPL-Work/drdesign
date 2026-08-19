@@ -6,38 +6,38 @@ const achievements = [
   {
     id: 1,
     icon: FiCheckCircle,
-    title: "300+ successful deliveries",
-    description: "From four-week MVPs to multi-year enterprise ERP rollouts."
+    title: "300+ Successful IT Deliveries",
+    description: "From agile MVPs to enterprise-grade custom ERP software rollouts across India and globally."
   },
   {
     id: 2,
     icon: FiShield,
-    title: "Security-first delivery",
-    description: "Audit-ready architectures for healthcare, government and financial clients."
+    title: "Secure Software Architecture",
+    description: "Audit-ready IT solutions engineered for stringent healthcare, government, and financial sectors."
   },
   {
     id: 3,
     icon: FiAward,
-    title: "ISO 9001:2015 aligned processes",
-    description: "Documented quality management across discovery, delivery and support."
+    title: "ISO 9001:2015 Aligned Development",
+    description: "Rigorous quality management processes across discovery, software delivery, and ongoing tech support."
   },
   {
     id: 4,
     icon: FiClock,
-    title: "5+ years, zero abandoned projects",
-    description: "Every engagement carried through to launch and supported after it."
+    title: "5+ Years, Zero Abandoned Projects",
+    description: "A trusted Dehradun tech partner ensuring every engagement reaches launch with dedicated post-live support."
   },
   {
     id: 5,
     icon: FiMap,
-    title: "Geospatial specialisation",
-    description: "Remote sensing, LULC mapping and web GIS platforms delivered at state scale."
+    title: "Advanced Geospatial (GIS) Solutions",
+    description: "Delivering remote sensing, LULC mapping, and highly scalable web GIS platforms at a national level."
   },
   {
     id: 6,
     icon: FiBriefcase,
-    title: "MSME & Startup India recognised",
-    description: "Registered vendor for public-sector and institutional projects."
+    title: "MSME & Startup India Recognised",
+    description: "A registered IT and GIS vendor trusted for delivering complex public-sector and institutional projects."
   }
 ];
 

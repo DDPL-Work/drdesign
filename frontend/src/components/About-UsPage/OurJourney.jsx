@@ -7,12 +7,12 @@ const timelineData = [
     id: 1,
     year: "2018",
     pill: "01 COMPANY DETAILS",
-    title: "Where it all started",
-    description: "Dr. Design began in 2018 as a two-person design studio in Dehradun, working on interfaces for local businesses. As clients started asking for the systems behind those interfaces, we grew into a full engineering practice — custom software, ERP platforms, cloud infrastructure and, later, a dedicated geospatial division.",
+    title: "Our Origins: IT & GIS Company in Dehradun",
+    description: "Founded in 2018 as a boutique design studio in Dehradun, Dr. Design quickly evolved into a comprehensive software engineering firm. Today, we deliver end-to-end IT solutions, specializing in custom software development, robust ERP platforms, scalable cloud infrastructure, and advanced GIS (Geographic Information Systems) and geospatial services for businesses across India.",
     bullets: [
-      "Registered as Dr. Design Pvt. Ltd., headquartered in Dehradun with a presence in Delhi",
-      "Two practices under one roof: IT Services and GIS / Geospatial Services",
-      "A dedicated squad model — product lead, designers, engineers and QA on every project"
+      "Officially registered as Dr. Design Pvt. Ltd., headquartered in Dehradun, Uttarakhand, with a strategic presence in Delhi NCR.",
+      "Delivering dual expertise under one roof: full-stack IT Services and specialized GIS / Geospatial Mapping Services.",
+      "Deploying a dedicated agile squad model—equipping every project with a product lead, UI/UX designers, software engineers, and QA specialists."
     ],
     alignment: "left",
     icon: FiHome
@@ -21,12 +21,12 @@ const timelineData = [
     id: 2,
     year: "Today",
     pill: "02 CULTURE & VALUES",
-    title: "What drives our work",
-    description: "We are a small, senior team that prefers clarity over ceremony. Our culture is built on ownership: the people who design a system stay with it through delivery and support. That continuity is why our clients stay with us for years rather than projects.",
+    title: "Our Core Values & Engineering Culture",
+    description: "Our team of senior software engineers and UI/UX designers prioritizes clarity and high-performance execution. Our corporate culture is rooted in absolute ownership: the experts who architect your digital systems remain dedicated through delivery, deployment, and ongoing technical support. This commitment to continuity enables us to foster long-term technological partnerships with our clients.",
     bullets: [
-      "Innovation first — we prototype early and test with real users before writing production code",
-      "Sustainable engineering — maintainable codebases, documented systems, no throwaway work",
-      "Customer obsession — transparent sprint updates, no surprises on scope or timelines"
+      "Innovation-First Approach: We conduct rapid prototyping and real-user testing before committing to production-ready code.",
+      "Sustainable Software Engineering: We build highly maintainable codebases and fully documented systems, ensuring scalable digital products.",
+      "Unwavering Customer Obsession: We provide transparent Agile sprint updates with guaranteed clarity on project scope and delivery timelines."
     ],
     alignment: "right",
     icon: FiHeart
@@ -35,12 +35,12 @@ const timelineData = [
     id: 3,
     year: "Always",
     pill: "03 LOCATION & CONTACT",
-    title: "Where to find us",
-    description: "Our studio sits near Survey Chowk in Dehradun, minutes from the Survey of India campus — a fitting neighbourhood for a team that maps as much as it codes. We work with clients across India and internationally, on-site or fully remote.",
+    title: "Our Headquarters: Dehradun & Delhi",
+    description: "Strategically located near Survey Chowk in Dehradun—just minutes from the esteemed Survey of India campus—our headquarters is perfectly situated for a technology firm that excels in both software engineering and geospatial mapping. We seamlessly partner with enterprises, government bodies, and international clients, offering flexible on-site and fully remote IT consulting services.",
     bullets: [
-      "Head office: Near Survey Chowk, 11 East Canal Road, Dehradun, Uttarakhand 248001",
-      "Second presence: Delhi NCR for client and government engagements",
-      "Reach us at business@drdesigntech.com or +91 7060100443"
+      "Corporate Headquarters: Near Survey Chowk, 11 East Canal Road, Dehradun, Uttarakhand 248001, India.",
+      "Strategic Regional Presence: Delhi NCR offices catering to enterprise IT clients and government engagements.",
+      "Partner with us: Contact our technical experts at contact@drdesigntech.com.com or call +91 7060100443."
     ],
     alignment: "left",
     icon: FiMapPin

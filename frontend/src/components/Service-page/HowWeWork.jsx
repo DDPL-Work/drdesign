@@ -13,6 +13,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { FiCompass, FiPenTool, FiCode, FiTrendingUp } from "react-icons/fi";
 
 /* ─── Constants ──────────────────────────────────────────── */
 const ACCENT        = "#4B6BFB";
@@ -32,6 +33,7 @@ const STEPS = [
       "Workshops to map goals, users, data and constraints before a line of code.",
     revealAt: 0.15,
     angleProgress: 0,
+    icon: FiCompass,
   },
   {
     id: "02",
@@ -41,6 +43,7 @@ const STEPS = [
       "Prototypes and architecture that make the solution tangible early.",
     revealAt: 0.4,
     angleProgress: 0.25,
+    icon: FiPenTool,
   },
   {
     id: "03",
@@ -50,6 +53,7 @@ const STEPS = [
       "Two-week sprints with senior engineers and a working demo every cycle.",
     revealAt: 0.65,
     angleProgress: 0.5,
+    icon: FiCode,
   },
   {
     id: "04",
@@ -58,6 +62,7 @@ const STEPS = [
     description: "Deployment, training, monitoring and long-term support.",
     revealAt: 0.88,
     angleProgress: 0.75,
+    icon: FiTrendingUp,
   },
 ];
 
@@ -169,7 +174,7 @@ const CircleSection = () => {
     travelY.set(point.y);
     ringGlowOpacity.set(clamped >= 0.98 ? 1 : 0);
 
-    const nextVis    = STEPS.map((s) => clamped > s.revealAt);
+    const nextVis    = STEPS.map((s) => clamped > s.angleProgress);
     const nextDotVis = STEPS.map((s) => clamped >= s.angleProgress);
     const nextDone   = clamped >= 0.98;
 
@@ -452,8 +457,9 @@ const MobileTimeline = () => {
                 >
                   {step.label}
                 </div>
-                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
-                  {step.title}
+                <h3 className="m-0 mb-[6px] flex items-center gap-2 font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
+                  {step.icon && <step.icon className="w-[18px] h-[18px] shrink-0" style={{ color: ACCENT }} />}
+                  <span>{step.title}</span>
                 </h3>
                 <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] leading-[1.6]">
                   {step.description}

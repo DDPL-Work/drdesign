@@ -354,15 +354,9 @@ const AboutUs = () => {
 
         <p
           ref={textRef}
-          className="font-inter text-[#333333] text-[13px] md:text-[20px] leading-[1.8] max-w-[814px] mb-8 font-normal"
+          className="font-inter text-[#333333] text-[13px] md:text-[19px] leading-[1.8] max-w-[814px] mb-8 font-normal"
         >
-          DR.DESIGN PVT. LTD. is a forward-thinking technology and consulting
-          company <br className="sm:block hidden" /> specializing in Geospatial Solutions, IT Services, and
-          Digital Transformation. Founded <br className="sm:block hidden" /> on a strong foundation of
-          technical expertise and government-backed credibility, we <br className="sm:block hidden" /> are
-          expanding our services to Startups, SMEs, and growing businesses—
-          leverage <br className="sm:block hidden" /> cutting-edge tech to build smarter, scale faster, and
-          succeed in the digital age.
+          DR.DESIGN PVT. LTD. is a premier technology and consulting firm specializing in <br className="sm:block hidden" /> enterprise Geospatial Solutions (GIS), custom IT Services, and comprehensive Digital <br className="sm:block hidden" /> Transformation. Built on deep technical expertise, we partner with startups, established <br className="sm:block hidden" /> businesses, and government agencies to bring their visionary ideas to life. We engineer <br className="sm:block hidden" /> custom, data-driven infrastructure and intelligent software that helps our clients scale faster and optimize operations.
         </p>
 
         {/* Desktop View */}
@@ -382,7 +376,7 @@ const AboutUs = () => {
           <StatCard
             cardRef={(el) => (cardsRef.current[2] = el)}
             icon={AnimatedHQSVG}
-            title="HQ in Delhi"
+            title="HQ in Dehradun"
             subtitle="offices in the Delhi & Dehradun"
           />
         </div>

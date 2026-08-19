@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { FiTrendingUp, FiPieChart, FiShield, FiArrowLeft, FiArrowRight, FiMonitor, FiSmartphone, FiMap, FiSearch, FiTarget } from 'react-icons/fi';
+import { FiTrendingUp, FiPieChart, FiShield, FiArrowLeft, FiArrowRight, FiMonitor, FiSmartphone, FiMap, FiSearch, FiTarget, FiPenTool } from 'react-icons/fi';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export const solutionsData = [
@@ -35,15 +35,15 @@ export const solutionsData = [
   },
   {
     id: "05",
-    title: "Meta Ads & Campaigns",
-    description: "Highly targeted social media advertising campaigns designed to generate high-quality leads and maximize return on ad spend.",
-    Icon: FiTarget,
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=600&q=80",
+    title: "UI/UX Designing",
+    description: "Sleek, high-end web experiences that blend strong digital marketing goals with smooth user journeys to capture attention and drive conversions.",
+    Icon: FiPenTool,
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "06",
-    title: "Cloud Infrastructure",
-    description: "Scalable, secure cloud environments and DevOps pipelines tailored to support and protect your growing digital ecosystem.",
+    title: "Government IT Project",
+    description: "High-precision national infrastructure portals and robust IT solutions built to deliver accurate, country-wide data and secure digital public services.",
     Icon: FiShield,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
   }
@@ -55,7 +55,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
   const y = useMotionValue(0);
 
   const handleViewCaseStudy = () => {
-    const slug = item.title.toLowerCase().replace(/\s+/g, '-');
+    const slug = item.title.toLowerCase().replace(/[\s/]+/g, '-');
     navigate(`/project/${slug}`);
   };
 

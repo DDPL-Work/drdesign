@@ -231,7 +231,7 @@ const ConversationCards = ({ onOpenModal }) => {
                   Email Us
                 </p>
                 <h3 className="text-[18px] sm:text-2xl md:text-3xl font-bold mb-6 break-all sm:break-normal">
-                  business@drdesigntech.com
+                  contact@drdesigntech.com
                 </h3>
                 <div className="flex items-center gap-2 text-sm text-gray-300 font-medium">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
@@ -312,6 +312,9 @@ const ConversationCards = ({ onOpenModal }) => {
                   </p>
                   <p className="text-lg md:text-xl font-medium text-gray-900">
                     +91 72170 52556
+                  </p>
+                  <p className="text-lg md:text-xl font-medium text-gray-900">
+                    +91 72170 52557
                   </p>
                 </div>
                 <a

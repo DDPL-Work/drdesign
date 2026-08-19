@@ -340,11 +340,11 @@ const Hero = () => {
           transition={{ duration: 1.2, delay: 1.5, ease: "easeOut" }}
           className="font-sans text-gray-100 text-sm md:text-base max-w-2xl leading-relaxed min-h-15"
         >
-          Dr. DESIGN TECHNOLOGY is a full-service design and engineering{" "}
+          Dr. DESIGN TECHNOLOGY is a leading IT and GIS engineering agency providing{" "}
           <br className="hidden md:block" />
-          agency, creating intuitive software and design systems for forward-{" "}
+          custom software development, enterprise geospatial solutions, and intelligent{" "}
           <br className="hidden md:block" />
-          thinking companies.
+          design systems to empower modern enterprises with data-driven infrastructure.
         </motion.p>
 
         {/* CTA Button */}

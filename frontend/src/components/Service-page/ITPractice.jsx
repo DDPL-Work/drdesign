@@ -37,15 +37,15 @@ const getTechLogoUrl = (tech) => {
     Kotlin: "https://cdn.simpleicons.org/kotlin",
     Swift: "https://cdn.simpleicons.org/swift",
     Firebase: "https://cdn.simpleicons.org/firebase",
-    AWS: "https://cdn.simpleicons.org/amazonaws",
+    AWS: "https://skillicons.dev/icons?i=aws",
     Docker: "https://cdn.simpleicons.org/docker",
     Kubernetes: "https://cdn.simpleicons.org/kubernetes",
     Terraform: "https://cdn.simpleicons.org/terraform",
     Linux: "https://cdn.simpleicons.org/linux",
     SQL: "https://cdn.simpleicons.org/mysql",
     Snowflake: "https://cdn.simpleicons.org/snowflake",
-    PowerBI: "https://cdn.simpleicons.org/powerbi",
-    Tableau: "https://cdn.simpleicons.org/tableau",
+    PowerBI: "https://skillicons.dev/icons?i=powerbi",
+    Tableau: "https://skillicons.dev/icons?i=tableau",
   };
   return logos[tech];
 };

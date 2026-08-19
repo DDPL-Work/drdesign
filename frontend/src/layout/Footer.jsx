@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiInstagram, FiFacebook, FiTwitter } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -52,7 +53,7 @@ const Footer = () => {
               <Link to="/services" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
               <Link to="/projects" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
               <Link to="/find-answers" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
-              <Link to="/careers" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>
+              <Link to="/find-teams" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>
             </div>
           </div>
         </div>
@@ -64,13 +65,21 @@ const Footer = () => {
               Direct Contact
             </h3>
             <div className="flex flex-col gap-4">
-              <a href="mailto:business@drdesigntech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="mailto:contact@drdesigntech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
                 <FiMail className="text-[#8892a0] text-lg shrink-0" />
-                business@drdesigntech.com
+                contact@drdesigntech.com
               </a>
               <a href="tel:+917217052556" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
                 <FiPhone className="text-[#8892a0] text-lg shrink-0" />
+                +91 7060100443
+              </a>
+              <a href="https://wa.me/917217052556" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+                <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052556
+              </a>
+              <a href="https://wa.me/917217052557" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+                <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
+                +91 7217052557
               </a>
             </div>
           </div>
