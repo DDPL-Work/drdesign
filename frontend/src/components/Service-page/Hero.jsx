@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import bgImage from '../../assets/logowithhand.avif';
+import bgVideo from '../../assets/service.mp4';
 
 // ─── SplitText ────────────────────────────────────────────────────────────────
 // Mirrors the home-hero implementation: splits each word into individual
@@ -77,10 +77,14 @@ const Hero = () => {
       ref={heroRef}
       className="relative w-full min-h-[85vh] md:min-h-screen flex items-end md:items-center overflow-hidden pb-14 md:pb-0"
     >
-      {/* ── 1. Background image — ease-out scale + fade ─────────────────────── */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-[55%_center] md:bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+      {/* ── 1. Background video — ease-out scale + fade ─────────────────────── */}
+      <motion.video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
         initial={{ opacity: 0, scale: 1.06 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: 'easeOut', delay: 0 }}

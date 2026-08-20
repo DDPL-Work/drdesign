@@ -9,6 +9,7 @@ import Solutions from "../../components/homePage/Solutions";
 import ClientStories from "../../components/homePage/ClientStories";
 import CTA from "../../components/homePage/CTA";
 import "lenis/dist/lenis.css"; // optional but good practice
+import NewHero from "../../components/homePage/NewHero";
 
 const Home = () => {
   const location = useLocation();
@@ -41,14 +42,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-x-hidden">
-      <Hero />
-      <AboutUs />
-      <ClientsCarousel />
-      <CoreCapability />
-      <Solutions />
-      <ClientStories />
-      <CTA />
+    <div className="w-full overflow-x-hidden bg-black">
+      {/* Fixed Hero Section (Bypasses overflow-x-hidden issues) */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none">
+        <div className="pointer-events-auto h-full w-full">
+          <NewHero />
+        </div>
+      </div>
+
+      {/* Subsequent Sections that scroll over the hero */}
+      {/* Added mt-[100vh] to push this content below the viewport initially */}
+      <div className="relative z-10 bg-white shadow-2xl mt-[100vh]">
+        <AboutUs />
+        <ClientsCarousel />
+        <CoreCapability />
+        <Solutions />
+        <ClientStories />
+        <CTA />
+      </div>
     </div>
   );
 };

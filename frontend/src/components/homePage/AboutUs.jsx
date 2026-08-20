@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 
 const LOOP = "3s";
 const cubeStyles = `
@@ -157,6 +158,31 @@ const AnimatedHQSVG = () => (
   </svg>
 );
 
+const AnimatedNumber = ({ end, suffix = "", prefix = "" }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, end, {
+        duration: 2,
+        ease: "easeOut",
+        delay: 0.5 // Wait for the card to fade in
+      });
+      return controls.stop;
+    }
+  }, [isInView, end]);
+
+  return (
+    <span ref={ref} className="inline-flex">
+      {prefix}<motion.span>{rounded}</motion.span>{suffix}
+    </span>
+  );
+};
+
 // Reusable stat card component
 const StatCard = ({ cardRef, icon: Icon, title, subtitle }) => (
   <div
@@ -178,9 +204,9 @@ const StatCard = ({ cardRef, icon: Icon, title, subtitle }) => (
 );
 
 const statData = [
-  { icon: AnimatedYearsSVG, title: "5+ years", subtitle: "in software engineering" },
-  { icon: AnimatedCubeSVG, title: "300+ projects", subtitle: "successfully completed" },
-  { icon: AnimatedHQSVG, title: "HQ in Delhi", subtitle: "offices in the Delhi & Dehradun" },
+  { icon: AnimatedYearsSVG, title: <AnimatedNumber end={5} suffix="+ years" />, subtitle: "in software engineering" },
+  { icon: AnimatedCubeSVG, title: <AnimatedNumber end={300} suffix="+ projects" />, subtitle: "successfully completed" },
+  { icon: AnimatedHQSVG, title: "HQ in Dehradun", subtitle: "offices in Delhi & Dehradun" },
 ];
 
 const MobileStatCarousel = ({ cardsRef }) => {
@@ -332,7 +358,7 @@ const AboutUs = () => {
             stagger: 0.15,
             ease: "power2.out",
           },
-          "-=0.4",
+          "-=0.4"
         );
     }, sectionRef);
 

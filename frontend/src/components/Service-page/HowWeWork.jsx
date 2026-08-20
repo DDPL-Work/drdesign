@@ -14,6 +14,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { FiCompass, FiPenTool, FiCode, FiTrendingUp } from "react-icons/fi";
+import circleVideo from "../../assets/circle.mp4";
 
 /* ─── Constants ──────────────────────────────────────────── */
 const ACCENT        = "#4B6BFB";
@@ -74,7 +75,7 @@ const SectionHeader = () => (
 
     {/* Breadcrumb */}
     <motion.div
-      className="flex items-center gap-5 text-[11px] text-[#64748B] font-semibold tracking-[0.2em] mb-6"
+      className="flex items-center gap-5 text-[11px] text-gray-400 font-semibold tracking-[0.2em] mb-6"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
@@ -87,7 +88,7 @@ const SectionHeader = () => (
 
     {/* Heading */}
     <motion.h2
-      className="font-geist font-bold text-[#0B101E] leading-[1.1] m-0 text-4xl md:text-[48px]"
+      className="font-geist font-bold text-white leading-[1.1] m-0 text-4xl md:text-[48px]"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
@@ -205,7 +206,7 @@ const CircleSection = () => {
     /* minHeight uses a runtime constant → stays inline */
     <div
       ref={containerRef}
-      className="relative w-full bg-white pt-10 pb-50"
+      className="relative w-full bg-[#0B101E] pt-10 pb-60"
       style={{ minHeight: `${SCROLL_HEIGHT}vh` }}
     >
       {/* Keyframe animations — cannot be expressed as Tailwind classes */}
@@ -218,7 +219,7 @@ const CircleSection = () => {
         @keyframes scpRingGlow {
           0%   { filter: drop-shadow(0 0 6px  rgba(75,107,251,0.35)); }
           50%  { filter: drop-shadow(0 0 16px rgba(75,107,251,0.65)); }
-          100% { filter: drop-shadow(0 0 6px  rgba(75,107,251,0.35)); }
+          100% { filter: drop-shadow(0 0 6px  rgba(75,107,251,0.3 5)); }
         }
       `}</style>
 
@@ -227,6 +228,26 @@ const CircleSection = () => {
         ref={stickyRef}
         className="sticky top-0 w-full h-screen overflow-visible"
       >
+
+        {/* ── Center Video ─────────────────────────────── */}
+        <div
+          className="absolute rounded-full overflow-hidden flex items-center justify-center z-0"
+          style={{
+            width: CIRCLE_RADIUS * 2 - 16,
+            height: CIRCLE_RADIUS * 2 - 16,
+            left: center.x - CIRCLE_RADIUS + 8,
+            top: center.y - CIRCLE_RADIUS + 8,
+          }}
+        >
+          <video
+            src={circleVideo}
+            className="w-full h-full object-cover opacity-80"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </div>
 
         {/* ── SVG circle ─────────────────────────────── */}
         {/* width/height are runtime values → inline; position/overflow → Tailwind */}
@@ -249,7 +270,7 @@ const CircleSection = () => {
               cy={center.y}
               r={CIRCLE_RADIUS}
               fill="none"
-              stroke="rgba(8,16,35,0.08)"
+              stroke="rgba(255,255,255,0.15)"
               strokeWidth={2}
               strokeDasharray="4 8"
             />
@@ -319,12 +340,12 @@ const CircleSection = () => {
                   damping:   26,
                   mass:      0.9,
                 }}
-                className="absolute bg-white border border-[rgba(8,16,35,0.10)] rounded-[14px] p-5 z-[3]"
+                className="absolute bg-[#111827] border border-white/10 rounded-[14px] p-5 z-[3]"
                 style={{
                   width:     CARD_WIDTH,
                   left:      cardPositions[index].left,
                   top:       cardPositions[index].top,
-                  boxShadow: "0 4px 24px rgba(75,107,251,0.08), 0 1px 4px rgba(0,0,0,0.06)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.2)",
                   willChange: "opacity, transform",
                 }}
               >
@@ -337,12 +358,12 @@ const CircleSection = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
+                <h3 className="m-0 mb-[6px] font-jetbrains text-[20px] font-bold leading-[1.15] text-white">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] leading-[1.6]">
+                <p className="m-0 font-sans text-[13px] font-normal text-gray-400 leading-[1.6]">
                   {step.description}
                 </p>
               </motion.article>
@@ -402,7 +423,7 @@ const MobileTimeline = () => {
     <div className="container mx-auto px-6 py-10 pb-24" ref={containerRef}>
       <div className="relative">
         {/* Base Dashed vertical line */}
-        <div className="absolute left-[13px] top-6 bottom-6 w-[2px] border-l-2 border-dashed border-[#08102314]"></div>
+        <div className="absolute left-[13px] top-6 bottom-6 w-[2px] border-l-2 border-dashed border-white/15"></div>
         
         {/* Active solid vertical line that fills on scroll */}
         <motion.div 
@@ -425,7 +446,7 @@ const MobileTimeline = () => {
             >
               {/* Timeline Dot with spring pop animation */}
               <motion.div 
-                className="absolute left-[8px] top-5 w-3 h-3 rounded-full z-10 shadow-[0_0_0_4px_white]"
+                className="absolute left-[8px] top-5 w-3 h-3 rounded-full z-10 shadow-[0_0_0_4px_#0B101E]"
                 style={{ backgroundColor: ACCENT }}
                 variants={{
                   hidden: { scale: 0, opacity: 0 },
@@ -439,7 +460,7 @@ const MobileTimeline = () => {
 
               {/* Card with slide & fade animation + subtle hover */}
               <motion.div 
-                className="bg-white border border-[rgba(8,16,35,0.10)] rounded-[14px] p-6 shadow-[0_4px_24px_rgba(75,107,251,0.08),_0_1px_4px_rgba(0,0,0,0.06)] relative z-10"
+                className="bg-[#111827] border border-white/10 rounded-[14px] p-6 shadow-2xl relative z-10"
                 variants={{
                   hidden: { opacity: 0, x: 40, y: 20 },
                   visible: { 
@@ -457,11 +478,11 @@ const MobileTimeline = () => {
                 >
                   {step.label}
                 </div>
-                <h3 className="m-0 mb-[6px] flex items-center gap-2 font-jetbrains text-[20px] font-bold leading-[1.15] text-[#081023]">
+                <h3 className="m-0 mb-[6px] flex items-center gap-2 font-jetbrains text-[20px] font-bold leading-[1.15] text-white">
                   {step.icon && <step.icon className="w-[18px] h-[18px] shrink-0" style={{ color: ACCENT }} />}
                   <span>{step.title}</span>
                 </h3>
-                <p className="m-0 font-sans text-[13px] font-normal text-[rgba(8,16,35,0.55)] leading-[1.6]">
+                <p className="m-0 font-sans text-[13px] font-normal text-gray-400 leading-[1.6]">
                   {step.description}
                 </p>
               </motion.div>
@@ -487,7 +508,7 @@ const HowWeWork = () => {
   }, []);
 
   return (
-    <section id="how-we-work" className="bg-white">
+    <section id="how-we-work" className="bg-[#0B101E]">
       <SectionHeader />
       {isMobile ? <MobileTimeline /> : <CircleSection />}
     </section>

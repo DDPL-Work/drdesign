@@ -11,6 +11,7 @@ import Services from "../pages/Services/Services";
 import FAQ from "../pages/FAQ/FAQ";
 import Careers from "../pages/Careers/Careers";
 import RoleDetails from "../components/careers-page/RoleDetails";
+import FloatingCallButton from "../layout/FloatingCallButton";
 
 const ScrollManager = () => {
   const location = useLocation();
@@ -45,6 +46,7 @@ const MainLayout = () => {
         <Outlet />
       </main>
       {!is404 && <Footer />}
+      <FloatingCallButton />
     </div>
   );
 };
@@ -55,9 +57,9 @@ export const appRouter = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", index: true, element: <Home /> },
-      { path: "/about-us", element: <AboutUs /> },
+      { path: "/who-we-are", element: <AboutUs /> },
       { path: "/contact-us", element: <ContactUs /> },
-      { path: "/services", element: <Services /> },
+      { path: "/what-we-do", element: <Services /> },
       { path: "/find-teams", element: <Careers /> },
       { path: "/project/:slug", element: <CaseStudyDetails /> },
       { path: "/role/:slug", element: <RoleDetails /> },

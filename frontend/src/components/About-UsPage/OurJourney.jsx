@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { FiHome, FiHeart, FiMapPin } from 'react-icons/fi';
+import buildingGif from '../../assets/building.gif';
+import valueGif from '../../assets/value.gif';
+import locationGif from '../../assets/location.gif';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 const timelineData = [
@@ -15,7 +17,9 @@ const timelineData = [
       "Deploying a dedicated agile squad model—equipping every project with a product lead, UI/UX designers, software engineers, and QA specialists."
     ],
     alignment: "left",
-    icon: FiHome
+    timelineIcon: buildingGif,
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    blobColor: "bg-blue-100",
   },
   {
     id: 2,
@@ -29,7 +33,9 @@ const timelineData = [
       "Unwavering Customer Obsession: We provide transparent Agile sprint updates with guaranteed clarity on project scope and delivery timelines."
     ],
     alignment: "right",
-    icon: FiHeart
+    timelineIcon: valueGif,
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    blobColor: "bg-purple-100"
   },
   {
     id: 3,
@@ -43,7 +49,9 @@ const timelineData = [
       "Partner with us: Contact our technical experts at contact@drdesigntech.com.com or call +91 7060100443."
     ],
     alignment: "left",
-    icon: FiMapPin
+    timelineIcon: locationGif,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    blobColor: "bg-emerald-100"
   }
 ];
 
@@ -159,7 +167,7 @@ const OurJourney = () => {
               const isLeft = item.alignment === 'left';
               
               return (
-                <div key={item.id} className={`w-full flex flex-col md:flex-row ${isLeft ? 'md:justify-start' : 'md:justify-end'} relative`}>
+                <div key={item.id} className="w-full flex flex-col md:flex-row md:justify-between md:items-stretch relative">
                   
                   {/* Center Node */}
                   <motion.div 
@@ -205,64 +213,154 @@ const OurJourney = () => {
                             visible: { color: "#081023", scale: 1, transition: { type: "spring", stiffness: 300, damping: 20 } }
                           }}
                         >
-                          <item.icon className="w-4 h-4 md:w-6 md:h-6" />
+                          <img src={item.timelineIcon} alt="Timeline Icon" className="w-5 h-5 md:w-7 md:h-7 object-contain drop-shadow-md" />
                         </motion.div>
                       </motion.div>
                     </div>
                   </motion.div>
 
-                  {/* Card Container with Staggered Reveal */}
-                  <div className={`w-full md:w-[calc(50%-3rem)] pl-16 md:pl-0 pt-2 md:pt-0 ${isLeft ? 'md:pr-10 lg:pr-16' : 'md:pl-10 lg:pl-16'}`}>
-                    <motion.div 
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, margin: "-100px" }}
-                      variants={{
-                        hidden: { opacity: 0, x: isLeft ? -50 : 50 },
-                        visible: { 
-                          opacity: 1, 
-                          x: 0, 
-                          transition: { 
-                            duration: 1, 
-                            ease: [0.16, 1, 0.3, 1],
-                            when: "beforeChildren",
-                            staggerChildren: 0.2
-                          } 
-                        }
-                      }}
-                      className="w-full"
-                    >
-                      <TiltCard className="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-[2rem] border border-gray-100 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
-                        <motion.div variants={itemVariants} className={`flex justify-start ${isLeft ? 'md:justify-end' : 'md:justify-start'} mb-4 md:mb-6`}>
-                          <span className="bg-[#0a181c] text-white text-[9px] md:text-[10px] font-bold px-3 py-1.5 md:px-4 md:py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
-                            {item.pill}
-                          </span>
-                        </motion.div>
-                        
-                        <motion.h3 variants={itemVariants} className={`text-xl md:text-3xl font-semibold text-[#0a181c] mb-3 md:mb-4 text-left ${isLeft ? 'md:text-right' : 'md:text-left'} font-jetbrains`}>
-                          {item.title}
-                        </motion.h3>
-                        
-                        <motion.p variants={itemVariants} className={`text-[#5e6673] text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
-                          {item.description}
-                        </motion.p>
-
-                        <div className="flex flex-col gap-2 md:gap-3">
-                          {item.bullets.map((bullet, idx) => (
-                            <motion.div 
-                              key={idx}
-                              variants={itemVariants}
-                              whileHover={{ scale: 1.02, x: isLeft ? -5 : 5, transition: { duration: 0.2 } }}
-                              className={`p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'} text-left ${isLeft ? 'md:text-right' : 'md:text-left'} transition-all`}
-                            >
-                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)] mt-1.5 md:mt-0" />
-                              <span className="text-[11px] md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
+                  {/* Content (Card + Graphic) */}
+                  {isLeft ? (
+                    <>
+                      {/* Left: Card */}
+                      <div className="w-full md:w-[calc(50%-3rem)] pl-16 md:pl-0 pt-2 md:pt-0 md:pr-10 lg:pr-16 relative z-10">
+                        <motion.div 
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, margin: "-100px" }}
+                          variants={{
+                            hidden: { opacity: 0, x: -50 },
+                            visible: { 
+                              opacity: 1, 
+                              x: 0, 
+                              transition: { duration: 1, ease: [0.16, 1, 0.3, 1], when: "beforeChildren", staggerChildren: 0.2 } 
+                            }
+                          }}
+                          className="w-full h-full"
+                        >
+                          <TiltCard className="h-full bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-lg border border-gray-100 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
+                            <motion.div variants={itemVariants} className="flex justify-start md:justify-end mb-4 md:mb-6">
+                              <span className="bg-[#0a181c] text-white text-[9px] md:text-[10px] font-bold px-3 py-1.5 md:px-4 md:py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
+                                {item.pill}
+                              </span>
                             </motion.div>
-                          ))}
-                        </div>
-                      </TiltCard>
-                    </motion.div>
-                  </div>
+                            
+                            <motion.h3 variants={itemVariants} className="text-xl md:text-3xl font-semibold text-[#0a181c] mb-3 md:mb-4 text-left md:text-right font-jetbrains">
+                              {item.title}
+                            </motion.h3>
+                            
+                            <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left md:text-right">
+                              {item.description}
+                            </motion.p>
+
+                            <div className="flex flex-col gap-2 md:gap-3">
+                              {item.bullets.map((bullet, idx) => (
+                                <motion.div 
+                                  key={idx}
+                                  variants={itemVariants}
+                                  whileHover={{ scale: 1.02, x: -5, transition: { duration: 0.2 } }}
+                                  className="p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row md:flex-row-reverse text-left md:text-right transition-all"
+                                >
+                                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)] mt-1.5 md:mt-0" />
+                                  <span className="text-[11px] md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </TiltCard>
+                        </motion.div>
+                      </div>
+
+                      {/* Right: Graphic */}
+                      <div className="hidden md:flex w-[calc(50%-3rem)] pl-10 lg:pl-16 relative">
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          className={`absolute inset-0 m-auto w-64 h-64 rounded-full blur-[60px] -z-10 ${item.blobColor}`}
+                        />
+                        <motion.img 
+                          src={item.image} 
+                          alt="Graphic" 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                          className="w-full h-full object-cover rounded-md md:rounded-lg shadow-xl"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Left: Graphic */}
+                      <div className="hidden md:flex w-[calc(50%-3rem)] pr-10 lg:pr-16 relative">
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          className={`absolute inset-0 m-auto w-64 h-64 rounded-full blur-[60px] -z-10 ${item.blobColor}`}
+                        />
+                        <motion.img 
+                          src={item.image} 
+                          alt="Graphic" 
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                          className="w-full h-full object-cover rounded-md md:rounded-lg shadow-xl"
+                        />
+                      </div>
+
+                      {/* Right: Card */}
+                      <div className="w-full md:w-[calc(50%-3rem)] pl-16 md:pl-10 lg:pl-16 pt-2 md:pt-0 relative z-10">
+                        <motion.div 
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, margin: "-100px" }}
+                          variants={{
+                            hidden: { opacity: 0, x: 50 },
+                            visible: { 
+                              opacity: 1, 
+                              x: 0, 
+                              transition: { duration: 1, ease: [0.16, 1, 0.3, 1], when: "beforeChildren", staggerChildren: 0.2 } 
+                            }
+                          }}
+                          className="w-full h-full"
+                        >
+                          <TiltCard className="h-full bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-lg border border-gray-100 px-4 pb-5 pt-5 md:px-10 md:pb-10 md:pt-5 shadow-lg hover:shadow-2xl transition-shadow duration-500 relative cursor-default">
+                            <motion.div variants={itemVariants} className="flex justify-start mb-4 md:mb-6">
+                              <span className="bg-[#0a181c] text-white text-[9px] md:text-[10px] font-bold px-3 py-1.5 md:px-4 md:py-1.5 rounded-full tracking-widest uppercase font-jetbrains shadow-md">
+                                {item.pill}
+                              </span>
+                            </motion.div>
+                            
+                            <motion.h3 variants={itemVariants} className="text-xl md:text-3xl font-semibold text-[#0a181c] mb-3 md:mb-4 text-left font-jetbrains">
+                              {item.title}
+                            </motion.h3>
+                            
+                            <motion.p variants={itemVariants} className="text-[#5e6673] text-[13px] md:text-base leading-relaxed mb-6 md:mb-8 text-left">
+                              {item.description}
+                            </motion.p>
+
+                            <div className="flex flex-col gap-2 md:gap-3">
+                              {item.bullets.map((bullet, idx) => (
+                                <motion.div 
+                                  key={idx}
+                                  variants={itemVariants}
+                                  whileHover={{ scale: 1.02, x: 5, transition: { duration: 0.2 } }}
+                                  className="p-3 md:p-4 rounded-xl md:rounded-2xl border border-gray-100 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md flex items-start md:items-center gap-3 md:gap-4 flex-row text-left transition-all"
+                                >
+                                  <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0 shadow-[0_0_5px_rgba(34,211,238,0.8)] mt-1.5 md:mt-0" />
+                                  <span className="text-[11px] md:text-sm text-[#5e6673] leading-snug">{bullet}</span>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </TiltCard>
+                        </motion.div>
+                      </div>
+                    </>
+                  )}
                   
                 </div>
               );

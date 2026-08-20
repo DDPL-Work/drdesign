@@ -1,117 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PracticeCard from "../common/PracticeCard";
+import { itCardsData } from "../../constants/servicesData";
 
-const CodeIcon = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-  </svg>
-);
+gsap.registerPlugin(ScrollTrigger);
 
-const MobileIcon = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-  </svg>
-);
 
-const CloudIcon = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-  </svg>
-);
 
-const DatabaseIcon = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-  </svg>
-);
-
-const getTechLogoUrl = (tech) => {
-  const logos = {
-    React: "https://cdn.simpleicons.org/react",
-    "Next.js": "https://cdn.simpleicons.org/nextdotjs",
-    TypeScript: "https://cdn.simpleicons.org/typescript",
-    "Node.js": "https://cdn.simpleicons.org/nodedotjs",
-    Python: "https://cdn.simpleicons.org/python",
-    PostgreSQL: "https://cdn.simpleicons.org/postgresql",
-    Flutter: "https://cdn.simpleicons.org/flutter",
-    Kotlin: "https://cdn.simpleicons.org/kotlin",
-    Swift: "https://cdn.simpleicons.org/swift",
-    Firebase: "https://cdn.simpleicons.org/firebase",
-    AWS: "https://skillicons.dev/icons?i=aws",
-    Docker: "https://cdn.simpleicons.org/docker",
-    Kubernetes: "https://cdn.simpleicons.org/kubernetes",
-    Terraform: "https://cdn.simpleicons.org/terraform",
-    Linux: "https://cdn.simpleicons.org/linux",
-    SQL: "https://cdn.simpleicons.org/mysql",
-    Snowflake: "https://cdn.simpleicons.org/snowflake",
-    PowerBI: "https://skillicons.dev/icons?i=powerbi",
-    Tableau: "https://skillicons.dev/icons?i=tableau",
-  };
-  return logos[tech];
-};
-
-const cardsData = [
-  {
-    id: 1,
-    category: "ENGINEERING",
-    icon: <CodeIcon />,
-    title: "Custom Software & Web Platforms",
-    description:
-      "Product-grade web platforms, ERP and internal tools built to fit the way your business actually operates.",
-    features: [
-      "Web apps & portals",
-      "API & system integration",
-      "ERP / CRM systems",
-      "Legacy modernisation",
-    ],
-    tech: ["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"],
-  },
-  {
-    id: 2,
-    category: "MOBILE",
-    icon: <MobileIcon />,
-    title: "iOS & Android Applications",
-    description:
-      "Offline-first, cross platform apps that stay fast and reliable in the field as well as on the shop floor.",
-    features: [
-      "React Native & Flutter",
-      "Offline-first sync",
-      "Field data capture",
-      "App Store delivery",
-    ],
-    tech: ["React", "Flutter", "Kotlin", "Node.js", "Swift", "Firebase"],
-  },
-  {
-    id: 3,
-    category: "CLOUD",
-    icon: <CloudIcon />,
-    title: "Cloud Infrastructure",
-    description:
-      "Scalable and secure cloud environments tailored to support your growing digital ecosystem.",
-    features: [
-      "AWS & Azure",
-      "Cloud Migration",
-      "DevOps & CI/CD",
-      "Security & Compliance",
-    ],
-    tech: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux"],
-  },
-  {
-    id: 4,
-    category: "DATA",
-    icon: <DatabaseIcon />,
-    title: "Data & Analytics",
-    description:
-      "Actionable insights through robust data pipelines, analytics dashboards, and business intelligence.",
-    features: [
-      "Data Engineering",
-      "PowerBI & Tableau",
-      "Predictive Analytics",
-      "Data Warehousing",
-    ],
-    tech: ["Python", "SQL", "Snowflake", "PowerBI", "Tableau"],
-  },
-];
 
 // Row wrapper — both cards animate together when the row enters the DOM
 const rowVariants = {
@@ -140,6 +38,36 @@ const cardVariantRight = {
 
 const ITPractice = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#it-practice" && location.state?.scrollToCard !== undefined) {
+      const idx = location.state.scrollToCard;
+      setTimeout(() => {
+        if (isMobile) {
+          const mobileCard = document.getElementById(`it-card-mobile-${idx}`);
+          if (mobileCard) {
+            mobileCard.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        } else {
+          const triggers = ScrollTrigger.getAll();
+          const trigger = triggers.find((t) => t.trigger === sectionRef.current);
+          const desktopCard = document.getElementById(`it-card-desktop-${idx}`);
+          if (trigger && desktopCard && containerRef.current) {
+            const container = containerRef.current;
+            const maxScroll = Math.max(0, container.scrollWidth - container.parentElement.offsetWidth);
+            const targetOffset = Math.min(desktopCard.offsetLeft, maxScroll);
+            window.scrollTo({
+              top: trigger.start + targetOffset,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, 500); // Allow GSAP / DOM to initialize
+    }
+  }, [location, isMobile]);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 1024);
@@ -148,55 +76,39 @@ const ITPractice = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Shared card class — p-6 on mobile, p-10 on desktop
-  const cardCls =
-    "w-full h-auto lg:h-[476px] flex flex-col border border-[#E2E8F0] rounded-3xl p-6 lg:p-10 bg-gray-400/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group";
+  useLayoutEffect(() => {
+    if (isMobile) return;
+    const ctx = gsap.context(() => {
+      const container = containerRef.current;
+      if (!container) return;
 
-  // Inner card content (shared between mobile & desktop)
-  const renderInner = (card) => (
-    <>
-      <div className="flex justify-between items-start mb-5 lg:mb-8">
-        <div className="w-12 h-12 bg-[#0B101E] rounded-2xl flex items-center justify-center text-white">
-          <div className="group-hover:scale-155 group-hover:rotate-5 transition-transform">{card.icon}</div>
-        </div>
-        <span className="text-[10px] font-normal font-inter text-gray-400 tracking-[0.2em] uppercase mt-1">
-          {card.category}
-        </span>
-      </div>
-      <h3 className="text-[22px] lg:text-[24px] font-jetbrains font-bold text-gray-900 mb-3 lg:mb-4 leading-[1.3]">
-        {card.title}
-      </h3>
-      <p className="text-[#64748B] mb-5 lg:mb-8 font-inter font-normal leading-[1.6] text-[14px] pr-2">
-        {card.description}
-      </p>
-      <div className="grid grid-cols-2 gap-y-4 lg:gap-y-6 gap-x-4 mb-5 lg:mb-8">
-        {card.features.map((feature, idx) => (
-          <div key={idx} className="flex items-center gap-3">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] flex-shrink-0"></div>
-            <span className="text-[13px] lg:text-[14px] text-[#334155] font-geist font-normal">{feature}</span>
-          </div>
-        ))}
-      </div>
-      <div className="mt-auto">
-        <h4 className="text-[10px] font-normal font-inter text-gray-400 tracking-[0.2em] uppercase mb-3 lg:mb-4">TECH WE USE</h4>
-        <div className="flex flex-wrap gap-2.5">
-          {card.tech.map((tech, idx) => (
-            <div key={idx} className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1.5 bg-white">
-              {getTechLogoUrl(tech) ? (
-                <img src={getTechLogoUrl(tech)} alt={`${tech} logo`} className="w-3.5 h-3.5 object-contain" />
-              ) : (
-                <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-              )}
-              <span className="text-[12px] font-normal text-[#475569] font-inter leading-none">{tech}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+      const getScrollAmount = () => {
+        let containerWidth = container.scrollWidth;
+        let parentWidth = container.parentElement.offsetWidth;
+        return -(containerWidth - parentWidth);
+      };
+
+      gsap.to(container, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center center",
+          end: () => `+=${Math.abs(getScrollAmount())}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isMobile]);
+
+
 
   return (
-    <section id="it-practice" className="py-24 bg-white overflow-hidden">
+    <section ref={sectionRef} id="it-practice" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-[57px]">
 
         {/* ── Header Section ──────────────────────────────────────────────── */}
@@ -241,60 +153,37 @@ const ITPractice = () => {
         {/* ── MOBILE: cards animate like hero image ────────────────────────────── */}
         {isMobile && (
           <div className="flex flex-col gap-6 overflow-hidden pb-4">
-            {cardsData.map((card) => (
+            {itCardsData.map((card, index) => (
               <motion.div
                 key={card.id}
+                id={`it-card-mobile-${index}`}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.1, ease: "easeOut" }}
-                className={cardCls}
+                className="w-full h-full flex"
               >
-                {renderInner(card)}
+                <PracticeCard card={card} />
               </motion.div>
             ))}
           </div>
         )}
 
-        {/* ── DESKTOP: Row 1 & Row 2 with left / right slide ──────────────── */}
+        {/* ── DESKTOP: Horizontal GSAP Scroll ──────────────── */}
         {!isMobile && (
-          <>
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-[72px] mb-8 xl:mb-[72px]"
-              variants={rowVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+          <div className="w-full overflow-visible mt-8 relative">
+            <div
+              ref={containerRef}
+              className="flex gap-8 xl:gap-[72px] items-stretch"
+              style={{ width: "max-content" }}
             >
-              {cardsData.slice(0, 2).map((card, index) => (
-                <motion.div
-                  key={card.id}
-                  variants={index === 0 ? cardVariantLeft : cardVariantRight}
-                  className={cardCls}
-                >
-                  {renderInner(card)}
-                </motion.div>
+              {itCardsData.map((card, index) => (
+                <div key={card.id} id={`it-card-desktop-${index}`} className="w-[400px] lg:w-[476px] shrink-0 flex">
+                  <PracticeCard card={card} />
+                </div>
               ))}
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-[72px]"
-              variants={rowVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              {cardsData.slice(2, 4).map((card, index) => (
-                <motion.div
-                  key={card.id}
-                  variants={index === 0 ? cardVariantLeft : cardVariantRight}
-                  className={cardCls}
-                >
-                  {renderInner(card)}
-                </motion.div>
-              ))}
-            </motion.div>
-          </>
+            </div>
+          </div>
         )}
 
       </div>
