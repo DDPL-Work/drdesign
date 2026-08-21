@@ -9,7 +9,8 @@ import {
   FaLayerGroup,
   FaServer,
   FaBoxOpen,
-  FaWindows
+  FaWindows,
+  FaPaintBrush
 } from "react-icons/fa";
 import {
   SiReact,
@@ -35,7 +36,9 @@ import {
   SiTensorflow,
   SiFramer,
   SiFigma,
-  SiGooglefonts
+  SiGooglefonts,
+  SiMeta,
+  SiGoogle
 } from "react-icons/si";
 import C1 from "../assets/Projects/C-1.png";
 import C2 from "../assets/Projects/C-2.png";
@@ -75,6 +78,12 @@ import SEO2 from "../assets/Projects/SEO-2.PNG";
 import SEO3 from "../assets/Projects/SEO-3.PNG";
 import SEO4 from "../assets/Projects/SEO-4.PNG";
 import SEO5 from "../assets/Projects/SEO-5.PNG";
+import SMF1 from "../assets/Projects/SMF-1.jpeg";
+import SMF2 from "../assets/Projects/SMF-2.jpeg";
+import SMF3 from "../assets/Projects/SMF-3.jpeg";
+import SMF4 from "../assets/Projects/SMF-4.jpeg";
+import SMF5 from "../assets/Projects/SMF-5.jpeg";
+import SMF6 from "../assets/Projects/SMF-6.jpeg";
 
 export const projectDetailsData = {
   "web-platform-development": {
@@ -300,6 +309,47 @@ export const projectDetailsData = {
       { Icon: SiFramer, color: "#0055FF" },
       { Icon: SiFigma, color: "#F24E1E" },
       { Icon: SiGooglefonts, color: "#4285F4" },
+    ]
+  },
+  "social-media-marketing": {
+    image: SMF1,
+    title: "Scan My Flight",
+    description: "End-to-end performance marketing encompassing Meta Ads, Google Ads, and organic social media growth, delivering measurable ROI and market penetration.",
+    projectOverview: "For the 'Scan My Flight' campaign and our educational roadmap targeting, we engineered highly optimized Meta Ads campaigns focused on aggressive User Acquisition and targeted lead generation. Our data-driven approach achieved phenomenal results: driving over 2,500+ Mobile App Installs at an exceptionally low Cost Per Install (CPI) of under ₹10 (averaging around ₹9.86) with a spend of just ₹25k. Simultaneously, we ran highly targeted traffic campaigns for educational roadmaps (like OT & Cyber Security), driving hundreds of high-intent landing page views for less than ₹4.73 per click. By rigorously A/B testing ad creatives and continuously optimizing budget allocations, we delivered maximum ROI and rapid scaling for the brand.",
+    infoItems: [
+      {
+        icon: FaRegUser,
+        title: "Client",
+        des: "Scan My Flight",
+      },
+      {
+        icon: FaMapMarkerAlt,
+        title: "Location",
+        des: "Global",
+      },
+      {
+        icon: FaCube,
+        title: "Sector",
+        des: "Digital Marketing",
+      },
+      {
+        icon: FaHistory,
+        title: "Duration",
+        des: "Ongoing Campaigns",
+      },
+    ],
+    galleryImages: [
+      SMF1,
+      SMF2,
+      SMF3,
+      SMF4,
+      SMF5,
+      SMF6
+    ],
+    coreStacks: [
+      { Icon: SiMeta, color: "#0468FF" },
+      { Icon: SiGoogle, color: "#4285F4" },
+      { Icon: FaPaintBrush, color: "#00C4CC" },
     ]
   }
 };

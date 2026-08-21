@@ -97,7 +97,7 @@ const ClientStories = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full bg-white px-4 md:px-8 flex justify-center overflow-hidden"
+      className="w-full bg-white px-4 md:px-8 py-10 flex justify-center overflow-hidden"
     >
       <div className="w-full max-w-[1400px] bg-[#0A1118] xl:bg-transparent rounded-[40px] xl:rounded-none pt-8 px-8 pb-8 md:p-14 xl:p-0 flex flex-col xl:flex-row xl:items-stretch relative">
         {/* Left Column */}

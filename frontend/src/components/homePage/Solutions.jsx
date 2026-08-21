@@ -1,52 +1,103 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { FiTrendingUp, FiPieChart, FiShield, FiArrowLeft, FiArrowRight, FiMonitor, FiSmartphone, FiMap, FiSearch, FiTarget, FiPenTool } from 'react-icons/fi';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import {
+  FiTrendingUp,
+  FiPieChart,
+  FiShield,
+  FiArrowLeft,
+  FiArrowRight,
+  FiMonitor,
+  FiSmartphone,
+  FiMap,
+  FiSearch,
+  FiTarget,
+  FiPenTool,
+} from "react-icons/fi";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import mapsGif from "../../assets/maps.gif";
+import webGif from "../../assets/web.gif";
+import appGif from "../../assets/app.gif";
+import seoGif from "../../assets/seo.gif";
+import uiUxGif from "../../assets/ui-ux.gif";
+import governmentGif from "../../assets/goverment.gif";
+import campaignGif from "../../assets/campaign.gif";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const solutionsData = [
   {
     id: "01",
     title: "GIS & Spatial Data",
-    description: "Advanced mapping, imagery, and spatial data services used by planning authorities and enterprises to make decisions grounded in place.",
-    Icon: FiMap,
-    image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80",
+    description:
+      "Advanced mapping, imagery, and spatial data services used by planning authorities and enterprises to make decisions grounded in place.",
+    gifIcon: mapsGif,
+    image:
+      "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "02",
     title: "Web Platform Development",
-    description: "Product-grade web platforms, ERPs and internal tools built with modern tech stacks to fit the way your business actually operates.",
-    Icon: FiMonitor,
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+    description:
+      "Product-grade web platforms, ERPs and internal tools built with modern tech stacks to fit the way your business actually operates.",
+    gifIcon: webGif,
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "03",
     title: "Mobile App Development",
-    description: "Offline-first, cross-platform applications that stay fast and reliable in the field as well as on the shop floor.",
-    Icon: FiSmartphone,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
+    description:
+      "Offline-first, cross-platform applications that stay fast and reliable in the field as well as on the shop floor.",
+    gifIcon: appGif,
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "04",
     title: "Search Engine Optimization",
-    description: "Data-driven SEO strategies that improve your organic visibility, drive targeted traffic, and maximize your online footprint.",
-    Icon: FiSearch,
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80",
+    description:
+      "Data-driven SEO strategies that improve your organic visibility, drive targeted traffic, and maximize your online footprint.",
+    gifIcon: seoGif,
+    image:
+      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "05",
     title: "UI/UX Designing",
-    description: "Sleek, high-end web experiences that blend strong digital marketing goals with smooth user journeys to capture attention and drive conversions.",
-    Icon: FiPenTool,
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80",
+    description:
+      "Sleek, high-end web experiences that blend strong digital marketing goals with smooth user journeys to capture attention and drive conversions.",
+    gifIcon: uiUxGif,
+    image:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "06",
     title: "Government IT Project",
-    description: "High-precision national infrastructure portals and robust IT solutions built to deliver accurate, country-wide data and secure digital public services.",
-    Icon: FiShield,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
-  }
+    description:
+      "High-precision national infrastructure portals and robust IT solutions built to deliver accurate, country-wide data and secure digital public services.",
+    gifIcon: governmentGif,
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "07",
+    title: "Social Media Marketing",
+    description:
+      "Targeted Meta Ads, Google Ads, and social media campaigns engineered to maximize ROI, drive qualified leads, and aggressively scale your digital footprint.",
+    gifIcon: campaignGif,
+    image:
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
+  },
 ];
 
 const SolutionCard = ({ item, index, isMobile = false }) => {
@@ -55,7 +106,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
   const y = useMotionValue(0);
 
   const handleViewCaseStudy = () => {
-    const slug = item.title.toLowerCase().replace(/[\s/]+/g, '-');
+    const slug = item.title.toLowerCase().replace(/[\s/]+/g, "-");
     navigate(`/project/${slug}`);
   };
 
@@ -85,7 +136,7 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -93,15 +144,19 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
       style={{ perspective: "1200px" }}
       className={`relative ${isMobile ? "w-full h-full" : "z-10 hover:z-50"}`}
     >
-      <motion.div 
+      <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY }}
-        className="group relative flex flex-col justify-between p-8 min-h-110 border-0 md:border-2 md:hover:border-0 shadow-none border-transparent md:border-gray-200 rounded-3xl overflow-hidden bg-transparent transition-shadow duration-500 h-full transform-gpu"
+        className="group relative flex flex-col justify-between p-8 min-h-110 border border-white/10 shadow-none rounded-3xl overflow-hidden bg-white/5 backdrop-blur-md transition-all duration-500 h-full transform-gpu hover:bg-white/10"
       >
         {/* Hover Background Image & Overlay */}
         <div className="absolute inset-0 z-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none">
-          <img src={item.image} alt={item.title} className="w-full h-full object-cover transform scale-100 md:scale-105 md:group-hover:scale-100 transition-transform duration-700 ease-out" />
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover transform scale-100 md:scale-105 md:group-hover:scale-100 transition-transform duration-700 ease-out"
+          />
           <div className="absolute inset-0 bg-linear-to-t from-[#0a181c] via-[#0a181c]/80 to-[#0a181c]/40 backdrop-blur-[2px]"></div>
         </div>
 
@@ -110,15 +165,19 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
           {/* Top Row: Icon and Small Image */}
           <div className="flex justify-between items-start mb-12">
             {/* Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-white/10 md:bg-gray-50 flex items-center justify-center md:group-hover:bg-white/10 backdrop-blur-md md:backdrop-blur-none md:group-hover:backdrop-blur-md border border-white/20 md:border-gray-100 md:group-hover:border-white/20 transition-all duration-500">
-              <item.Icon className="text-3xl text-white md:text-[#0a181c] md:group-hover:text-white transition-colors duration-500" />
+            <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center transition-all duration-500 overflow-hidden shadow-sm p-1">
+              <img
+                src={item.gifIcon}
+                alt={`${item.title} icon`}
+                className="w-full h-full object-contain mix-blend-multiply"
+              />
             </div>
-            
+
             {/* Small Image (Visible before hover) */}
-            <div className="hidden md:block w-28 h-28 rounded-2xl overflow-hidden transition-all duration-500 opacity-100 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:-translate-y-4 shadow-sm border border-gray-100 md:group-hover:border-transparent">
-              <img 
-                src={item.image} 
-                alt="thumbnail" 
+            <div className="hidden md:block w-28 h-28 rounded-2xl overflow-hidden transition-all duration-500 opacity-100 md:group-hover:opacity-0 md:group-hover:scale-95 md:group-hover:-translate-y-4 shadow-sm border border-white/10">
+              <img
+                src={item.image}
+                alt="thumbnail"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -126,18 +185,25 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
 
           {/* Text Content */}
           <div className="mt-auto relative transition-transform duration-500 ease-out -translate-y-2 md:translate-y-0 md:group-hover:-translate-y-2">
-            <h3 className="font-jetbrains text-[26px] font-semibold text-white md:text-[#0a181c] md:group-hover:text-white mb-4 transition-colors duration-500 leading-tight">
+            <h3 className="font-jetbrains text-[26px] font-semibold text-white mb-4 transition-colors duration-500 leading-tight">
               {item.title}
             </h3>
-            <p className="font-inter text-gray-300 md:text-[#6b7280] md:group-hover:text-gray-300 text-[15px] leading-relaxed transition-colors duration-500 mb-16 md:mb-0 md:group-hover:mb-16">
+            <p className="font-inter text-gray-300 text-[15px] leading-relaxed transition-colors duration-500 mb-16 md:mb-0 md:group-hover:mb-16">
               {item.description}
             </p>
 
             {/* Hidden Hover Button */}
             <div className="absolute bottom-0 left-0 translate-y-0 md:translate-y-4 opacity-100 md:opacity-0 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-out delay-75">
-              <button onClick={handleViewCaseStudy} className="group/btn bg-white text-[#0a181c] font-jetbrains text-[13px] px-6 py-2.5 rounded-full flex items-center transition-colors shadow-sm overflow-hidden hover:bg-gray-100 pointer-events-auto">
-                <span className="transition-transform duration-300 ease-out group-hover/btn:translate-x-2">View Case Study</span> 
-                <span className='ml-2 text-xl -mt-1.5 md:-mt-1 transition-all duration-300 ease-out group-hover/btn:translate-x-5 group-hover/btn:opacity-0'>&rarr;</span>
+              <button
+                onClick={handleViewCaseStudy}
+                className="group/btn text-[#0a181c] bg-white hover:bg-gray-200 font-jetbrains text-[13px] px-6 py-2.5 rounded-full flex items-center transition-colors shadow-sm overflow-hidden pointer-events-auto"
+              >
+                <span className="transition-transform duration-300 ease-out group-hover/btn:translate-x-2">
+                  View Case Study
+                </span>
+                <span className="ml-2 text-xl -mt-1.5 md:-mt-1 transition-all duration-300 ease-out group-hover/btn:translate-x-5 group-hover/btn:opacity-0">
+                  &rarr;
+                </span>
               </button>
             </div>
           </div>
@@ -160,7 +226,9 @@ const MobileSolutionCarousel = () => {
 
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + solutionsData.length) % solutionsData.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + solutionsData.length) % solutionsData.length,
+    );
   };
 
   const onTouchStart = (e) => {
@@ -190,7 +258,7 @@ const MobileSolutionCarousel = () => {
       opacity: 0,
       scale: 0.9,
       zIndex: 0,
-      transformOrigin: dir > 0 ? "100% 50%" : "0% 50%"
+      transformOrigin: dir > 0 ? "100% 50%" : "0% 50%",
     }),
     center: {
       rotateY: 0,
@@ -198,7 +266,7 @@ const MobileSolutionCarousel = () => {
       scale: 1,
       zIndex: 1,
       transformOrigin: "50% 50%",
-      transition: { duration: 0.25, ease: "easeOut" }
+      transition: { duration: 0.25, ease: "easeOut" },
     },
     exit: (dir) => ({
       rotateY: dir > 0 ? -90 : 90,
@@ -206,13 +274,16 @@ const MobileSolutionCarousel = () => {
       scale: 0.9,
       zIndex: 0,
       transformOrigin: dir > 0 ? "0% 50%" : "100% 50%",
-      transition: { duration: 0.25, ease: "easeIn" }
-    })
+      transition: { duration: 0.25, ease: "easeIn" },
+    }),
   };
 
   return (
-    <div className="md:hidden flex flex-col items-center w-full mx-auto mt-4 bg-transparent" style={{ perspective: 1200 }}>
-      <div 
+    <div
+      className="md:hidden flex flex-col items-center w-full mx-auto mt-4 bg-transparent"
+      style={{ perspective: 1200 }}
+    >
+      <div
         className="w-full relative bg-transparent flex justify-center min-h-[480px]"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -228,7 +299,11 @@ const MobileSolutionCarousel = () => {
             exit="exit"
             className="absolute top-0 left-0 w-full h-full"
           >
-            <SolutionCard item={solutionsData[currentIndex]} index={0} isMobile={true} />
+            <SolutionCard
+              item={solutionsData[currentIndex]}
+              index={0}
+              isMobile={true}
+            />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -247,13 +322,13 @@ const MobileSolutionCarousel = () => {
         </div>
         {/* Buttons */}
         <div className="flex gap-2">
-          <button 
+          <button
             onClick={handlePrev}
             className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#0a181c] hover:bg-gray-50 transition-colors"
           >
             <FiArrowLeft className="text-lg" />
           </button>
-          <button 
+          <button
             onClick={handleNext}
             className="w-10 h-10 rounded-full bg-[#0a181c] text-white flex items-center justify-center hover:bg-[#152429] transition-colors"
           >
@@ -266,124 +341,87 @@ const MobileSolutionCarousel = () => {
 };
 
 const Solutions = () => {
-  const baseLength = solutionsData.length;
-  const extendedData = [...solutionsData, ...solutionsData, ...solutionsData];
+  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
 
-  const [desktopIndex, setDesktopIndex] = useState(baseLength);
-  const [itemsToShow, setItemsToShow] = useState(3);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const [isAnimating, setIsAnimating] = useState(false);
+  useLayoutEffect(() => {
+    // Only apply horizontal scroll on desktop view
+    const ctx = gsap.context(() => {
+      const container = containerRef.current;
+      if (!container) return;
 
-  useEffect(() => {
-    const updateItemsToShow = () => {
-      if (window.innerWidth >= 1024) setItemsToShow(3);
-      else if (window.innerWidth >= 768) setItemsToShow(2);
-      else setItemsToShow(1);
-    };
-    updateItemsToShow();
-    window.addEventListener('resize', updateItemsToShow);
-    return () => window.removeEventListener('resize', updateItemsToShow);
+      const getScrollAmount = () => {
+        let containerWidth = container.scrollWidth;
+        // Scroll exactly enough so the last card aligns with the right side of the screen
+        return -(containerWidth - window.innerWidth);
+      };
+
+      gsap.to(container, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "center center", // Pin when section is in the middle of the screen
+          end: () => `+=${getScrollAmount() * -1}`, // Duration proportional to scroll distance
+          pin: true,
+          scrub: 1, // Smooth scrubbing
+          invalidateOnRefresh: true, // Recalculate on resize
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
-  const handleDesktopNext = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setIsTransitioning(true);
-    setDesktopIndex(prev => prev + 1);
-  };
-  
-  const handleDesktopPrev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setIsTransitioning(true);
-    setDesktopIndex(prev => prev - 1);
-  };
-
-  const handleTransitionEnd = () => {
-    setIsAnimating(false);
-    if (desktopIndex >= baseLength * 2) {
-      setIsTransitioning(false);
-      setDesktopIndex(desktopIndex - baseLength);
-    } else if (desktopIndex <= baseLength - 1) {
-      setIsTransitioning(false);
-      setDesktopIndex(desktopIndex + baseLength);
-    }
-  };
-
   return (
-    <section id="solutions" className="w-full bg-white py-24 px-4 md:px-6 flex flex-col items-center overflow-hidden">
-      <div className="max-w-325 w-full flex flex-col mb-8">
-        <motion.h2 
+    <section
+      ref={sectionRef}
+      id="solutions"
+      className="relative w-full bg-black py-24 flex flex-col items-center overflow-hidden"
+    >
+      {/* ── Continuous Video Background Graphics ── */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Subtle overlay grid for texture */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+
+        {/* Gradient fade to seamlessly blend the video edges into the black background */}
+        <div className="hidden md:block absolute inset-0 bg-linear-to-b from-black via-transparent to-black opacity-80"></div>
+      </div>
+
+      <div className="relative z-10 max-w-325 w-full flex flex-col mb-8 px-4 md:px-6">
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-jetbrains text-[27px] md:text-[48px] font-medium text-[#0a181c] text-center mb-4"
+          className="font-jetbrains text-[27px] md:text-[48px] font-medium text-white text-center mb-4 drop-shadow-lg"
         >
           Impactful Solutions We've Built
         </motion.h2>
       </div>
 
-      {/* Desktop Carousel */}
-      <div className="hidden md:block w-full max-w-325 bg-transparent">
-        <div className="overflow-hidden py-16 -my-16 px-10 -mx-10 bg-transparent">
-          <div className="-mx-5 bg-transparent">
-            <div 
-              className={`flex w-full bg-transparent ${isTransitioning ? "transition-transform duration-500 ease-in-out" : ""}`}
-              style={{ transform: `translateX(-${desktopIndex * (100 / itemsToShow)}%)` }}
-              onTransitionEnd={handleTransitionEnd}
+      {/* Desktop GSAP Horizontal Scroll Container */}
+      <div className="hidden md:flex w-full overflow-hidden mt-8 relative">
+        <div
+          ref={containerRef}
+          className="flex gap-8 px-10 items-stretch"
+          style={{ width: "max-content" }}
+        >
+          {solutionsData.map((item, index) => (
+            <div
+              key={item.id}
+              className="w-[400px] lg:w-[450px] shrink-0 h-full"
             >
-              {extendedData.map((item, index) => (
-                <div key={`${item.id}-${index}`} className="w-1/2 lg:w-1/3 shrink-0 px-5 bg-transparent">
-                  <SolutionCard item={item} index={index} />
-                </div>
-              ))}
+              <SolutionCard item={item} index={index} />
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Desktop Controls */}
-      <div className="hidden md:flex justify-between items-center w-full max-w-325 mt-10 px-2">
-        {/* Dots */}
-        <div className="flex gap-2">
-          {solutionsData.map((_, idx) => {
-            const activeDot = desktopIndex % baseLength;
-            return (
-              <div
-                key={idx}
-                onClick={() => {
-                  if (isAnimating) return;
-                  setIsAnimating(true);
-                  setIsTransitioning(true);
-                  const currentBlock = Math.floor(desktopIndex / baseLength);
-                  setDesktopIndex(currentBlock * baseLength + idx);
-                }}
-                className={`h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
-                  activeDot === idx ? "w-8 bg-[#0a181c]" : "w-2.5 bg-gray-300 hover:bg-gray-400"
-                }`}
-              />
-            );
-          })}
-        </div>
-        {/* Buttons */}
-        <div className="flex gap-3">
-          <button 
-            onClick={handleDesktopPrev}
-            className="w-12 h-12 rounded-full border border-gray-200 text-[#0a181c] hover:bg-gray-50 flex items-center justify-center transition-colors cursor-pointer"
-          >
-            <FaChevronLeft className="text-xl -ml-0.5" />
-          </button>
-          <button 
-            onClick={handleDesktopNext}
-            className="w-12 h-12 rounded-full bg-[#0a181c] text-white hover:bg-[#152429] flex items-center justify-center transition-colors cursor-pointer"
-          >
-            <FaChevronRight className="text-xl -mr-0.5" />
-          </button>
-        </div>
+      {/* Mobile Swipeable Carousel */}
+      <div className="w-full px-4 md:px-6">
+        <MobileSolutionCarousel />
       </div>
-
-      <MobileSolutionCarousel />
     </section>
   );
 };

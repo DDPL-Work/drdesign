@@ -309,6 +309,8 @@ const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
     ...images,
     ...images,
     ...images,
+    ...images,
+    ...images,
   ];
 
   return (
@@ -327,7 +329,7 @@ const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
         .animate-gallery-marquee {
           display: flex;
           width: max-content;
-          animation: gallery-marquee 65s linear infinite;
+          animation: gallery-marquee 30s linear infinite;
           will-change: transform;
           transform: translateZ(0);
         }
@@ -491,7 +493,7 @@ const CaseStudyDetails = () => {
       <CoreStacks coreStacks={coreStacks} />
       <ProjectGalley
         galleryImages={galleryImages}
-        isMobileApp={slug === "mobile-app-development"}
+        isMobileApp={slug === "mobile-app-development" || slug === "social-media-marketing"}
         isGisApp={slug === "gis-&-spatial-data"}
       />
       <CTA />

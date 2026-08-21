@@ -534,7 +534,15 @@ const CoreCapability = () => {
       );
     }, sectionRef);
 
-    return () => ctx.revert();
+    // Force GSAP to recalculate scroll positions after the Framer Motion page transition finishes
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 850);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   const bannerWidth = isMobile ? 240 : 500;
