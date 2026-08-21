@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { solutionsData } from "../../components/homePage/Solutions";
 import { Link, useParams } from "react-router-dom";
 import Lenis from "lenis";
@@ -75,12 +75,16 @@ const Hero = ({ title, image }) => {
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          className="font-jetbrains text-white text-3xl md:text-5xl font-medium tracking-wide flex"
+          className="font-jetbrains text-white text-2xl sm:text-3xl md:text-5xl font-medium tracking-wide flex flex-wrap justify-center text-center px-4 gap-x-[0.3em] gap-y-1 md:gap-y-2"
         >
-          {text.split("").map((char, i) => (
-            <motion.span key={i} variants={charVariants}>
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
+          {text.split(" ").map((word, wIdx) => (
+            <span key={wIdx} className="inline-flex">
+              {word.split("").map((char, cIdx) => (
+                <motion.span key={cIdx} variants={charVariants} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           ))}
         </motion.h1>
       </div>
@@ -98,7 +102,7 @@ const Details = ({ title, description, image, projectOverview, slug, galleryImag
       className="w-full py-10 bg-white"
     >
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:items-stretch">
           {/* Left Column - Text */}
           <div className="lg:col-span-5 flex flex-col xl:pr-8">
             <h2 className="font-jetbrains text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15] font-medium text-[#0A1118] mb-6">
@@ -119,30 +123,30 @@ const Details = ({ title, description, image, projectOverview, slug, galleryImag
           </div>
 
           {/* Right Column - Image */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 relative w-full h-full min-h-[300px]">
             {slug === "mobile-app-development" && galleryImages?.length >= 3 ? (
-              <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+              <div className="relative lg:absolute lg:inset-0 lg:h-full w-full aspect-[4/3] lg:aspect-auto my-15 sm:my-0 flex items-center justify-center">
                 <img
                   src={galleryImages[0]}
                   alt="App Screen 1"
-                  className="absolute w-[45%] md:w-[40%] rounded-[24px] shadow-2xl -rotate-12 -translate-x-16 md:-translate-x-24 z-10 object-cover"
+                  className="absolute w-[45%] md:w-[40%] lg:w-auto lg:h-[90%] rounded-[24px] shadow-2xl -rotate-12 -translate-x-16 md:-translate-x-24 z-10 object-contain"
                 />
                 <img
                   src={galleryImages[1]}
                   alt="App Screen 2"
-                  className="absolute w-[50%] md:w-[45%] rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-30 object-cover"
+                  className="absolute w-[50%] md:w-[45%] lg:w-auto lg:h-[100%] rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-30 object-contain"
                 />
                 <img
                   src={galleryImages[2]}
                   alt="App Screen 3"
-                  className="absolute w-[45%] md:w-[40%] rounded-[24px] shadow-2xl rotate-12 translate-x-16 md:translate-x-24 z-20 object-cover"
+                  className="absolute w-[45%] md:w-[40%] lg:w-auto lg:h-[90%] rounded-[24px] shadow-2xl rotate-12 translate-x-16 md:translate-x-24 z-20 object-contain"
                 />
               </div>
             ) : (
               <img
                 src={image || imgProject}
                 alt="Project Overview"
-                className="w-full h-auto rounded-[24px] md:rounded-[32px] object-cover"
+                className="relative lg:absolute lg:top-0 lg:right-0 w-full lg:w-auto h-auto lg:h-full rounded-[24px] md:rounded-[32px] object-cover"
               />
             )}
           </div>
@@ -297,21 +301,65 @@ const CoreStacks = ({ coreStacks }) => {
   );
 };
 const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
   const defaultImages = [img1, imge2, img3];
   const images = galleryImages || defaultImages;
-  // Duplicate array multiple times for a seamless infinite scroll loop
-  const repeatedImages = [
-    ...images,
-    ...images,
-    ...images,
-    ...images,
-    ...images,
-    ...images,
-    ...images,
-    ...images,
-  ];
+  
+  const [selectedImage, setSelectedImage] = useState(null);
+  
+  // Track the order of the cards. The middle index of this array is the focused card.
+  const [cardOrder, setCardOrder] = useState(() => images.map((_, i) => i));
+
+  // Sync state when navigating between different projects
+  useEffect(() => {
+    setCardOrder(images.map((_, i) => i));
+  }, [galleryImages]);
+
+  const centerPos = Math.floor(images.length / 2);
+  const focusedIndex = cardOrder[centerPos];
+
+  const cycleOrderLeft = () => {
+    setCardOrder((prev) => {
+      const next = [...prev];
+      const first = next.shift();
+      next.push(first);
+      return next;
+    });
+  };
+
+  const cycleOrderRight = () => {
+    setCardOrder((prev) => {
+      const next = [...prev];
+      const last = next.pop();
+      next.unshift(last);
+      return next;
+    });
+  };
+
+  const handleImageClick = (src, originalIndex) => {
+    if (focusedIndex === originalIndex) {
+      setSelectedImage(src);
+    } else {
+      // Find where it is in the current order, and cycle until it's centered
+      const currentPos = cardOrder.indexOf(originalIndex);
+      const diff = currentPos - centerPos;
+      
+      setCardOrder((prev) => {
+        let next = [...prev];
+        if (diff > 0) {
+           for (let i = 0; i < diff; i++) {
+             const first = next.shift();
+             next.push(first);
+           }
+        } else if (diff < 0) {
+           for (let i = 0; i < -diff; i++) {
+             const last = next.pop();
+             next.unshift(last);
+           }
+        }
+        return next;
+      });
+    }
+  };
 
   return (
     <motion.section
@@ -321,38 +369,53 @@ const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className="w-full pb-10 bg-white overflow-hidden relative"
     >
-      <style>{`
-        @keyframes gallery-marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-gallery-marquee {
-          display: flex;
-          width: max-content;
-          animation: gallery-marquee 30s linear infinite;
-          will-change: transform;
-          transform: translateZ(0);
-        }
-      `}</style>
-
       <div className="w-full mx-auto px-4 md:px-12 lg:px-16 xl:px-24 flex flex-col mb-8">
         <h2 className="font-jetbrains font-medium text-[#0A1118] text-[28px] md:text-[32px]">
           Project Galley
         </h2>
       </div>
 
-      <div className="w-full relative overflow-hidden flex items-start">
-        <div className="animate-gallery-marquee hover:[animation-play-state:paused]">
-          {repeatedImages.map((src, index) => (
-            <div
+      <div className="w-full grid place-items-center py-12 md:py-20 overflow-visible">
+        {images.map((src, index) => {
+          const currentPos = cardOrder.indexOf(index);
+          const isFocused = currentPos === centerPos;
+          
+          let progress = 0;
+          if (images.length > 1) {
+             progress = currentPos / (images.length - 1);
+          }
+          
+          const angle = -15 + (progress * 30);
+          
+          return (
+            <motion.div
               key={index}
-              onClick={() => setSelectedImage(src)}
-              className={`shrink-0 mx-4 md:mx-8 rounded-2xl md:rounded-[20px] overflow-hidden bg-transparent flex items-start justify-center cursor-pointer ${
+              onClick={() => handleImageClick(src, index)}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, info) => {
+                const swipeThreshold = 50;
+                if (info.offset.x < -swipeThreshold) {
+                  cycleOrderLeft();
+                } else if (info.offset.x > swipeThreshold) {
+                  cycleOrderRight();
+                }
+              }}
+              animate={{
+                zIndex: isFocused ? 50 : currentPos + 10,
+                x: `calc(${progress * 2 - 1} * clamp(80px, 20vw, 300px))`,
+                rotate: angle,
+                scale: isFocused ? 1.05 : 1,
+                boxShadow: isFocused ? "0 25px 50px -12px rgba(0, 0, 0, 0.5)" : "0 10px 25px -5px rgba(0, 0, 0, 0.3)"
+              }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className={`col-start-1 row-start-1 cursor-pointer rounded-2xl md:rounded-[24px] overflow-hidden flex items-start justify-center bg-transparent ${
                 isMobileApp
-                  ? "h-[60vh] md:h-[600px] w-auto"
+                  ? "h-[350px] md:h-[650px] w-auto"
                   : isGisApp
-                    ? "w-[85vw] md:w-[600px] h-auto"
-                    : "w-[85vw] md:w-[450px] h-auto"
+                    ? "w-[280px] md:w-[700px] h-auto"
+                    : "w-[280px] md:w-[550px] h-auto"
               }`}
             >
               <img
@@ -360,15 +423,13 @@ const ProjectGalley = ({ galleryImages, isMobileApp, isGisApp }) => {
                 alt={`Project screen ${index + 1}`}
                 loading="lazy"
                 decoding="async"
-                className={`transition-transform duration-500 ${
-                  isMobileApp
-                    ? "h-full w-auto object-contain"
-                    : "w-full h-auto object-contain"
+                className={`w-full h-full ${
+                  isMobileApp ? "object-contain" : "object-cover"
                 }`}
               />
-            </div>
-          ))}
-        </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       <AnimatePresence>
@@ -410,6 +471,8 @@ const CaseStudyDetails = () => {
   const { slug } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -417,17 +480,19 @@ const CaseStudyDetails = () => {
       smoothTouch: false,
     });
 
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
       lenis.destroy();
+      cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [slug]);
 
   // Format slug to readable title (e.g., "enterprise-resource-planning-system" -> "Enterprise Resource Planning System")
   const formatTitle = (slugStr) => {

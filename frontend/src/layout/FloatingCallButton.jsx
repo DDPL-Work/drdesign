@@ -40,11 +40,11 @@ const FloatingCallButton = () => {
       {/* Phone Call Button */}
       <a
         href="tel:+917217052558"
-        className="group flex items-center justify-center h-[60px] bg-[#007AFF] hover:bg-[#0056b3] text-white rounded-full shadow-[0_8px_30px_rgba(0,122,255,0.4)] hover:shadow-[0_8px_30px_rgba(0,122,255,0.6)] transition-all duration-500 animate-bounce overflow-hidden px-[12px] hover:px-6"
+        className="group flex items-center justify-center h-[48px] md:h-[60px] bg-[#007AFF] hover:bg-[#0056b3] text-white rounded-full shadow-[0_8px_30px_rgba(0,122,255,0.4)] hover:shadow-[0_8px_30px_rgba(0,122,255,0.6)] transition-all duration-500 animate-bounce overflow-hidden px-[10px] md:px-[12px] hover:px-5 md:hover:px-6"
         aria-label="Call us"
       >
-        <FaPhoneAlt className="w-9 h-9 shrink-0" />
-        <span className="w-0 overflow-hidden opacity-0 group-hover:w-[75px] group-hover:opacity-100 group-hover:ml-3 transition-all duration-500 whitespace-nowrap font-jetbrains font-semibold text-[15px]">
+        <FaPhoneAlt className="w-6 h-6 md:w-9 md:h-9 shrink-0" />
+        <span className="w-0 overflow-hidden opacity-0 group-hover:w-[75px] group-hover:opacity-100 group-hover:ml-3 transition-all duration-500 whitespace-nowrap font-jetbrains font-semibold text-[13px] md:text-[15px]">
           Call Us!
         </span>
       </a>
@@ -54,11 +54,11 @@ const FloatingCallButton = () => {
         href="https://wa.me/917217052558"
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-center h-[60px] bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.6)] transition-all duration-500 animate-bounce overflow-hidden px-[12px] hover:px-6"
+        className="group flex items-center justify-center h-[48px] md:h-[60px] bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.6)] transition-all duration-500 animate-bounce overflow-hidden px-[10px] md:px-[12px] hover:px-5 md:hover:px-6"
         aria-label="Chat with us on WhatsApp"
       >
-        <FaWhatsapp className="w-9 h-9 shrink-0" />
-        <span className="w-0 overflow-hidden opacity-0 group-hover:w-[110px] group-hover:opacity-100 group-hover:ml-3 transition-all duration-500 whitespace-nowrap font-jetbrains font-semibold text-[15px]">
+        <FaWhatsapp className="w-7 h-7 md:w-9 md:h-9 shrink-0" />
+        <span className="w-0 overflow-hidden opacity-0 group-hover:w-[110px] group-hover:opacity-100 group-hover:ml-3 transition-all duration-500 whitespace-nowrap font-jetbrains font-semibold text-[13px] md:text-[15px]">
           Chat with us!
         </span>
       </a>

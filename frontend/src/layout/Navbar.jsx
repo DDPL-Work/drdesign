@@ -331,9 +331,9 @@ const Navbar = () => {
           onClick={toggleMenu}
           className={`text-2xl focus:outline-none transition-colors ${
             isScrolled || isMobileMenuOpen
-              ? "text-[#0a181c]"
-              : "text-[#0a181c]"
-          }`}
+              ? "text-[#0a181c] dark:text-white"
+              : "text-[#5e6673] dark:text-gray-300"
+          } hover:text-black dark:hover:text-white`}
         >
           {isMobileMenuOpen ? <FiX /> : <FiMenu />}
         </button>

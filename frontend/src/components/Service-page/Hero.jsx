@@ -75,11 +75,11 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[85vh] md:min-h-screen flex items-end md:items-center overflow-hidden pb-14 md:pb-0"
+      className="relative w-full h-[100svh] md:h-screen flex items-center overflow-hidden pt-16 md:pt-0"
     >
       {/* ── 1. Background video — ease-out scale + fade ─────────────────────── */}
       <motion.video
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-[80%_center] md:object-center"
         src={bgVideo}
         autoPlay
         loop

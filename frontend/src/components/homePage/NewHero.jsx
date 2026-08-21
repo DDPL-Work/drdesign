@@ -71,9 +71,9 @@ const NewHero = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative w-full h-screen overflow-hidden flex items-center">
+    <section ref={heroRef} className="relative w-full h-[100svh] md:h-screen overflow-hidden flex items-center">
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full ">
+      <div className="absolute inset-0 w-full h-full">
         {/* Simple Dark Overlay for text readability */}
         <div className="absolute inset-0 z-10"></div>
         <video
@@ -89,10 +89,10 @@ const NewHero = () => {
       </div>
 
       {/* Learn More Button */}
-      <div className="absolute bottom-7 right-20 z-20">
+      <div className="absolute bottom-12 right-1/2 translate-x-1/2 md:translate-x-0 md:bottom-7 md:right-20 z-20 w-max">
         <button 
           onClick={() => navigate("/what-we-do")}
-          className="group flex items-center justify-center px-6 py-6 bg-black/40 backdrop-blur-md border border-white/20 text-white text-sm font-medium tracking-wide rounded-full hover:bg-transparent hover:border-white/50 transition-colors duration-300 shadow-xl overflow-hidden cursor-pointer"
+          className="group flex items-center justify-center px-6 py-4 md:py-6 bg-black/40 backdrop-blur-md border border-white/20 text-white text-sm font-medium tracking-wide rounded-full hover:bg-transparent hover:border-white/50 transition-colors duration-300 shadow-xl overflow-hidden cursor-pointer"
         >
           <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">
             Learn more

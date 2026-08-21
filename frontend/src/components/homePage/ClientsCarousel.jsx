@@ -79,7 +79,7 @@ const ClientsCarousel = () => {
   const doubled = [...logos, ...logos];
 
   return (
-    <section className="w-full bg-black md:py-20 overflow-hidden">
+    <section className="w-full bg-black py-10 md:py-20 overflow-hidden">
       <style>{marqueeStyles}</style>
 
       {/* ── Section heading ── */}
