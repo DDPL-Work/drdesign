@@ -49,8 +49,8 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-              <Link to="/about-us" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
-              <Link to="/services" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
+              <Link to="/who-we-are" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
+              <Link to="/what-we-do" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
               <Link to="/#solutions" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
               <Link to="/find-answers" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
               <Link to="/find-teams" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>

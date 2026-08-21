@@ -73,6 +73,10 @@ import TP11 from "../assets/Projects/TP-11.jpg";
 import GIS1 from "../assets/Projects/GIS-1.png";
 import GIS2 from "../assets/Projects/GIS-2.jpeg";
 import GIS3 from "../assets/Projects/GIS-3.jpeg";
+import GIS4 from "../assets/Projects/GIS-4.png";
+import GIS5 from "../assets/Projects/GIS-5.png";
+import GIS6 from "../assets/Projects/GIS-6.png";
+import GIS7 from "../assets/Projects/GIS-7.png";
 import SEO1 from "../assets/Projects/SEO-1.PNG";
 import SEO2 from "../assets/Projects/SEO-2.PNG";
 import SEO3 from "../assets/Projects/SEO-3.PNG";
@@ -228,7 +232,7 @@ export const projectDetailsData = {
         des: "Deployed & Active",
       },
     ],
-    galleryImages: [GIS2, GIS3],
+    galleryImages: [GIS2, GIS3, GIS4, GIS5, GIS6, GIS7],
     coreStacks: [
       { Icon: SiPython, color: "#3776AB" },
       { Icon: SiDjango, color: "#092E20" },
@@ -315,7 +319,7 @@ export const projectDetailsData = {
     image: SMF1,
     title: "Scan My Flight",
     description: "End-to-end performance marketing encompassing Meta Ads, Google Ads, and organic social media growth, delivering measurable ROI and market penetration.",
-    projectOverview: "For the 'Scan My Flight' campaign and our educational roadmap targeting, we engineered highly optimized Meta Ads campaigns focused on aggressive User Acquisition and targeted lead generation. Our data-driven approach achieved phenomenal results: driving over 2,500+ Mobile App Installs at an exceptionally low Cost Per Install (CPI) of under ₹10 (averaging around ₹9.86) with a spend of just ₹25k. Simultaneously, we ran highly targeted traffic campaigns for educational roadmaps (like OT & Cyber Security), driving hundreds of high-intent landing page views for less than ₹4.73 per click. By rigorously A/B testing ad creatives and continuously optimizing budget allocations, we delivered maximum ROI and rapid scaling for the brand.",
+    projectOverview: "For the 'Scan My Flight' campaign, we engineered highly optimized Meta Ads campaigns focused on aggressive User Acquisition and targeted lead generation. Our data-driven approach achieved phenomenal results: driving over 2,500+ Mobile App Installs at an exceptionally low Cost Per Install (CPI) of under ₹10 (averaging around ₹9.86) with a spend of just ₹25k. By rigorously A/B testing ad creatives and continuously optimizing budget allocations, we delivered maximum ROI and rapid scaling for the brand.",
     infoItems: [
       {
         icon: FaRegUser,
@@ -344,7 +348,6 @@ export const projectDetailsData = {
       SMF3,
       SMF4,
       SMF5,
-      SMF6
     ],
     coreStacks: [
       { Icon: SiMeta, color: "#0468FF" },

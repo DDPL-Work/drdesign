@@ -82,7 +82,15 @@ const RoleDetails = () => {
 
   useEffect(() => {
     setIsLoaded(true);
-    window.scrollTo(0, 0);
+    // Force scroll to top, respecting Lenis if it's active
+    const timer = setTimeout(() => {
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, [slug]);
 
   useEffect(() => {
