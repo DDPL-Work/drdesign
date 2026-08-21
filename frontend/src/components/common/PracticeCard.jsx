@@ -45,8 +45,16 @@ export const getTechLogoUrl = (tech) => {
     OpenAI: "https://api.iconify.design/logos/openai-icon.svg",
     Meta: "https://api.iconify.design/logos/meta-icon.svg",
     "Google Ads": "https://api.iconify.design/logos/google-ads.svg",
+    "Meta Ads": "https://api.iconify.design/logos/meta-icon.svg",
     Figma: "https://api.iconify.design/logos/figma.svg",
     HubSpot: "https://cdn.simpleicons.org/hubspot",
+    "Adobe CC": "https://cdn.simpleicons.org/adobecreativecloud/FF0000",
+    "Premiere Pro": "https://api.iconify.design/logos/adobe-premiere.svg",
+    "After Effects": "https://api.iconify.design/logos/adobe-after-effects.svg",
+    Illustrator: "https://api.iconify.design/logos/adobe-illustrator.svg",
+    Buffer: "https://cdn.simpleicons.org/buffer",
+    Hootsuite: "https://cdn.simpleicons.org/hootsuite",
+    GTM: "https://api.iconify.design/logos/google-tag-manager.svg",
   };
   return logos[tech] || null;
 };

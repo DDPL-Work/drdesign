@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import heroImg from "../../assets/contactHero.avif";
+import emailGif from "../../assets/email.gif";
+import locationGif from "../../assets/location2.gif";
+import waitGif from "../../assets/wait.gif";
+import phoneGif from "../../assets/phone.gif";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import {
@@ -219,9 +223,8 @@ const ConversationCards = ({ onOpenModal }) => {
                     .mobile-mail-in { animation: mailIn 3s ease-in-out infinite; }
                   }
                 `}</style>
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 relative overflow-hidden">
-                  <FiMail className="text-xl absolute transition-all duration-300 mobile-mail-out md:group-hover:-rotate-12 md:group-hover:scale-50 md:group-hover:opacity-0" />
-                  <HiOutlineMailOpen className="text-xl absolute transition-all duration-300 md:rotate-12 md:scale-50 opacity-0 mobile-mail-in md:group-hover:rotate-0 md:group-hover:scale-100 md:group-hover:opacity-100" />
+                <div className="w-12 h-12 flex items-center justify-center relative overflow-hidden">
+                  <img src={emailGif} alt="Email" className="w-8 h-8 rounded-lg object-contain transition-transform duration-300 md:group-hover:scale-110" />
                 </div>
                 <FiArrowUpRight className="text-2xl text-white md:text-gray-400 md:group-hover:text-white transition-colors" />
               </div>
@@ -284,23 +287,8 @@ const ConversationCards = ({ onOpenModal }) => {
               className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-1.4s" />
-              <style>{`
-                @keyframes ring {
-                  0%, 50%, 100% { transform: rotate(0deg); }
-                  10%, 30% { transform: rotate(15deg); }
-                  20%, 40% { transform: rotate(-15deg); }
-                }
-                @media (max-width: 767px) {
-                  .mobile-ring {
-                    animation: ring 1.5s ease-in-out infinite;
-                  }
-                }
-                .group:hover .hover-ring {
-                  animation: ring 1.5s ease-in-out infinite;
-                }
-              `}</style>
-              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
-                <FiPhone className="text-xl hover-ring mobile-ring" />
+              <div className="w-12 h-12 flex items-center justify-center mb-4 relative z-10">
+                <img src={phoneGif} alt="Phone" className="w-8 h-8 rounded-lg object-contain transition-transform duration-300 md:group-hover:scale-110" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-semibold tracking-widest text-gray-400 mb-3 uppercase">
@@ -308,13 +296,13 @@ const ConversationCards = ({ onOpenModal }) => {
                 </p>
                 <div className="flex flex-col gap-1 mb-4">
                   <p className="text-lg md:text-xl font-medium text-gray-900">
-                    +91 70601 00443
+                    +91 72170 52558
                   </p>
                   <p className="text-lg md:text-xl font-medium text-gray-900">
                     +91 72170 52556
                   </p>
                   <p className="text-lg md:text-xl font-medium text-gray-900">
-                    +91 72170 52557
+                    +91 72170 52558
                   </p>
                 </div>
                 <a
@@ -332,8 +320,8 @@ const ConversationCards = ({ onOpenModal }) => {
               className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden md:col-span-1 lg:col-span-2 transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-1.4s" />
-              <div className="w-12 h-12 rounded-2xl bg-pink-200/50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
-                <FiMapPin className="text-xl animate-bounce md:animate-none md:group-hover:animate-bounce" />
+              <div className="w-12 h-12 flex items-center justify-center mb-4 relative z-10">
+                <img src={locationGif} alt="Location" className="w-8 h-8 rounded-lg object-contain transition-transform duration-300 md:group-hover:scale-110" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-semibold tracking-widest text-gray-400 mb-3 uppercase">
@@ -356,8 +344,8 @@ const ConversationCards = ({ onOpenModal }) => {
               className="bg-white rounded-4xl p-6 lg:p-7 flex flex-col justify-between shadow-[0_4px_24px_rgb(0,0,0,0.03)] border-2 border-gray-200 overflow-hidden transition-all duration-500 cursor-pointer relative group"
             >
               <BorderShine delay="-2.1s" />
-              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center mb-4 text-gray-600 relative z-10">
-                <FiClock className="text-xl animate-[spin_2s_linear_infinite] md:animate-none md:group-hover:animate-[spin_2s_linear_infinite]" />
+              <div className="w-12 h-12 flex items-center justify-center mb-4 relative z-10">
+                <img src={waitGif} alt="Working Hours" className="w-8 h-8 rounded-lg object-contain transition-transform duration-300 md:group-hover:scale-110" />
               </div>
               <div className="relative z-10">
                 <p className="text-xs font-semibold tracking-widest text-gray-400 mb-3 uppercase">

@@ -4,6 +4,7 @@ import cloudGif from "../assets/cloud.gif";
 import databaseGif from "../assets/database.gif";
 import seoGif from "../assets/seo.gif";
 import campaignGif from "../assets/campaign.gif";
+import uiUxGif from "../assets/ui-ux.gif";
 
 import wayGif from "../assets/way.gif";
 import satelliteGif from "../assets/satellite.gif";
@@ -14,18 +15,18 @@ export const itCardsData = [
   {
     id: 1,
     category: "ENGINEERING",
-    icon: <img src={responsiveGif} alt="Custom Software & Web Platforms" className="w-16 h-16 object-contain rounded-xl" />,
+    icon: <img src={responsiveGif} alt="Custom Software & Website Development" className="w-16 h-16 object-contain rounded-xl" />,
     bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-    title: "Custom Software & Web Platforms",
+    title: "Custom Software & Website Development",
     description:
-      "Product-grade web platforms, ERP and internal tools built to fit the way your business actually operates.",
+      "Product-grade websites, web platforms, ERP and internal tools built to fit the way your business actually operates.",
     features: [
+      "Custom Websites",
       "Web apps & portals",
-      "API & system integration",
       "ERP / CRM systems",
       "Legacy modernisation",
     ],
-    tech: ["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"],
+    tech: ["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "WordPress", "Shopify"],
   },
   {
     id: 2,
@@ -45,67 +46,67 @@ export const itCardsData = [
   },
   {
     id: 3,
-    category: "CLOUD",
-    icon: <img src={cloudGif} alt="Cloud Infrastructure" className="w-16 h-16 object-contain rounded-xl" />,
+    category: "CLOUD & DATA",
+    icon: <img src={cloudGif} alt="Cloud Infrastructure, Data & Analytics" className="w-16 h-16 object-contain rounded-xl" />,
     bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-    title: "Cloud Infrastructure",
+    title: "Cloud Infrastructure, Data & Analytics",
     description:
-      "Scalable and secure cloud environments tailored to support your growing digital ecosystem.",
+      "Scalable cloud environments combined with robust data pipelines and analytics tailored for your digital ecosystem.",
     features: [
       "AWS & Azure",
       "Cloud Migration",
-      "DevOps & CI/CD",
-      "Security & Compliance",
+      "Data Engineering",
+      "Business Intelligence",
     ],
-    tech: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux"],
+    tech: ["AWS", "Docker", "Kubernetes", "Python", "PowerBI"],
   },
   {
     id: 4,
-    category: "DATA",
-    icon: <img src={databaseGif} alt="Data & Analytics" className="w-16 h-16 object-contain rounded-xl" />,
+    category: "DESIGN",
+    icon: <img src={uiUxGif} alt="Graphics Designing & Video Editing" className="w-16 h-16 object-contain rounded-xl" />,
     bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    title: "Data & Analytics",
+    title: "Graphics Designing & Video Editing",
     description:
-      "Actionable insights through robust data pipelines, analytics dashboards, and business intelligence.",
+      "Captivating visual content and dynamic video editing that elevates your brand identity and engages your audience.",
     features: [
-      "Data Engineering",
-      "PowerBI & Tableau",
-      "Predictive Analytics",
-      "Data Warehousing",
+      "Brand Identity Design",
+      "Motion Graphics",
+      "Video Production",
+      "UI/UX Design",
     ],
-    tech: ["Python", "SQL", "Snowflake", "PowerBI", "Tableau"],
+    tech: ["Adobe CC", "Premiere Pro", "After Effects", "Figma", "Illustrator"],
   },
   {
     id: 5,
-    category: "SEARCH & CONTENT",
-    icon: <img src={seoGif} alt="CMS, SEO & Generative Search" className="w-16 h-16 object-contain rounded-xl" />,
+    category: "SEARCH & SOCIAL",
+    icon: <img src={seoGif} alt="Social Media, SEO & Generative Search" className="w-16 h-16 object-contain rounded-xl" />,
     bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80",
-    title: "CMS, SEO & Generative Search",
+    title: "Social Media, SEO & Generative Search",
     description:
-      "Advanced content management and holistic search strategies, covering traditional SEO, GEO, and AEO to dominate search visibility.",
+      "Holistic organic growth through strategic social media management and advanced search optimization strategies.",
     features: [
+      "Social Media Management",
       "SEO & Technical Audits",
-      "GEO & AI Search Optimization",
-      "AEO & Voice Search",
-      "Headless CMS Integration",
+      "GEO & AI Search",
+      "Content Strategy",
     ],
-    tech: ["WordPress", "Shopify", "Ahrefs", "OpenAI", "Google Analytics"],
+    tech: ["Ahrefs", "OpenAI", "Google Analytics", "Buffer", "Hootsuite"],
   },
   {
     id: 6,
-    category: "CAMPAIGNS",
-    icon: <img src={campaignGif} alt="Meta Ads & Virtual Campaigns" className="w-16 h-16 object-contain rounded-xl" />,
+    category: "PAID ADS",
+    icon: <img src={campaignGif} alt="Meta Ads & Google Ads" className="w-16 h-16 object-contain rounded-xl" />,
     bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    title: "Meta Ads & Virtual Campaigns",
+    title: "Meta Ads & Google Ads",
     description:
-      "Data-driven ad campaigns and immersive virtual experiences that maximize reach, engagement, and conversion.",
+      "Data-driven advertising campaigns across Meta and Google networks to maximize ROI, reach, and conversions.",
     features: [
       "Meta Ads Management",
-      "Virtual Campaign Strategy",
+      "Google Search & Display Ads",
       "Conversion Tracking",
       "A/B Testing & Analytics",
     ],
-    tech: ["Meta", "Google Ads", "HubSpot", "Google Analytics"],
+    tech: ["Meta Ads", "Google Ads", "GTM", "Google Analytics"],
   },
 ];
 

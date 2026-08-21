@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 
 const LOOP = "3s";
@@ -315,55 +313,9 @@ const MobileStatCarousel = ({ cardsRef }) => {
   );
 };
 
-gsap.registerPlugin(ScrollTrigger);
-
 const AboutUs = () => {
   const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const textRef = useRef(null);
   const cardsRef = useRef([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%", // Animates when top of section hits 80% of viewport
-          toggleActions: "play none none reverse", // Reverse animation on scroll up
-        },
-      });
-
-      tl.from(headingRef.current, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      })
-        .from(
-          textRef.current,
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          },
-          "-=0.6",
-        )
-        .from(
-          cardsRef.current,
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div
@@ -371,41 +323,62 @@ const AboutUs = () => {
       className="w-full bg-white py-15 px-6 flex flex-col items-center overflow-hidden"
     >
       <div className="max-w-[1073px] w-full flex flex-col items-center text-center">
-        <h2
-          ref={headingRef}
+        <motion.h2
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="font-jetbrains text-[27px] md:text-[42px] md:text-[56px] font-normal tracking-wider text-black mb-6 uppercase"
         >
           About DR.DESIGN
-        </h2>
+        </motion.h2>
 
-        <p
-          ref={textRef}
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="font-inter text-[#333333] text-[13px] md:text-[19px] leading-[1.8] max-w-[814px] mb-8 font-normal"
         >
           DR.DESIGN PVT. LTD. is a premier technology and consulting firm specializing in <br className="sm:block hidden" /> enterprise Geospatial Solutions (GIS), custom IT Services, and comprehensive Digital <br className="sm:block hidden" /> Transformation. Built on deep technical expertise, we partner with startups, established <br className="sm:block hidden" /> businesses, and government agencies to bring their visionary ideas to life. We engineer <br className="sm:block hidden" /> custom, data-driven infrastructure and intelligent software that helps our clients scale faster and optimize operations.
-        </p>
+        </motion.p>
 
         {/* Desktop View */}
-        <div className="hidden md:flex flex-row justify-center gap-[100px]">
-          <StatCard
-            cardRef={(el) => (cardsRef.current[0] = el)}
-            icon={AnimatedYearsSVG}
-            title="5+ years"
-            subtitle="in software engineering"
-          />
-          <StatCard
-            cardRef={(el) => (cardsRef.current[1] = el)}
-            icon={AnimatedCubeSVG}
-            title="300+ projects"
-            subtitle="successfully completed"
-          />
-          <StatCard
-            cardRef={(el) => (cardsRef.current[2] = el)}
-            icon={AnimatedHQSVG}
-            title="HQ in Dehradun"
-            subtitle="offices in the Delhi & Dehradun"
-          />
-        </div>
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } }
+          }}
+          className="hidden md:flex flex-row justify-center gap-[100px]"
+        >
+          <motion.div variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <StatCard
+              cardRef={(el) => (cardsRef.current[0] = el)}
+              icon={AnimatedYearsSVG}
+              title="5+ years"
+              subtitle="in software engineering"
+            />
+          </motion.div>
+          <motion.div variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <StatCard
+              cardRef={(el) => (cardsRef.current[1] = el)}
+              icon={AnimatedCubeSVG}
+              title="300+ projects"
+              subtitle="successfully completed"
+            />
+          </motion.div>
+          <motion.div variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } } }}>
+            <StatCard
+              cardRef={(el) => (cardsRef.current[2] = el)}
+              icon={AnimatedHQSVG}
+              title="HQ in Dehradun"
+              subtitle="offices in the Delhi & Dehradun"
+            />
+          </motion.div>
+        </motion.div>
 
         {/* Mobile View Carousel */}
         <MobileStatCarousel cardsRef={cardsRef} />

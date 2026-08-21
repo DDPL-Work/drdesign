@@ -30,7 +30,7 @@ import appGif from "../../assets/app.gif";
 import seoGif from "../../assets/seo.gif";
 import uiUxGif from "../../assets/ui-ux.gif";
 import governmentGif from "../../assets/goverment.gif";
-import solution from "../../assets/solution.mp4";
+import campaignGif from "../../assets/campaign.gif";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,6 +88,15 @@ export const solutionsData = [
     gifIcon: governmentGif,
     image:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "07",
+    title: "Social Media Marketing",
+    description:
+      "Targeted Meta Ads, Google Ads, and social media campaigns engineered to maximize ROI, drive qualified leads, and aggressively scale your digital footprint.",
+    gifIcon: campaignGif,
+    image:
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
   },
 ];
 
@@ -157,7 +166,11 @@ const SolutionCard = ({ item, index, isMobile = false }) => {
           <div className="flex justify-between items-start mb-12">
             {/* Icon */}
             <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center transition-all duration-500 overflow-hidden shadow-sm p-1">
-              <img src={item.gifIcon} alt={`${item.title} icon`} className="w-full h-full object-contain mix-blend-multiply" />
+              <img
+                src={item.gifIcon}
+                alt={`${item.title} icon`}
+                className="w-full h-full object-contain mix-blend-multiply"
+              />
             </div>
 
             {/* Small Image (Visible before hover) */}
@@ -368,20 +381,9 @@ const Solutions = () => {
     >
       {/* ── Continuous Video Background Graphics ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 object-cover opacity-80 mix-blend-screen md:mix-blend-normal"
-          style={{ width: "0vmax", height: "100vmax", minWidth: "55vw", minHeight: "100vh" }}
-        >
-          <source src={solution} type="video/mp4" />
-        </video> */}
-        
         {/* Subtle overlay grid for texture */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-        
+
         {/* Gradient fade to seamlessly blend the video edges into the black background */}
         <div className="hidden md:block absolute inset-0 bg-linear-to-b from-black via-transparent to-black opacity-80"></div>
       </div>

@@ -5,6 +5,7 @@ import VisionMission from '../../components/About-UsPage/VisionMission'
 import Achievement from '../../components/About-UsPage/Achievement'
 import TrustedClients from '../../components/About-UsPage/TrustedClients'
 import CTA from '../../components/homePage/CTA'
+import OurStory from '../../components/About-UsPage/OurStory'
 
 const AboutUs = () => {
   return (
@@ -14,6 +15,7 @@ const AboutUs = () => {
         <VisionMission />
         <Achievement />
         <TrustedClients />
+        <OurStory />
         <CTA />
     </main>
   )

@@ -94,12 +94,12 @@ const Navbar = () => {
         {
           title: "IT Services",
           links: [
-            { label: "Custom Software & Web Platforms", path: "/what-we-do#it-practice", state: { scrollToCard: 0 } },
+            { label: "Custom Software & Website Development", path: "/what-we-do#it-practice", state: { scrollToCard: 0 } },
             { label: "iOS & Android Applications", path: "/what-we-do#it-practice", state: { scrollToCard: 1 } },
-            { label: "Cloud Infrastructure", path: "/what-we-do#it-practice", state: { scrollToCard: 2 } },
-            { label: "Data & Analytics", path: "/what-we-do#it-practice", state: { scrollToCard: 3 } },
-            { label: "CMS, SEO & Generative Search", path: "/what-we-do#it-practice", state: { scrollToCard: 4 } },
-            { label: "Meta Ads & Virtual Campaigns", path: "/what-we-do#it-practice", state: { scrollToCard: 5 } },
+            { label: "Cloud Infrastructure, Data & Analytics", path: "/what-we-do#it-practice", state: { scrollToCard: 2 } },
+            { label: "Graphics Designing & Video Editing", path: "/what-we-do#it-practice", state: { scrollToCard: 3 } },
+            { label: "Social Media, SEO & Generative Search", path: "/what-we-do#it-practice", state: { scrollToCard: 4 } },
+            { label: "Meta Ads & Google Ads", path: "/what-we-do#it-practice", state: { scrollToCard: 5 } },
           ]
         },
         {
@@ -164,8 +164,8 @@ const Navbar = () => {
         ref={navRef} 
         className={`pointer-events-auto relative flex flex-col transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled 
-            ? "mt-4 w-[95%] md:w-[85%] max-w-5xl bg-[#0B1120]/95 dark:bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/10 dark:border-gray-200/60 px-5 md:px-8 py-2.5 rounded-[2rem]"
-            : `mt-0 w-full backdrop-blur-md md:bg-[#0B1120] md:dark:bg-white md:backdrop-blur-none border-b md:border-white/10 md:dark:border-gray-100 px-6 md:px-8 py-4 ${isMobileMenuOpen ? "bg-[#0B1120]/95 dark:bg-white/95 border-white/10 dark:border-gray-200" : "bg-transparent rounded-none border-transparent"}`
+            ? "mt-4 w-[95%] md:w-[85%] max-w-5xl dark:bg-[#0B1120]/95 bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)]  border-white/10 dark:border-gray-200/60 px-5 md:px-8 py-2.5 rounded-[2rem]"
+            : `mt-0 w-full backdrop-blur-md md:dark:bg-[#0B1120] md:bg-white md:backdrop-blur-none  md:border-white/10 md:dark:border-gray-100 px-6 md:px-8 py-4 ${isMobileMenuOpen ? "dark:bg-[#0B1120]/95 bg-white/95 dark:border-white/10 border-gray-200" : "bg-transparent rounded-none border-transparent"}`
         }`}
       >
       <div className="w-full flex items-center justify-between">
@@ -197,17 +197,17 @@ const Navbar = () => {
           >
             {item.label === 'Our Story' ? (
               <a
-                href={PortfolioPDF}
+                href={"https://drive.google.com/file/d/1PjX4z6lYOpA7a5AZqZwWbyzwmLf3CH-6/view"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 dark:text-[#5e6673] hover:text-white dark:hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+                className="dark:text-gray-300 text-[#5e6673] dark:hover:text-white hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
               >
                 {item.label}
               </a>
             ) : (
               <Link
                 to={item.path}
-                className="text-gray-300 dark:text-[#5e6673] hover:text-white dark:hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+                className="dark:text-gray-300 text-[#5e6673] dark:hover:text-white hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
               >
                 {item.label}
               </Link>
@@ -228,7 +228,7 @@ const Navbar = () => {
                 >
                   {/* Left Side: Columns */}
                   <div className={`${
-                    megaMenuData[item.label].columns.length > 2 ? "w-[75%] grid-cols-3 gap-6" : "w-[55%] grid-cols-2 gap-8"
+                    megaMenuData[item.label].columns.length > 2 ? "w-[75%] grid-cols-[1.6fr_1.3fr_0.9fr] gap-6" : "w-[55%] grid-cols-2 gap-8"
                   } p-8 grid bg-[#0B1120] dark:bg-white`}>
                     {megaMenuData[item.label].columns.map((col, idx) => (
                       <div key={idx}>
@@ -241,7 +241,7 @@ const Navbar = () => {
                               <Link 
                                 to={link.path}
                                 state={link.state}
-                                className="font-inter text-[14px] text-gray-400 dark:text-[#6b7280] hover:text-white dark:hover:text-[#0a181c] transition-colors whitespace-nowrap block"
+                                className="font-inter text-[14px] text-gray-400 dark:text-[#6b7280] hover:text-white dark:hover:text-[#0a181c] transition-colors block leading-tight whitespace-nowrap"
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 {link.label}
@@ -256,7 +256,7 @@ const Navbar = () => {
                   {/* Right Side: Featured Card */}
                   <div className={`${megaMenuData[item.label].columns.length > 2 ? "w-[25%]" : "w-[45%]"} relative group`}>
                     {megaMenuData[item.label].featured.path === "/portfolio" ? (
-                      <a href={PortfolioPDF} target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)} className="block w-full h-full">
+                      <a href={"https://drive.google.com/file/d/1PjX4z6lYOpA7a5AZqZwWbyzwmLf3CH-6/view"} target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)} className="block w-full h-full">
                         <img 
                           src={megaMenuData[item.label].featured.image} 
                           alt="Featured" 
@@ -319,7 +319,7 @@ const Navbar = () => {
       <div className="hidden md:flex items-center">
         <Link
           to="/contact-us"
-          className={`px-5 py-2 border border-[#9c7a65] hover:border-white dark:hover:border-[#0a181c] text-[#9c7a65] hover:bg-white dark:hover:bg-[#0a181c] hover:text-[#0B1120] dark:hover:text-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold text-sm tracking-wide font-jetbrains ${isScrolled ? "rounded-[2rem]" : "rounded-md"}`}
+          className={`px-5 py-2 border border-[#9c7a65] dark:hover:border-white hover:border-[#0a181c] text-[#9c7a65] dark:hover:bg-white hover:bg-[#0a181c] dark:hover:text-[#0B1120] hover:text-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold text-sm tracking-wide font-jetbrains ${isScrolled ? "rounded-[2rem]" : "rounded-md"}`}
         >
           Contact Us
         </Link>
@@ -359,7 +359,7 @@ const Navbar = () => {
                 item.label === 'Portfolio' ? (
                   <a
                     key={item.label}
-                    href={PortfolioPDF}
+                    href={"https://drive.google.com/file/d/1PjX4z6lYOpA7a5AZqZwWbyzwmLf3CH-6/view"}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={toggleMenu}

@@ -117,7 +117,7 @@ const renderMarqueeRow = (items, direction) => {
 
 const TrustedClients = () => {
   return (
-    <section id="trusted-clients" className="w-full bg-white pb-15 md:pb-24 overflow-hidden">
+    <section id="trusted-clients" className="w-full bg-white py-15 md:py-24 overflow-hidden">
       <div className="max-w-full mx-4 md:mx-15">
         {/* Header */}
         <motion.div

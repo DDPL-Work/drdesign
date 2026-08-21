@@ -69,17 +69,17 @@ const Footer = () => {
                 <FiMail className="text-[#8892a0] text-lg shrink-0" />
                 contact@drdesigntech.com
               </a>
-              <a href="tel:+917217052556" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="tel:+917217052558" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
                 <FiPhone className="text-[#8892a0] text-lg shrink-0" />
-                +91 7060100443
+                +91 7217052558
               </a>
               <a href="https://wa.me/917217052556" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
                 <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052556
               </a>
-              <a href="https://wa.me/917217052557" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a href="https://wa.me/917217052558" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
                 <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
-                +91 7217052557
+                +91 7217052558
               </a>
             </div>
           </div>
