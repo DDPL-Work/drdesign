@@ -370,7 +370,17 @@ const Solutions = () => {
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    // On first visit, the main content is at y: 100vh during the loading screen.
+    // ScrollTrigger pins and measures positions while the section is off-screen,
+    // resulting in broken horizontal scroll on first load (but correct after refresh).
+    // 'ddpl:layout-ready' is dispatched by App.jsx once the loading transition fully ends.
+    const onLayoutReady = () => ScrollTrigger.refresh();
+    window.addEventListener("ddpl:layout-ready", onLayoutReady);
+
+    return () => {
+      window.removeEventListener("ddpl:layout-ready", onLayoutReady);
+      ctx.revert();
+    };
   }, []);
 
   return (
