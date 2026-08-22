@@ -340,7 +340,7 @@ const AboutUs = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="font-inter text-[#333333] text-[13px] md:text-[19px] leading-[1.8] max-w-[814px] mb-8 font-normal"
         >
-          DR.DESIGN PVT. LTD. is a premier technology and consulting firm specializing in <br className="sm:block hidden" /> enterprise Geospatial Solutions (GIS), custom IT Services, and comprehensive Digital <br className="sm:block hidden" /> Transformation. Built on deep technical expertise, we partner with startups, established <br className="sm:block hidden" /> businesses, and government agencies to bring their visionary ideas to life. We engineer <br className="sm:block hidden" /> custom, data-driven infrastructure and intelligent software that helps our clients scale faster and optimize operations.
+          DR.DESIGN PVT. LTD. is a premier technology and consulting firm specializing in <br className="sm:block hidden" /> custom IT Services, enterprise Geospatial Solutions (GIS), and comprehensive Digital <br className="sm:block hidden" /> Transformation. Built on deep technical expertise, we partner with startups, established <br className="sm:block hidden" /> businesses, and government agencies to bring their visionary ideas to life. We engineer <br className="sm:block hidden" /> custom, data-driven infrastructure and intelligent software that helps our clients scale faster and optimize operations.
         </motion.p>
 
         {/* Desktop View */}

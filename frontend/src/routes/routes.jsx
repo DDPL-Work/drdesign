@@ -50,6 +50,48 @@ const ScrollManager = () => {
   return null;
 };
 
+const seoConfig = {
+  "/": { title: "DR.DESIGN TECH  - Enterprise IT & GIS Solutions", description: "DR.DESIGN TECH is a premier technology firm specializing in custom IT Services, GIS, and Digital Transformation." },
+  "/who-we-are": { title: "About Us | DR.DESIGN TECH", description: "Learn about our journey, vision, and the team driving enterprise technology solutions at DR.DESIGN TECH." },
+  "/what-we-do": { title: "Our Services | DR.DESIGN TECH", description: "Explore our range of services including GIS, Web Development, Mobile Apps, SEO, UI/UX, and Social Media Marketing." },
+  "/find-teams": { title: "Careers | DR.DESIGN TECH", description: "Join our team of visionary engineers and designers. Discover open roles and build the future with DR.DESIGN TECH." },
+  "/contact-us": { title: "Contact Us | DR.DESIGN TECH", description: "Get in touch with DR.DESIGN TECH for enterprise IT and geospatial solutions." },
+  "/find-answers": { title: "FAQ | DR.DESIGN TECH", description: "Find answers to frequently asked questions about DR.DESIGN TECH's services, processes, and more." },
+};
+
+const SEOManager = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    let currentSEO = seoConfig[location.pathname];
+    
+    if (!currentSEO) {
+      if (location.pathname.startsWith('/project/')) {
+        currentSEO = { title: "Case Study | DR.DESIGN TECH", description: "Explore our successful enterprise technology and GIS projects." };
+      } else if (location.pathname.startsWith('/role/')) {
+        currentSEO = { title: "Career Opportunity | DR.DESIGN TECH", description: "View the details for this open role and join the DR.DESIGN TECH team." };
+      } else {
+        currentSEO = { title: "DR.DESIGN TECH", description: "DR.DESIGN TECH - Enterprise Technology & Consulting" };
+      }
+    }
+
+    document.title = currentSEO.title;
+    
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", currentSEO.description);
+    } else {
+      metaDescription = document.createElement("meta");
+      metaDescription.name = "description";
+      metaDescription.content = currentSEO.description;
+      document.head.appendChild(metaDescription);
+    }
+  }, [location.pathname]);
+
+  return null;
+};
+
+
 const MainLayout = () => {
   const matches = useMatches();
   const location = useLocation();
@@ -82,6 +124,7 @@ const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollManager />
+      <SEOManager />
       <Navbar />
       <main className="grow flex flex-col">
         <AnimatePresence mode="wait">

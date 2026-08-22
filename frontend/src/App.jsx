@@ -167,7 +167,7 @@ function App() {
                 muted 
                 playsInline
                 onEnded={handleVideoEnd}
-                ref={(el) => { if (el) el.playbackRate = 2.0; }}
+                onCanPlay={(e) => { e.target.playbackRate = 3.0; }}
                 className="w-100 md:w-200 object-contain"
                 style={{ clipPath: "inset(0 0 12% 0)" }}
               />

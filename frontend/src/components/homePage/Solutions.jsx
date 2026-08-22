@@ -37,15 +37,6 @@ gsap.registerPlugin(ScrollTrigger);
 export const solutionsData = [
   {
     id: "01",
-    title: "GIS & Spatial Data",
-    description:
-      "Advanced mapping, imagery, and spatial data services used by planning authorities and enterprises to make decisions grounded in place.",
-    gifIcon: mapsGif,
-    image:
-      "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    id: "02",
     title: "Web Platform Development",
     description:
       "Product-grade web platforms, ERPs and internal tools built with modern tech stacks to fit the way your business actually operates.",
@@ -54,7 +45,7 @@ export const solutionsData = [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
   },
   {
-    id: "03",
+    id: "02",
     title: "Mobile App Development",
     description:
       "Offline-first, cross-platform applications that stay fast and reliable in the field as well as on the shop floor.",
@@ -63,7 +54,7 @@ export const solutionsData = [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
   },
   {
-    id: "04",
+    id: "03",
     title: "Search Engine Optimization",
     description:
       "Data-driven SEO strategies that improve your organic visibility, drive targeted traffic, and maximize your online footprint.",
@@ -72,13 +63,22 @@ export const solutionsData = [
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=80",
   },
   {
-    id: "05",
+    id: "04",
     title: "UI/UX Designing",
     description:
       "Sleek, high-end web experiences that blend strong digital marketing goals with smooth user journeys to capture attention and drive conversions.",
     gifIcon: uiUxGif,
     image:
       "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "05",
+    title: "Social Media Marketing",
+    description:
+    "Targeted Meta Ads, Google Ads, and social media campaigns engineered to maximize ROI, drive qualified leads, and aggressively scale your digital footprint.",
+    gifIcon: campaignGif,
+    image:
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
   },
   {
     id: "06",
@@ -91,12 +91,12 @@ export const solutionsData = [
   },
   {
     id: "07",
-    title: "Social Media Marketing",
+    title: "GIS & Spatial Data",
     description:
-      "Targeted Meta Ads, Google Ads, and social media campaigns engineered to maximize ROI, drive qualified leads, and aggressively scale your digital footprint.",
-    gifIcon: campaignGif,
+      "Advanced mapping, imagery, and spatial data services used by planning authorities and enterprises to make decisions grounded in place.",
+    gifIcon: mapsGif,
     image:
-      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80",
   },
 ];
 

@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { FiMapPin, FiMail, FiPhone, FiLinkedin, FiInstagram, FiFacebook, FiTwitter } from "react-icons/fi";
+import {
+  FiMapPin,
+  FiMail,
+  FiPhone,
+  FiLinkedin,
+  FiInstagram,
+  FiFacebook,
+  FiTwitter,
+} from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
@@ -7,14 +15,13 @@ const Footer = () => {
     <footer className="relative w-full bg-[#081023] pt-16 pb-8 px-8 border-t border-white/10 z-50">
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
-        
         {/* Left Column - Logo & Address */}
         <div className="flex flex-col gap-6 md:col-span-5 lg:col-span-4">
           <Link to="/" className="flex items-center gap-3">
-            <img 
-              src="/logo-remastered.svg" 
-              alt="Dr. Design Technology Logo" 
-              className="h-10 w-auto" 
+            <img
+              src="/logo-remastered.svg"
+              alt="Dr. Design Technology Logo"
+              className="h-10 w-auto"
             />
             <span className="text-[#8892a0] font-bold tracking-widest text-xs uppercase hidden sm:block font-geist">
               Dr. Design Technology
@@ -23,20 +30,36 @@ const Footer = () => {
           <div className="flex items-start gap-3 text-gray-300">
             <FiMapPin className="text-[#8892a0] mt-1 text-lg shrink-0" />
             <p className="text-sm leading-relaxed">
-              Near Survey Chowk, 11 East Canal Road, Dehradun, <br className="hidden sm:block" />
+              Near Survey Chowk, 11 East Canal Road, Dehradun,{" "}
+              <br className="hidden sm:block" />
               Uttarakhand, 248001.
             </p>
           </div>
 
           {/* Social Icons */}
           <div className="flex items-center gap-4 mt-2">
-            <a href="https://www.linkedin.com/company/drdesignpvtltd/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a
+              href="https://www.linkedin.com/company/drdesignpvtltd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300"
+            >
               <FiLinkedin className="text-lg" />
             </a>
-            <a href="https://www.instagram.com/drdesigntechnology" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a
+              href="https://www.instagram.com/drdesigntechnology"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300"
+            >
               <FiInstagram className="text-lg" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61578675068487" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300">
+            <a
+              href="https://www.facebook.com/profile.php?id=61578675068487"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#8687DD] hover:text-white hover:border-[#8687DD] transition-all duration-300"
+            >
               <FiFacebook className="text-lg" />
             </a>
           </div>
@@ -49,11 +72,36 @@ const Footer = () => {
               Quick Links
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-              <Link to="/who-we-are" className="text-gray-300 hover:text-white text-sm transition-colors">About Us</Link>
-              <Link to="/what-we-do" className="text-gray-300 hover:text-white text-sm transition-colors">Services</Link>
-              <Link to="/#solutions" className="text-gray-300 hover:text-white text-sm transition-colors">Projects</Link>
-              <Link to="/find-answers" className="text-gray-300 hover:text-white text-sm transition-colors">FAQs</Link>
-              <Link to="/find-teams" className="text-gray-300 hover:text-white text-sm transition-colors">Careers</Link>
+              <Link
+                to="/who-we-are"
+                className="text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                About Us
+              </Link>
+              <Link
+                to="/what-we-do"
+                className="text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                Services
+              </Link>
+              <Link
+                to="/#solutions"
+                className="text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                Projects
+              </Link>
+              <Link
+                to="/find-answers"
+                className="text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                FAQs
+              </Link>
+              <Link
+                to="/find-teams"
+                className="text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                Careers
+              </Link>
             </div>
           </div>
         </div>
@@ -65,19 +113,35 @@ const Footer = () => {
               Direct Contact
             </h3>
             <div className="flex flex-col gap-4">
-              <a href="mailto:contact@drdesigntech.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a
+                href="mailto:contact@drdesigntech.com"
+                className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 <FiMail className="text-[#8892a0] text-lg shrink-0" />
                 contact@drdesigntech.com
               </a>
-              <a href="tel:+917217052558" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a
+                href="tel:+917217052558"
+                className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 <FiPhone className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052558
               </a>
-              <a href="https://wa.me/917217052556" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a
+                href="https://wa.me/917217052556"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052556
               </a>
-              <a href="https://wa.me/917217052558" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm">
+              <a
+                href="https://wa.me/917217052558"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors text-sm"
+              >
                 <FaWhatsapp className="text-[#8892a0] text-lg shrink-0" />
                 +91 7217052558
               </a>
