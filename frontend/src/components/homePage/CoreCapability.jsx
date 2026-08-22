@@ -534,13 +534,15 @@ const CoreCapability = () => {
       );
     }, sectionRef);
 
-    // Force GSAP to recalculate scroll positions after the Framer Motion page transition finishes
-    const refreshTimer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 850);
+    // On first visit, the main content is at y: 100vh during the loading screen.
+    // GSAP measures scroll positions while the content is off-screen, causing broken animations.
+    // We listen for 'ddpl:layout-ready' — dispatched by App.jsx after the loading transition
+    // completes — to refresh all ScrollTrigger calculations at the right moment.
+    const onLayoutReady = () => ScrollTrigger.refresh();
+    window.addEventListener("ddpl:layout-ready", onLayoutReady);
 
     return () => {
-      clearTimeout(refreshTimer);
+      window.removeEventListener("ddpl:layout-ready", onLayoutReady);
       ctx.revert();
     };
   }, []);

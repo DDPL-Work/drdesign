@@ -57,6 +57,27 @@ function App() {
     sessionStorage.setItem("hasSeenLoading", "true");
   };
 
+  // Failsafe: if the loading video stalls or takes too long (e.g. slow network),
+  // skip it after 7 seconds so users are never stuck on a frozen loading screen.
+  useEffect(() => {
+    if (isVideoPlaying) {
+      const failsafe = setTimeout(handleVideoEnd, 7000);
+      return () => clearTimeout(failsafe);
+    }
+  }, [isVideoPlaying]);
+
+  // After the loading screen transition fully completes (1.4s duration),
+  // dispatch a global event so GSAP ScrollTrigger can re-measure layouts
+  // that were calculated while content was off-screen at y: 100vh.
+  useEffect(() => {
+    if (!isVideoPlaying) {
+      const t = setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("ddpl:layout-ready"));
+      }, 1500); // 1400ms transition + 100ms buffer
+      return () => clearTimeout(t);
+    }
+  }, [isVideoPlaying]);
+
   // --- Grid Logic Copied from Hero.jsx ---
   const containerRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: -1, y: -1 });
@@ -166,8 +187,11 @@ function App() {
                 autoPlay 
                 muted 
                 playsInline
+                preload="auto"
                 onEnded={handleVideoEnd}
                 onCanPlay={(e) => { e.target.playbackRate = 3.0; }}
+                onStalled={handleVideoEnd}
+                onError={handleVideoEnd}
                 className="w-100 md:w-200 object-contain"
                 style={{ clipPath: "inset(0 0 12% 0)" }}
               />
