@@ -27,6 +27,7 @@ import img23 from "../../assets/clients/soult.webp";
 import img24 from "../../assets/clients/chakra.png";
 import img25 from "../../assets/clients/gendhaphool.png";
 import img26 from "../../assets/clients/polat global.png";
+import img27 from "../../assets/clients/traveamer.avif";
 
 const clients = [
   { src: img1, scale: 1 }, // AMTRON
@@ -54,11 +55,12 @@ const clients = [
   { src: img24, scale: 1 }, // chakra
   { src: img25, scale: 1 }, // gendhaphool
   { src: img26, scale: 1 }, // polat global
+  { src: img27 }, // traveamer
 ];
 
 const row1 = clients.slice(0, 9);
 const row2 = clients.slice(9, 17);
-const row3 = clients.slice(17, 25);
+const row3 = clients.slice(17, 27);
 
 const renderMarqueeRow = (items, direction) => {
   const isLeft = direction === "left";
@@ -143,7 +145,7 @@ const TrustedClients = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="text-[25px] md:text-5xl lg:text-[48px] font-medium text-[#0a181c] font-jetbrains leading-[1.2] mb-4 md:mb-6"
           >
-            Teams that keep coming back
+            Clients that keep coming back
           </motion.h3>
           <motion.p
             initial={{ opacity: 0, y: 30 }}

@@ -22,7 +22,7 @@ const STEPS = [
     title: "Discover",
     tagline: "Map before you move.",
     description:
-      "We run deep-dive workshops to map your goals, users, data flows, and constraints â€” before a single line of code is written. This phase ensures every decision downstream is intentional.",
+      "We run deep-dive workshops to map your goals, users, data flows, and constraints — before a single line of code is written. This phase ensures every decision downstream is intentional.",
     icon: FiCompass,
     detail: [
       "Stakeholder interviews",
@@ -54,7 +54,7 @@ const STEPS = [
     title: "Build",
     tagline: "Ship on a rhythm.",
     description:
-      "Two-week sprints with senior engineers. You get a working, tested demo every cycle â€” no disappearing acts, no surprises. Always production-quality, always on schedule.",
+      "Two-week sprints with senior engineers. You get a working, tested demo every cycle — no disappearing acts, no surprises. Always production-quality, always on schedule.",
     icon: FiCode,
     detail: [
       "Agile sprints",
@@ -70,7 +70,7 @@ const STEPS = [
     title: "Scale",
     tagline: "Built to last.",
     description:
-      "Deployment, team training, monitoring, and long-term support. We stay with you after launch â€” ensuring your product performs, evolves, and scales as your business grows.",
+      "Deployment, team training, monitoring, and long-term support. We stay with you after launch — ensuring your product performs, evolves, and scales as your business grows.",
     icon: FiTrendingUp,
     detail: [
       "Production deployment",
@@ -83,9 +83,9 @@ const STEPS = [
   },
 ];
 
-/* â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
-   DESKTOP â€” Sticky scroll-reveal experience
-   â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  */
+/* ────────────────────────────────────────────────────────────────────────── 
+   DESKTOP — Sticky scroll-reveal experience
+   ────────────────────────────────────────────────────────────────────────── */
 const DesktopExperience = () => {
   const containerRef = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
