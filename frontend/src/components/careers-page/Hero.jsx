@@ -58,7 +58,7 @@ const Hero = () => {
         filter: 'blur(0px)',
         duration: 0.4,
         stagger: 0.03,
-        delay: 0.8,
+        delay: 0.2, // Reduced from 0.8 to make it load faster
         ease: 'power3.out',
       });
     }, heroRef);
@@ -103,7 +103,7 @@ const Hero = () => {
               className="font-sans text-base sm:text-lg text-gray-300 mb-8 md:mb-10 leading-relaxed max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: 'easeOut', delay: 1.6 }}
+              transition={{ duration: 0.9, ease: 'easeOut', delay: 0.6 }} // Reduced from 1.6
             >
               We are always looking for passionate creators, engineers, and visionaries to help us shape the next generation of digital experiences.
             </motion.p>
@@ -114,7 +114,7 @@ const Hero = () => {
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: 'easeOut', delay: 1.8 }}
+              transition={{ duration: 0.9, ease: 'easeOut', delay: 0.8 }} // Reduced from 1.8
               className="group relative inline-flex items-center bg-white text-[#0B1120] px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-[14px] sm:text-[15px] font-jetbrains overflow-hidden transition-colors cursor-pointer"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-3">Explore Open Roles</span>

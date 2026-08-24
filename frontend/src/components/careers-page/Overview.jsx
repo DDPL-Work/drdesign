@@ -229,6 +229,20 @@ const Overview = () => {
     const hash = location.hash.replace('#', '');
     if (SECTIONS.some(s => s.id === hash)) {
       setActiveSection(hash);
+      
+      // When the hash changes (e.g. clicking mega menu from navbar),
+      // smooth scroll to the section top.
+      setTimeout(() => {
+        if (sectionRef.current) {
+          const yOffset = -100; 
+          const y = sectionRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+          if (window.lenis) {
+            window.lenis.scrollTo(y, { duration: 1.2 });
+          } else {
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }
+      }, 100);
     }
   }, [location.hash]);
 
@@ -596,12 +610,12 @@ const Overview = () => {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { title: "Health & Wellness", desc: "Comprehensive medical, dental, and vision coverage.", icon: FiHeart },
-                  { title: "Flexible Work", desc: "Remote-friendly and flexible hours to support your lifestyle.", icon: FiHome },
-                  { title: "Learning Budget", desc: "Annual stipend for courses, conferences, and books.", icon: FiBook },
-                  { title: "Retirement Plans", desc: "Competitive matching to help you plan for the future.", icon: FiTrendingUp },
-                  { title: "Generous PTO", desc: "Take the time you need to recharge and spend with family.", icon: FiSun },
-                  { title: "Team Events", desc: "Regular offsites, hackathons, and social gatherings.", icon: FiUsers },
+                  { title: "Health & Wellness", desc: "Comprehensive medical, dental, and vision coverage.", icon: FiHeart, image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
+                  { title: "Flexible Work", desc: "Remote-friendly and flexible hours to support your lifestyle.", icon: FiHome, image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80" },
+                  { title: "Learning Budget", desc: "Annual stipend for courses, conferences, and books.", icon: FiBook, image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" },
+                  { title: "Retirement Plans", desc: "Competitive matching to help you plan for the future.", icon: FiTrendingUp, image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" },
+                  { title: "Generous PTO", desc: "Take the time you need to recharge and spend with family.", icon: FiSun, image: "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?auto=format&fit=crop&w=800&q=80" },
+                  { title: "Team Events", desc: "Regular offsites, hackathons, and social gatherings.", icon: FiUsers, image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" },
                 ].map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
@@ -610,14 +624,27 @@ const Overview = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                      className="flex flex-col gap-4 p-8 border border-[rgba(8,16,35,0.1)] rounded-3xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all bg-white group"
+                      className="relative overflow-hidden flex flex-col gap-4 p-8 border border-white/10 rounded-3xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] transition-all bg-[#0B1120] group"
                     >
-                      <div className="w-12 h-12 rounded-full bg-[#F1F7FF] flex items-center justify-center text-[#4B6BFB] group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
-                        <Icon className="text-xl" />
+                      {/* Background Image */}
+                      <div className="absolute inset-0 z-0">
+                        <img 
+                          src={benefit.image} 
+                          alt={benefit.title} 
+                          className="w-full h-full object-cover transition-transform duration-[800ms] ease-[0.16,1,0.3,1] group-hover:scale-110" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-[#0B1120]/70 to-[#0B1120]/30 transition-opacity duration-500 group-hover:opacity-90"></div>
                       </div>
-                      <div>
-                        <h4 className="font-jetbrains text-[16px] font-bold text-[#081023] mb-2 group-hover:text-[#4B6BFB] transition-colors">{benefit.title}</h4>
-                        <p className="font-sans text-[13px] text-[rgba(8,16,35,0.55)] leading-[1.6]">{benefit.desc}</p>
+
+                      {/* Content */}
+                      <div className="relative z-10 flex flex-col h-full justify-between">
+                        <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 group-hover:scale-110 group-hover:-translate-y-1 group-hover:bg-white group-hover:text-[#4B6BFB] group-hover:border-white transition-all duration-500">
+                          <Icon className="text-xl" />
+                        </div>
+                        <div>
+                          <h4 className="font-jetbrains text-[16px] font-bold text-white mb-2 group-hover:text-[#4B6BFB] transition-colors duration-300">{benefit.title}</h4>
+                          <p className="font-sans text-[13px] text-gray-300 leading-[1.6] group-hover:text-white transition-colors duration-300">{benefit.desc}</p>
+                        </div>
                       </div>
                     </motion.div>
                   );

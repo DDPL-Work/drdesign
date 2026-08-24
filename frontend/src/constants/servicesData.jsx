@@ -9,14 +9,21 @@ import uiUxGif from "../assets/ui-ux.gif";
 import wayGif from "../assets/way.gif";
 import satelliteGif from "../assets/satellite.gif";
 import droneGif from "../assets/drone.gif";
-import mapsGif from "../assets/maps.gif";
+import graphics from "../assets/graphic.gif";
 
 export const itCardsData = [
   {
     id: 1,
     category: "ENGINEERING",
-    icon: <img src={responsiveGif} alt="Custom Software & Website Development" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={responsiveGif}
+        alt="Custom Software & Website Development"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
     title: "Custom Software & Website Development",
     description:
       "Product-grade websites, web platforms, ERP and internal tools built to fit the way your business actually operates.",
@@ -26,13 +33,29 @@ export const itCardsData = [
       "ERP / CRM systems",
       "Legacy modernisation",
     ],
-    tech: ["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "WordPress", "Shopify"],
+    tech: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "WordPress",
+      "Shopify",
+    ],
   },
   {
     id: 2,
     category: "MOBILE",
-    icon: <img src={appGif} alt="iOS & Android Applications" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={appGif}
+        alt="iOS & Android Applications"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
     title: "iOS & Android Applications",
     description:
       "Offline-first, cross platform apps that stay fast and reliable in the field as well as on the shop floor.",
@@ -47,8 +70,15 @@ export const itCardsData = [
   {
     id: 3,
     category: "CLOUD & DATA",
-    icon: <img src={cloudGif} alt="Cloud Infrastructure, Data & Analytics" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={cloudGif}
+        alt="Cloud Infrastructure, Data & Analytics"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     title: "Cloud Infrastructure, Data & Analytics",
     description:
       "Scalable cloud environments combined with robust data pipelines and analytics tailored for your digital ecosystem.",
@@ -62,9 +92,39 @@ export const itCardsData = [
   },
   {
     id: 4,
+    category: "UI/UX",
+    icon: (
+      <img
+        src={uiUxGif}
+        alt="UI/UX Designing"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80",
+    title: "UI/UX Designing",
+    description:
+      "Crafting intuitive, engaging user interfaces and experiences that drive user satisfaction and conversions.",
+    features: [
+      "User Research & Testing",
+      "Wireframing & Prototyping",
+      "Interactive Design",
+      "Design Systems",
+    ],
+    tech: ["Figma", "Adobe XD", "Sketch", "InVision", "Framer", "Canva"],
+  },
+  {
+    id: 5,
     category: "DESIGN",
-    icon: <img src={uiUxGif} alt="Graphics Designing & Video Editing" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={graphics}
+        alt="Graphics Designing & Video Editing"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",
     title: "Graphics Designing & Video Editing",
     description:
       "Captivating visual content and dynamic video editing that elevates your brand identity and engages your audience.",
@@ -72,15 +132,22 @@ export const itCardsData = [
       "Brand Identity Design",
       "Motion Graphics",
       "Video Production",
-      "UI/UX Design",
+      "Flyer & Content Designing",
     ],
     tech: ["Adobe CC", "Premiere Pro", "After Effects", "Figma", "Illustrator"],
   },
   {
-    id: 5,
+    id: 6,
     category: "SEARCH & SOCIAL",
-    icon: <img src={seoGif} alt="Social Media, SEO & Generative Search" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={seoGif}
+        alt="Social Media, SEO & Generative Search"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80",
     title: "Social Media, SEO & Generative Search",
     description:
       "Holistic organic growth through strategic social media management and advanced search optimization strategies.",
@@ -93,10 +160,17 @@ export const itCardsData = [
     tech: ["Ahrefs", "OpenAI", "Google Analytics", "Buffer", "Hootsuite"],
   },
   {
-    id: 6,
+    id: 7,
     category: "PAID ADS",
-    icon: <img src={campaignGif} alt="Meta Ads & Google Ads" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={campaignGif}
+        alt="Meta Ads & Google Ads"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
     title: "Meta Ads & Google Ads",
     description:
       "Data-driven advertising campaigns across Meta and Google networks to maximize ROI, reach, and conversions.",
@@ -114,8 +188,15 @@ export const gisCardsData = [
   {
     id: 1,
     category: "WEB GIS",
-    icon: <img src={wayGif} alt="Mapping Applications & Portals" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={wayGif}
+        alt="Mapping Applications & Portals"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80",
     title: "Mapping Applications & Portals",
     description:
       "Browser-based mapping platforms with layered analytics, drawing tools and report-ready exports.",
@@ -137,8 +218,15 @@ export const gisCardsData = [
   {
     id: 2,
     category: "REMOTE SENSING",
-    icon: <img src={satelliteGif} alt="Satellite Imagery & LULC" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1541873676-a18131494184?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={satelliteGif}
+        alt="Satellite Imagery & LULC"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1541873676-a18131494184?auto=format&fit=crop&w=800&q=80",
     title: "Satellite Imagery & LULC",
     description:
       "Imagery processing, classification and change detection for planning, environment and resource monitoring.",
@@ -153,8 +241,15 @@ export const gisCardsData = [
   {
     id: 3,
     category: "SURVEY",
-    icon: <img src={droneGif} alt="Drone Mapping & Photogrammetry" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={droneGif}
+        alt="Drone Mapping & Photogrammetry"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80",
     title: "Drone Mapping & Photogrammetry",
     description:
       "High-resolution aerial capture converted into orthomosaics, DEMs and survey-grade deliverables.",
@@ -169,8 +264,15 @@ export const gisCardsData = [
   {
     id: 4,
     category: "SPATIAL DATA",
-    icon: <img src={databaseGif} alt="Databases, Assets & Consulting" className="w-16 h-16 object-contain rounded-xl" />,
-    bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    icon: (
+      <img
+        src={databaseGif}
+        alt="Databases, Assets & Consulting"
+        className="w-16 h-16 object-contain rounded-xl"
+      />
+    ),
+    bgImage:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
     title: "Databases, Assets & Consulting",
     description:
       "Clean, versioned spatial databases plus asset mapping, migration and team training on GIS workflows.",
