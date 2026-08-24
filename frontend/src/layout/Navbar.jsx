@@ -115,19 +115,24 @@ const Navbar = () => {
               state: { scrollToCard: 2 },
             },
             {
-              label: "Graphics Designing & Video Editing",
+              label: "UI/UX Designing",
               path: "/what-we-do#it-practice",
               state: { scrollToCard: 3 },
             },
             {
-              label: "Social Media, SEO & Generative Search",
+              label: "Graphics Designing & Video Editing",
               path: "/what-we-do#it-practice",
               state: { scrollToCard: 4 },
             },
             {
-              label: "Meta Ads & Google Ads",
+              label: "Social Media, SEO & Generative Search",
               path: "/what-we-do#it-practice",
               state: { scrollToCard: 5 },
+            },
+            {
+              label: "Meta Ads & Google Ads",
+              path: "/what-we-do#it-practice",
+              state: { scrollToCard: 6 },
             },
           ],
         },
@@ -211,8 +216,8 @@ const Navbar = () => {
         ref={navRef}
         className={`pointer-events-auto relative flex flex-col transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
-            ? "mt-4 w-[95%] md:w-[85%] max-w-5xl dark:bg-[#0B1120]/95 bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)]  border-white/10 dark:border-gray-200/60 px-5 md:px-8 py-2.5 rounded-[2rem]"
-            : `mt-0 w-full backdrop-blur-md md:dark:bg-[#0B1120] md:bg-white md:backdrop-blur-none  md:border-white/10 md:dark:border-gray-100 px-6 md:px-8 py-4 ${isMobileMenuOpen ? "dark:bg-[#0B1120]/95 bg-white/95 dark:border-white/10 border-gray-200" : "bg-transparent rounded-none border-transparent"}`
+            ? "mt-4 w-[95%] md:w-[85%] max-w-5xl bg-[#0B1120]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border-white/10 px-5 md:px-8 py-2.5 rounded-[2rem]"
+            : `mt-0 w-full backdrop-blur-md md:bg-[#0B1120] md:backdrop-blur-none md:border-white/10 px-6 md:px-8 py-4 ${isMobileMenuOpen ? "bg-[#0B1120]/95 border-white/10" : "bg-[#0B1120] rounded-none border-transparent"}`
         }`}
       >
         <div className="w-full flex items-center justify-between">
@@ -228,7 +233,7 @@ const Navbar = () => {
                 alt="Dr. Design Technology Logo"
                 className="h-9 sm:h-10 w-auto"
               />
-              <span className="text-[#8892a0] font-bold tracking-widest text-[10px] sm:text-xs uppercase hidden sm:block font-geist">
+              <span className="text-[#8892a0] font-bold tracking-widest text-[14px] uppercase hidden sm:block font-geist">
                 Dr. Design Technology
               </span>
             </Link>
@@ -250,14 +255,14 @@ const Navbar = () => {
                     href={"/DR DESIGN PORTFOLIO.pdf"}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="dark:text-gray-300 text-[#5e6673] dark:hover:text-white hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+                    className="text-gray-300 hover:text-white font-semibold text-md tracking-wide transition-colors font-jetbrains"
                   >
                     {item.label}
                   </a>
                 ) : (
                   <Link
                     to={item.path}
-                    className="dark:text-gray-300 text-[#5e6673] dark:hover:text-white hover:text-black font-semibold text-sm tracking-wide transition-colors font-jetbrains"
+                    className="text-gray-300 hover:text-white font-semibold text-md tracking-wide transition-colors font-jetbrains"
                   >
                     {item.label}
                   </Link>
@@ -276,7 +281,7 @@ const Navbar = () => {
                           megaMenuData[item.label].columns.length > 2
                             ? "w-[1100px] max-w-[95vw]"
                             : "w-[650px]"
-                        } bg-[#0B1120] dark:bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-white/10 dark:border-gray-100 overflow-hidden flex`}
+                        } bg-[#0B1120] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-white/10 overflow-hidden flex`}
                         style={{ cursor: "default" }}
                       >
                         {/* Left Side: Columns */}
@@ -285,11 +290,11 @@ const Navbar = () => {
                             megaMenuData[item.label].columns.length > 2
                               ? "w-[75%] grid-cols-[1.6fr_1.3fr_0.9fr] gap-6"
                               : "w-[55%] grid-cols-2 gap-8"
-                          } p-8 grid bg-[#0B1120] dark:bg-white`}
+                          } p-8 grid bg-[#0B1120]`}
                         >
                           {megaMenuData[item.label].columns.map((col, idx) => (
                             <div key={idx}>
-                              <h4 className="font-inter font-semibold text-white dark:text-[#0a181c] text-[15px] mb-4">
+                              <h4 className="font-inter font-semibold text-white text-[15px] mb-4">
                                 {col.title}
                               </h4>
                               <ul className="flex flex-col gap-3">
@@ -298,7 +303,7 @@ const Navbar = () => {
                                     <Link
                                       to={link.path}
                                       state={link.state}
-                                      className="font-inter text-[14px] text-gray-400 dark:text-[#6b7280] hover:text-white dark:hover:text-[#0a181c] transition-colors block leading-tight whitespace-nowrap"
+                                      className="font-inter text-[14px] text-gray-400 hover:text-white transition-colors block leading-tight whitespace-nowrap"
                                       onClick={() => setActiveDropdown(null)}
                                     >
                                       {link.label}
@@ -385,7 +390,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <Link
               to="/contact-us"
-              className={`px-5 py-2 border border-[#9c7a65] dark:hover:border-white hover:border-[#0a181c] text-[#9c7a65] dark:hover:bg-white hover:bg-[#0a181c] dark:hover:text-[#0B1120] hover:text-white transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold text-sm tracking-wide font-jetbrains ${isScrolled ? "rounded-[2rem]" : "rounded-md"}`}
+              className={`px-5 py-2 border border-[#9c7a65] hover:border-white text-[#9c7a65] hover:bg-white hover:text-[#0B1120] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] font-semibold text-sm tracking-wide font-jetbrains ${isScrolled ? "rounded-[2rem]" : "rounded-md"}`}
             >
               Contact Us
             </Link>
@@ -397,9 +402,9 @@ const Navbar = () => {
               onClick={toggleMenu}
               className={`text-2xl focus:outline-none transition-colors ${
                 isScrolled || isMobileMenuOpen
-                  ? "text-[#0a181c] dark:text-white"
-                  : "text-[#5e6673] dark:text-gray-300"
-              } hover:text-black dark:hover:text-white`}
+                  ? "text-white"
+                  : "text-gray-300"
+              } hover:text-white`}
             >
               {isMobileMenuOpen ? <FiX /> : <FiMenu />}
             </button>
@@ -414,10 +419,10 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className={`absolute left-0 w-full flex flex-col gap-6 md:hidden overflow-hidden bg-[#0B1120]/95 dark:bg-white/95 backdrop-blur-xl px-6 pb-6 pt-4 shadow-2xl ${
+              className={`absolute left-0 w-full flex flex-col gap-6 md:hidden overflow-hidden bg-[#0B1120]/95 backdrop-blur-xl px-6 pb-6 pt-4 shadow-2xl ${
                 isScrolled
-                  ? "top-[calc(100%+12px)] rounded-2xl border border-white/10 dark:border-gray-200/60"
-                  : "top-full rounded-none border-b border-white/10 dark:border-gray-200"
+                  ? "top-[calc(100%+12px)] rounded-2xl border border-white/10"
+                  : "top-full rounded-none border-b border-white/10"
               }`}
             >
               <div className="flex flex-col gap-4">
@@ -429,7 +434,7 @@ const Navbar = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={toggleMenu}
-                      className="text-white dark:text-[#0a181c] hover:text-[#6a71d8] font-medium text-lg tracking-wide transition-colors font-jetbrains pb-2"
+                      className="text-white hover:text-[#6a71d8] font-medium text-lg tracking-wide transition-colors font-jetbrains pb-2"
                     >
                       {item.label}
                     </a>
@@ -438,7 +443,7 @@ const Navbar = () => {
                       key={item.label}
                       to={item.path}
                       onClick={toggleMenu}
-                      className="text-white dark:text-[#0a181c] hover:text-[#6a71d8] font-medium text-lg tracking-wide transition-colors font-jetbrains pb-2"
+                      className="text-white hover:text-[#6a71d8] font-medium text-lg tracking-wide transition-colors font-jetbrains pb-2"
                     >
                       {item.label}
                     </Link>
@@ -449,7 +454,7 @@ const Navbar = () => {
               <Link
                 to="/contact-us"
                 onClick={toggleMenu}
-                className="mt-2 w-full flex justify-center items-center px-5 py-3 border dark:border-[#0a181c] border-white dark:bg-[#0a181c] bg-white dark:text-white text-black rounded-full font-semibold text-[15px] tracking-wide font-jetbrains shadow-sm hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                className="mt-2 w-full flex justify-center items-center px-5 py-3 border border-white bg-white text-[#0B1120] rounded-full font-semibold text-[15px] tracking-wide font-jetbrains shadow-sm hover:bg-gray-200 transition-colors"
               >
                 Contact Us
               </Link>
