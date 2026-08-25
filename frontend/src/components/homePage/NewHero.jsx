@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import bgVideo from '../../assets/Home-hero.mp4'
+import mobileBgVideo from '../../assets/MobileHero.mp4'
 import heroPoster from '../../assets/heroImg.webp'
 
 const NewHero = () => {
@@ -12,15 +13,27 @@ const NewHero = () => {
       <div className="absolute inset-0 w-full h-full">
         {/* Simple Dark Overlay for text readability */}
         <div className="absolute inset-0 z-10"></div>
+        {/* Desktop Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
           poster={heroPoster}
-          className="w-full h-full object-cover"
+          className="hidden md:block w-full h-full object-cover"
         >
           <source src={bgVideo} type="video/mp4" />
+        </video>
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroPoster}
+          className="block md:hidden w-full h-full object-cover"
+        >
+          <source src={mobileBgVideo} type="video/mp4" />
         </video>
       </div>
 
