@@ -47,14 +47,10 @@ const GridCell = React.memo(({ brightness, isHovered, cellSize }) => {
 });
 
 function App() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(() => {
-    // Only show loading video on first visit per session
-    return !sessionStorage.getItem("hasSeenLoading");
-  });
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
   const handleVideoEnd = () => {
     setIsVideoPlaying(false);
-    sessionStorage.setItem("hasSeenLoading", "true");
   };
 
   // Failsafe: if the loading video stalls or takes too long (e.g. slow network),
@@ -163,8 +159,6 @@ function App() {
     });
   }, [dims.cols, dims.rows, hoveredCol, hoveredRow, mouseActive]);
 
-  const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
-
   return (
     <>
       <AnimatePresence>
@@ -221,7 +215,7 @@ function App() {
       </AnimatePresence>
 
       <motion.div
-        initial={!hasSeenLoading ? { y: "100vh" } : { y: 0 }}
+        initial={{ y: "100vh" }}
         animate={{ y: isVideoPlaying ? "100vh" : 0 }}
         transition={{ duration: 1.4, ease: [0.65, 0, 0.05, 1] }}
         style={{ 
