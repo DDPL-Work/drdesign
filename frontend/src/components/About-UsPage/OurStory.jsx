@@ -25,7 +25,8 @@ const OurStory = () => {
           </p>
           
           <a
-            href="/DR DESIGN PORTFOLIO.pdf"
+            href="https://drive.google.com/file/d/1rGiS8CTIw6j7fAKDNZuxZBYkWmfdzl-s/view?usp=sharing
+"
             target="_blank"
             rel="noopener noreferrer"
             className="group bg-white text-[#0a181c] font-jetbrains text-[15px] md:text-[14px] px-5 py-3 md:px-8 md:py-3.5 rounded-full flex items-center transition-colors shadow-md overflow-hidden whitespace-nowrap shrink-0 cursor-pointer w-fit mx-auto"

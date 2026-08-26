@@ -252,7 +252,7 @@ const Navbar = () => {
               >
                 {item.label === "Our Story" ? (
                   <a
-                    href={"/DR DESIGN PORTFOLIO.pdf"}
+                    href="https://drive.google.com/file/d/1rGiS8CTIw6j7fAKDNZuxZBYkWmfdzl-s/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-300 hover:text-white font-semibold text-md tracking-wide transition-colors font-jetbrains"
@@ -322,7 +322,8 @@ const Navbar = () => {
                           {megaMenuData[item.label].featured.path ===
                           "/portfolio" ? (
                             <a
-                              href={"/DR DESIGN PORTFOLIO.pdf"}
+                              href="https://drive.google.com/file/d/1rGiS8CTIw6j7fAKDNZuxZBYkWmfdzl-s/view?usp=sharing
+"
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={() => setActiveDropdown(null)}
@@ -430,7 +431,7 @@ const Navbar = () => {
                   item.label === "Our Story" ? (
                     <a
                       key={item.label}
-                      href={"/DR DESIGN PORTFOLIO.pdf"}
+                      href="https://drive.google.com/file/d/1rGiS8CTIw6j7fAKDNZuxZBYkWmfdzl-s/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={toggleMenu}
