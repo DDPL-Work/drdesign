@@ -23,6 +23,7 @@ const SmoothScrollProvider = ({ children }) => {
     })
 
     lenisRef.current = lenis
+    window.lenis = lenis // Expose to window for ScrollManager
 
     // Sync Lenis scroll position with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
@@ -35,6 +36,7 @@ const SmoothScrollProvider = ({ children }) => {
     return () => {
       gsap.ticker.remove(tickerCb)
       lenis.destroy()
+      delete window.lenis
     }
   }, [])
 

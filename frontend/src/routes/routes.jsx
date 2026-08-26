@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { createBrowserRouter, Outlet, useLocation, useMatches } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createBrowserRouter, Outlet, useLocation, useMatches, useOutlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import gsap from "gsap";
@@ -31,6 +31,11 @@ const ScrollManager = () => {
         if (element) {
           if (window.lenis) {
             window.lenis.scrollTo(element, { offset: -50, duration: 1.2 });
+            
+            const resizeInterval = setInterval(() => {
+              if (window.lenis) window.lenis.resize();
+            }, 100);
+            setTimeout(() => clearInterval(resizeInterval), 1500);
           } else {
             element.scrollIntoView({ behavior: 'smooth' });
           }
@@ -38,6 +43,14 @@ const ScrollManager = () => {
       } else {
         if (window.lenis) {
           window.lenis.scrollTo(0, { immediate: true });
+          
+          // Poll resize to catch height changes from framer-motion enter animation and lazy images
+          const resizeInterval = setInterval(() => {
+            if (window.lenis) window.lenis.resize();
+          }, 100);
+          
+          // Stop polling after 1.5s (when 0.8s enter animation is definitely finished)
+          setTimeout(() => clearInterval(resizeInterval), 1500);
         } else {
           window.scrollTo(0, 0);
         }
@@ -92,34 +105,16 @@ const SEOManager = () => {
 };
 
 
+const AnimatedOutlet = () => {
+  const o = useOutlet();
+  const [outlet] = useState(o);
+  return <>{outlet}</>;
+};
+
 const MainLayout = () => {
   const matches = useMatches();
   const location = useLocation();
   const is404 = matches.some(match => match?.handle?.is404);
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smoothWheel: true,
-    });
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    const update = (time) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(update);
-    gsap.ticker.lagSmoothing(0);
-
-    window.lenis = lenis;
-
-    return () => {
-      gsap.ticker.remove(update);
-      lenis.destroy();
-      delete window.lenis;
-    };
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -136,7 +131,7 @@ const MainLayout = () => {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex-1 flex flex-col"
           >
-            <Outlet />
+            <AnimatedOutlet />
           </motion.div>
         </AnimatePresence>
       </main>
