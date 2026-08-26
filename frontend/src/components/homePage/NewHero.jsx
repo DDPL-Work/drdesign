@@ -30,7 +30,7 @@ const NewHero = () => {
           loop
           muted
           playsInline
-          poster={heroPoster}
+          // poster={heroPoster}
           className="block md:hidden w-full h-full object-cover"
         >
           <source src={mobileBgVideo} type="video/mp4" />
