@@ -19,7 +19,7 @@ const NewHero = () => {
           loop
           muted
           playsInline
-          poster={heroPoster}
+          // poster={heroPoster}
           className="hidden md:block w-full h-full object-cover"
         >
           <source src={bgVideo} type="video/mp4" />
@@ -55,4 +55,4 @@ const NewHero = () => {
   )
 }
 
-export default NewHero
+export default NewHero

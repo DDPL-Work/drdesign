@@ -72,6 +72,7 @@ const Hero = () => {
       <div className="absolute inset-0 w-full h-full">
         <motion.img 
           src={CareerHeroImg} 
+          loading='lazy'
           alt="Careers at Dr. Design Technology" 
           className="w-full h-full object-cover object-[center_20%] md:object-contain md:object-right"
           initial={{ opacity: 0, scale: 1.06 }}
